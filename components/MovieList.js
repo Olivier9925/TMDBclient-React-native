@@ -2,12 +2,12 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { useSelector, connect } from 'react-redux'
 import { getDiscoverMovies, getTopMovies, searchMovie, getWatchList, getWatched } from '../actions';
-import { Image, View, Text } from 'react-native';
+import { Image, View, TouchableHighlight } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler'
 import 'react-native-gesture-handler';
 import Footer from './Footer';
 
-const MovieList = ({ dispatch }) =>
+const MovieList = ({ dispatch, navigation }) =>
 {
 	const discoverMovies = useSelector(state => state.movieReducer.discoverMovies)
 	const topMovies = useSelector(state => state.movieReducer.topMovies)
@@ -34,7 +34,19 @@ const MovieList = ({ dispatch }) =>
 		return movies.map((t, i) =>
 		{
 			return (
-				<Image source={{ uri: 'https://image.tmdb.org/t/p/original/' + t.poster_path }} style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }} key={`poster_${t.original_title}`} />
+				<TouchableHighlight onPress={
+					() =>
+					{
+						console.log('coucou là !!!!')
+						dispatch({
+							type: "SET_CURRENT_MOVIE",
+							currentMovieId: t.id
+						});
+						navigation.navigate('Movie')
+					}
+				}>
+					<Image source={{ uri: 'https://image.tmdb.org/t/p/original/' + t.poster_path }} style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }} key={`${i}_${t.original_title}`} />
+				</TouchableHighlight>
 			);
 		});
 	}
@@ -63,12 +75,12 @@ const MovieList = ({ dispatch }) =>
 
 	return (
 		<View>
-			<Footer />
 			<ScrollView style={{ backgroundColor: 'black' }}>
-				<Text>{filter}</Text>
+				<Footer />
 				<View style={{ flexDirection: 'row', flexWrap: 'wrap', alignContent: 'space-around', justifyContent: 'space-around', paddingTop: 50 }}>
 					{displayList(list)}
 				</View>
+
 			</ScrollView>
 		</View>
 	)

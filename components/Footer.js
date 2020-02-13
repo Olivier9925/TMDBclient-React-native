@@ -1,6 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { View, Button } from 'react-native'
+import { View } from 'react-native'
+import { CustomButton } from './CustomButton.js';
+
 
 const Footer = () =>
 {
@@ -8,12 +10,16 @@ const Footer = () =>
 	const dispatch = useDispatch();
 
 	return (
-		<View style={{ backgroundColor: 'pink' }}>
-			<Button onPress={() => 
+		<View style={{
+			display: 'flex', flexDirection: 'row',
+			justifyContent: 'space-around',
+			paddingTop: 20
+		}}>
+			<CustomButton onPress={() => 
 			{
 				dispatch({ type: 'DISCOVER' });
 			}} title='DISCOVER' />
-			<Button onPress={() =>
+			<CustomButton onPress={() =>
 			{
 				dispatch({ type: 'TOP' })
 			}} title='TOP' />

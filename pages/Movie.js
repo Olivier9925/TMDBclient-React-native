@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useSelector, connect } from 'react-redux'
 import { displayCurrentMovie } from '../actions'
 import { ScrollView } from 'react-native-gesture-handler'
-import { View, Image } from 'react-native'
+import { View, Image, Text } from 'react-native'
 import SelectorAction from '../components/SelectorAction'
 
 const Movie = ({ dispatch }) =>
@@ -22,12 +22,19 @@ const Movie = ({ dispatch }) =>
 	return (
 		<ScrollView>
 			<View>
-				<Text>{currentMovie.title}</Text>
+				<Image source={{ uri: `https://image.tmdb.org/t/p/original/${currentMovie.backdrop_path}` }} key={currentMovie.title + '_bd'} />
+				<Image source={{ uri: `https://image.tmdb.org/t/p/original/${currentMovie.poster_path}` }} key={currentMovie.title + '_p'} />
 			</View>
 			<View>
-				<SelectorAction />
+				<Text>{currentMovie.title}</Text>
+				<Text>{currentMovie.tagline}</Text>
+
+				<Text>{currentMovie.overview}</Text>
 			</View>
+			<SelectorAction />
 		</ScrollView>
+
+
 	)
 }
 export default connect()(Movie)
