@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { saveToList, saveToWatchedList, isAlreadyWatched } from '../actions'
 import { useSelector, connect } from 'react-redux'
-import { Row, Col, Container } from 'reactstrap'
-import { Redirect } from 'react-router-dom'
+import { View, Button } from 'react-native'
 
 const SelectorAction = ({ dispatch }) =>
 {
@@ -22,27 +21,19 @@ const SelectorAction = ({ dispatch }) =>
 
 
 	return (
-		<>
+		<View>
+			<Button onClick={() =>
+			{
+				dispatch(saveToList(currentMovieId));
+				setRedirectList(true)
+			}} title='+' />
+			<Button onClick={() =>
+			{
+				dispatch(saveToWatchedList(currentMovieId, user));
+				setRedirectList(true)
+			}} title='vu' />
 
-			{connexion ? (
-				<Container>
-					<Row style={{ textAlign: 'center' }}>
-						<Col onClick={() =>
-						{
-							dispatch(saveToList(currentMovieId));
-							setRedirectList(true)
-						}}> + </Col>
-						<Col onClick={() =>
-						{
-							dispatch(saveToWatchedList(currentMovieId, user));
-							setRedirectList(true)
-						}}>Vu</Col>
-						<Col>Note</Col>
-					</Row>
-				</Container>
-			) : (' ')}
-
-		</>
+		</View>
 	)
 }
 export default connect()(SelectorAction);

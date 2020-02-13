@@ -1,17 +1,20 @@
 import React from 'react'
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons';
 import MovieList from './MovieList'
+import { createStackNavigator } from '@react-navigation/stack';
+import { useSelector } from 'react-redux'
+import { View } from 'react-native';
 
-const Tab = createMaterialBottomTabNavigator();
-
+const Stack = createStackNavigator();
 const MyTabs = () =>
 {
+	const filter = useSelector(state => state.movieReducer.filter)
+
+
 	return (
-		<Tab.Navigator initialRouteName="MovieList" >
-			<Tab.Screen name="Home" component={MovieList} />
-			<Tab.Screen name="Top" component={MovieList} />
-		</Tab.Navigator>
+		<Stack.Navigator>
+			<Stack.Screen name={filter} component={MovieList} />
+
+		</Stack.Navigator>
 	);
 }
 

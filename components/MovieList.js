@@ -5,6 +5,7 @@ import { getDiscoverMovies, getTopMovies, searchMovie, getWatchList, getWatched 
 import { Image, View, Text } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler'
 import 'react-native-gesture-handler';
+import Footer from './Footer';
 
 const MovieList = ({ dispatch }) =>
 {
@@ -61,12 +62,15 @@ const MovieList = ({ dispatch }) =>
 	}
 
 	return (
-		<ScrollView style={{ backgroundColor: 'black' }}>
-			<Text>{filter}</Text>
-			<View style={{ flexDirection: 'row', flexWrap: 'wrap', alignContent: 'space-around', justifyContent: 'space-around', paddingTop: 50 }}>
-				{displayList(list)}
-			</View>
-		</ScrollView>
+		<View>
+			<Footer />
+			<ScrollView style={{ backgroundColor: 'black' }}>
+				<Text>{filter}</Text>
+				<View style={{ flexDirection: 'row', flexWrap: 'wrap', alignContent: 'space-around', justifyContent: 'space-around', paddingTop: 50 }}>
+					{displayList(list)}
+				</View>
+			</ScrollView>
+		</View>
 	)
 }
 export default connect()(MovieList);

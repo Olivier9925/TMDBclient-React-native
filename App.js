@@ -23,11 +23,9 @@ import
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, HeaderBackground } from '@react-navigation/stack';
 import MyTabs from './components/MyTabs'
 
 const store = createStore(reducers, applyMiddleware(thunk))
-//const Stack = createStackNavigator();
 
 
 const App = () =>
@@ -35,8 +33,8 @@ const App = () =>
   return (
     <Provider store={store} >
       <NavigationContainer>
-        <StatusBar barStyle="light-content" />
         <MyTabs />
+
       </NavigationContainer>
     </Provider >
   );
