@@ -24,6 +24,7 @@ import
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import MyTabs from './components/MyTabs'
+import SearchBar from './components/SearchBar';
 
 const store = createStore(reducers, applyMiddleware(thunk))
 
@@ -33,6 +34,7 @@ const App = () =>
   return (
     <Provider store={store} >
       <NavigationContainer>
+        <SearchBar />
         <MyTabs />
 
       </NavigationContainer>

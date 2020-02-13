@@ -75,7 +75,7 @@ const MovieList = ({ dispatch, navigation }) =>
 
 	return (
 		<View>
-			<ScrollView style={{ backgroundColor: 'black' }}>
+			<ScrollView style={{ backgroundColor: 'transparent' }}>
 				<Footer />
 				<View style={{ flexDirection: 'row', flexWrap: 'wrap', alignContent: 'space-around', justifyContent: 'space-around', paddingTop: 50 }}>
 					{displayList(list)}
