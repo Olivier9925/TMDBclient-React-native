@@ -24,7 +24,6 @@ import
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import MyTabs from './components/MyTabs'
-import Footer from './components/Footer';
 
 const store = createStore(reducers, applyMiddleware(thunk))
 
@@ -34,7 +33,7 @@ const App = () =>
   return (
     <Provider store={store} >
       <NavigationContainer>
-          <MyTabs />
+        <MyTabs />
       </NavigationContainer>
     </Provider >
   );
