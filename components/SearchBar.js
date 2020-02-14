@@ -8,16 +8,18 @@ const SearchBar = (props) =>
 	const [search, setsearch] = useState(null);
 	const inputAccessoryViewID = "uniqueID";
 	return (
-		<View>
+		<View style={{ display: 'flex', flexDirection: 'row', marginTop: 50, marginLeft: 20 }}>
 			<TextInput
+				placeholder="recherche"
 				style={{
 					padding: 10,
-					paddingTop: 50,
+					borderWidth: 1,
+					borderColor: "#ABABAB",
 				}}
 				inputAccessoryViewID={inputAccessoryViewID}
 				onChangeText={text => setsearch(text)}
 			/>
-			<Button style={buttonStyle} onClick={() =>
+			<Button onPress={() =>
 			{
 				dispatch({ type: 'SEARCH', search: search })
 			}} title='OK' />

@@ -1,6 +1,7 @@
 import React from 'react'
 import MovieList from './MovieList'
 import Movie from '../pages/Movie'
+import Footer from './Footer'
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux'
 
@@ -15,7 +16,7 @@ const MyTabs = () =>
 	return (
 		<Stack.Navigator initialRouteName={filter}>
 			<Stack.Screen name={filter} component={MovieList} />
-			<Stack.Screen name='Movie' component={Movie} />
+			<Stack.Screen name={'MOVIE'} component={Movie} />
 		</Stack.Navigator>
 	);
 }

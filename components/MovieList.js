@@ -1,11 +1,10 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, connect } from 'react-redux'
 import { getDiscoverMovies, getTopMovies, searchMovie, getWatchList, getWatched } from '../actions';
 import { Image, View, TouchableHighlight } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler'
 import 'react-native-gesture-handler';
-import Footer from './Footer';
+import Footer from './Footer'
 
 const MovieList = ({ dispatch, navigation }) =>
 {
@@ -27,7 +26,6 @@ const MovieList = ({ dispatch, navigation }) =>
 		dispatch(getWatched(user));
 	}, [dispatch, search, user])
 
-	const [redirectMovie, setRedirectMovie] = useState(false)
 
 	const displayList = (movies) =>
 	{
@@ -37,14 +35,13 @@ const MovieList = ({ dispatch, navigation }) =>
 				<TouchableHighlight onPress={
 					() =>
 					{
-						console.log('coucou là !!!!')
 						dispatch({
 							type: "SET_CURRENT_MOVIE",
 							currentMovieId: t.id
 						});
-						navigation.navigate('Movie')
+						navigation.navigate('MOVIE')
 					}
-				}>
+				} key={i}>
 					<Image source={{ uri: 'https://image.tmdb.org/t/p/original/' + t.poster_path }} style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }} key={`${i}_${t.original_title}`} />
 				</TouchableHighlight>
 			);
@@ -74,14 +71,14 @@ const MovieList = ({ dispatch, navigation }) =>
 	}
 
 	return (
-		<View>
-			<ScrollView style={{ backgroundColor: 'transparent' }}>
-				<Footer />
+		<View style={{ flex: 1 }}>
+			<ScrollView style={{ flex: .85, backgroundColor: 'transparent' }}>
 				<View style={{ flexDirection: 'row', flexWrap: 'wrap', alignContent: 'space-around', justifyContent: 'space-around', paddingTop: 50 }}>
 					{displayList(list)}
 				</View>
-
 			</ScrollView>
+			<View style={{ flex: .15 }}><Footer /></View>
+
 		</View>
 	)
 }

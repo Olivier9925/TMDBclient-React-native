@@ -15,9 +15,6 @@ const Movie = ({ dispatch }) =>
 		dispatch(displayCurrentMovie(currentMovieId));
 	}, [dispatch, currentMovieId])
 
-
-	console.log('currentMovieId :', currentMovieId)
-	console.log('currentMovie :', currentMovie)
 	return (
 		<ScrollView>
 			<ImageBackground source={{ uri: `https://image.tmdb.org/t/p/original/${currentMovie.backdrop_path}` }} style={{ height: 500, resizeMode: 'contain', padding: 0 }}>
