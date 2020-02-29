@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { TextInput, InputAccessoryView, View, Button } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux';
+import { TextInput, View, Button } from 'react-native'
+import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
-const SearchBar = (props) =>
+const SearchBar = () =>
 {
+	const navigation = useNavigation();
 	const dispatch = useDispatch();
 	const [search, setsearch] = useState(null);
-	const inputAccessoryViewID = "uniqueID";
+
 	return (
 		<View style={{ display: 'flex', flexDirection: 'row', marginTop: 5, marginLeft: 20 }}>
 			<TextInput
@@ -16,13 +18,16 @@ const SearchBar = (props) =>
 					borderWidth: 1,
 					borderColor: "#ABABAB",
 				}}
-				inputAccessoryViewID={inputAccessoryViewID}
 				onChangeText={text => setsearch(text)}
 			/>
-			<Button onPress={() =>
-			{
-				dispatch({ type: 'SEARCH', search: search })
-			}} title='OK' />
+			<Button
+				title='OK'
+				onPress={() =>
+				{
+					dispatch({ type: 'SEARCH', search: search })
+					navigation.navigate('MOVIES')
+				}}
+			/>
 		</View >
 	);
 }

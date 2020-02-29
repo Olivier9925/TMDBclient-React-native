@@ -10,10 +10,6 @@ const initState = {
 	currentMovieId: 0,
 	currentMovie: [],
 	user: 0,
-	connexion: false,
-	watchList: [],
-	watchedList: [],
-	alreadyWatched: 0
 }
 
 export default (state = initState, action) =>
@@ -74,35 +70,6 @@ export default (state = initState, action) =>
 			return {
 				...state,
 				currentMovie: action.currentMovie
-			}
-
-		case actionsList.LOGIN:
-			return {
-				...state,
-				user: action.user,
-				connexion: action.connexion
-			}
-		case actionsList.DECO:
-			return {
-				...state,
-				user: null,
-				connexion: false
-			}
-
-		case actionsList.GET_WATCHLIST:
-			return {
-				...state,
-				watchList: action.watchList
-			}
-		case actionsList.GET_WATCHED:
-			return {
-				...state,
-				watchedList: action.watchedList
-			}
-		case actionsList.ALREADY_WATCHED:
-			return {
-				...state,
-				alreadyWatched: action.alreadyWatched
 			}
 
 
