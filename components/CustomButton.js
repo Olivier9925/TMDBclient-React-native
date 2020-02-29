@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
 		shadowRadius: 5,
 		width: 180
 	},
-
 	text: {
 		fontSize: 16,
 		textTransform: 'uppercase',

@@ -10,6 +10,8 @@ const initState = {
 	currentMovieId: 0,
 	currentMovie: [],
 	user: 0,
+	movieDetails: [],
+	movieCredits: []
 }
 
 export default (state = initState, action) =>
@@ -70,6 +72,17 @@ export default (state = initState, action) =>
 			return {
 				...state,
 				currentMovie: action.currentMovie
+			}
+		case actionsList.MOVIE_DETAILS:
+			return {
+				...state,
+				movieDetails: action.movieDetails
+			}
+
+		case actionsList.MOVIE_CREDITS:
+			return {
+				...state,
+				movieCredits: action.movieCredits
 			}
 
 

@@ -4,7 +4,7 @@ import StartButton from '../components/StartButton'
 import SearchBar from '../components/SearchBar'
 
 
-const Home = (props) =>
+const Home = () =>
 {
 	return (
 		<View style={styles.homeView} >
@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
 	homeView: {
 		flex: 1,
 		flexDirection: 'column',
-		flexWrap: 'wrap',
-		alignContent: 'center',
-		justifyContent: 'center',
+		alignItems: 'center',
+		padding: 50,
 	},
 });

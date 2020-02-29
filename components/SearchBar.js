@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { TextInput, View, Button } from 'react-native'
+import { TextInput, View, StyleSheet } from 'react-native'
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+import { CustomButton } from './CustomButton'
 
 const SearchBar = () =>
 {
@@ -10,17 +11,13 @@ const SearchBar = () =>
 	const [search, setsearch] = useState(null);
 
 	return (
-		<View style={{ display: 'flex', flexDirection: 'row', marginTop: 5, marginLeft: 20 }}>
+		<View style={{ display: 'flex', flexDirection: 'column', marginTop: 5, marginLeft: 20 }}>
 			<TextInput
 				placeholder="recherche"
-				style={{
-					padding: 10,
-					borderWidth: 1,
-					borderColor: "#ABABAB",
-				}}
+				style={styles.inputSearch}
 				onChangeText={text => setsearch(text)}
 			/>
-			<Button
+			<CustomButton
 				title='OK'
 				onPress={() =>
 				{
@@ -32,3 +29,15 @@ const SearchBar = () =>
 	);
 }
 export default SearchBar;
+
+const styles = StyleSheet.create({
+	inputSearch: {
+		color: 'white',
+		width: 180,
+		padding: 10,
+		borderWidth: 1,
+		borderColor: "#ABABAB",
+		borderRadius: 5,
+		backgroundColor: '#34343f',
+	},
+});

@@ -37,12 +37,16 @@ const MovieList = ({ dispatch, navigation }) =>
 					{
 						dispatch({
 							type: "SET_CURRENT_MOVIE",
-							currentMovieId: t.id
+							currentMovieId: t.id,
 						});
 						navigation.navigate('MOVIE')
 					}
 				} key={i}>
-					<Image source={{ uri: 'https://image.tmdb.org/t/p/original/' + t.poster_path }} style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }} key={`${i}_${t.original_title}`} />
+					<Image
+						source={{ uri: 'https://image.tmdb.org/t/p/original/' + t.poster_path }}
+						style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }}
+						key={`${i}_${t.original_title}`}
+					/>
 				</TouchableHighlight>
 			);
 		});
@@ -82,18 +86,3 @@ const MovieList = ({ dispatch, navigation }) =>
 	)
 }
 export default connect()(MovieList);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

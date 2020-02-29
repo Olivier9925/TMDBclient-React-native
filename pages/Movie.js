@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, connect } from 'react-redux'
-import { displayCurrentMovie } from '../actions'
+import { displayCurrentMovie, getMovieDetails, getMovieCredits } from '../actions'
 import { ScrollView } from 'react-native-gesture-handler'
 import { View, Image, Text, ImageBackground } from 'react-native'
 import SelectorAction from '../components/SelectorAction'
@@ -9,11 +9,33 @@ const Movie = ({ dispatch }) =>
 {
 	const currentMovieId = useSelector(state => state.movieReducer.currentMovieId)
 	const currentMovie = useSelector(state => state.movieReducer.currentMovie)
+	const movieDetails = useSelector(state => state.movieReducer.movieDetails)
+	const movieCredits = useSelector(state => state.movieReducer.movieCredits)
 
 	useEffect(() =>
 	{
 		dispatch(displayCurrentMovie(currentMovieId));
+		dispatch(getMovieDetails(currentMovieId));
+		dispatch(getMovieCredits(currentMovieId));
 	}, [dispatch, currentMovieId])
+
+	console.log('movieDetails :', movieDetails)
+
+	const displayCredits = (movieCredits) =>
+	{
+		if (movieCredits == undefined || movieCredits == null) return
+		else return movieCredits.map((m, i) =>
+		{
+			if (i > 10) return
+			return (
+				<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+					<Text style={{ color: 'red' }}>{m.character}</Text>
+					<Text style={{ color: 'white' }}>{m.name}</Text>
+				</View>
+			)
+		}
+		)
+	}
 
 	return (
 		<ScrollView style={{ backgroundColor: '#2c2c35' }}>
@@ -23,16 +45,19 @@ const Movie = ({ dispatch }) =>
 
 				</View>
 			</ImageBackground>
-			<View style={{ display: 'flex', marginTop: 50, color: 'white' }}>
-				<Text style={{ padding: 10, fontSize: 30, fontWeight: 'bold', color: 'white' }}>{currentMovie.title}</Text>
-				<Text style={{ padding: 10, fontSize: 20, color: 'white' }}>{currentMovie.tagline}</Text>
-
-				<Text style={{ padding: 10, fontSize: 15, color: 'white' }}>{currentMovie.overview}</Text>
+			<View style={{ display: 'flex', marginTop: 60, color: 'white', paddingHorizontal: 20 }}>
+				<Text style={{ paddingVertical: 10, fontSize: 30, fontWeight: 'bold', color: 'white' }}>{currentMovie.title}</Text>
+				<Text style={{ paddingVertical: 10, fontSize: 25, color: 'white' }}>{currentMovie.tagline}</Text>
+				<Text style={{ paddingVertical: 10, fontSize: 15, color: 'white' }}>{currentMovie.overview}</Text>
+			</View>
+			<View style={{ paddingHorizontal: 20, paddingVertical: 30 }}>
+				{
+					displayCredits(movieCredits.cast)
+				}
 			</View>
 			<SelectorAction />
 		</ScrollView>
-
-
 	)
 }
+
 export default connect()(Movie)

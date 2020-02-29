@@ -14,8 +14,7 @@ export const getDiscoverMovies = () =>
 			type: actionList.GET_DISCOVER_MOVIES,
 			discoverMovies: []
 		})
-
-		axios.get("https://api.themoviedb.org/3/discover/movie?api_key=" + apiKey)
+		axios.get("https://api.themoviedb.org/3/discover/movie?api_key=" + apiKey + "&language=fr-FR&region=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1")
 			.then((response) => dispatch({
 				type: actionList.GET_DISCOVER_MOVIES,
 				discoverMovies: response.data.results
@@ -208,4 +207,37 @@ export const isAlreadyWatched = (currentMovieId, userId) =>
 	}
 
 
+}
+
+
+export const getMovieDetails = (currentMovieId) =>
+{
+	return (dispatch) =>
+	{
+		axios.get("https://api.themoviedb.org/3/movie/" + currentMovieId + "?api_key=" + apiKey + "&language=fr-FR")
+			.then((response) =>
+			{
+				dispatch({
+					type: actionList.MOVIE_DETAILS,
+					movieDetails: response.data
+				})
+			})
+			.catch(error => console.log(error));
+	}
+}
+
+export const getMovieCredits = (currentMovieId) =>
+{
+	return (dispatch) =>
+	{
+		axios.get("https://api.themoviedb.org/3/movie/" + currentMovieId + "/credits?api_key=" + apiKey)
+			.then((response) =>
+			{
+				dispatch({
+					type: actionList.MOVIE_CREDITS,
+					movieCredits: response.data
+				})
+			})
+			.catch(error => console.log(error));
+	}
 }
