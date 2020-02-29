@@ -8,7 +8,7 @@ const SearchBar = (props) =>
 	const [search, setsearch] = useState(null);
 	const inputAccessoryViewID = "uniqueID";
 	return (
-		<View style={{ display: 'flex', flexDirection: 'row', marginTop: 50, marginLeft: 20 }}>
+		<View style={{ display: 'flex', flexDirection: 'row', marginTop: 5, marginLeft: 20 }}>
 			<TextInput
 				placeholder="recherche"
 				style={{

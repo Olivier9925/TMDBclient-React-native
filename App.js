@@ -27,12 +27,24 @@ import MyTabs from './components/MyTabs'
 
 const store = createStore(reducers, applyMiddleware(thunk))
 
+const MyTheme = {
+  dark: false,
+  colors: {
+    primary: '#ee121e',
+    background: '#2c2c35',
+    card: 'rgb(255, 255, 255)',
+    text: '#ee121e',
+    border: 'rgb(199, 199, 204)',
+  },
+};
+
 
 const App = () =>
 {
   return (
     <Provider store={store} >
-      <NavigationContainer>
+      <StatusBar barStyle="light-content" />
+      <NavigationContainer theme={MyTheme}>
         <MyTabs />
       </NavigationContainer>
     </Provider >

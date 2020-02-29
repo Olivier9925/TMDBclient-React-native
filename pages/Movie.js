@@ -16,18 +16,18 @@ const Movie = ({ dispatch }) =>
 	}, [dispatch, currentMovieId])
 
 	return (
-		<ScrollView>
+		<ScrollView style={{ backgroundColor: '#2c2c35' }}>
 			<ImageBackground source={{ uri: `https://image.tmdb.org/t/p/original/${currentMovie.backdrop_path}` }} style={{ height: 500, resizeMode: 'contain', padding: 0 }}>
 				<View>
 					<Image source={{ uri: `https://image.tmdb.org/t/p/original/${currentMovie.poster_path}` }} key={currentMovie.title + '_p'} style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8, marginTop: 300, marginLeft: 20, borderWidth: 5, borderColor: '#ee121e', }} />
 
 				</View>
 			</ImageBackground>
-			<View style={{ display: 'flex', marginTop: 50 }}>
-				<Text style={{ padding: 10, fontSize: 30, fontWeight: 'bold' }}>{currentMovie.title}</Text>
-				<Text style={{ padding: 10, fontSize: 20 }}>{currentMovie.tagline}</Text>
+			<View style={{ display: 'flex', marginTop: 50, color: 'white' }}>
+				<Text style={{ padding: 10, fontSize: 30, fontWeight: 'bold', color: 'white' }}>{currentMovie.title}</Text>
+				<Text style={{ padding: 10, fontSize: 20, color: 'white' }}>{currentMovie.tagline}</Text>
 
-				<Text style={{ padding: 10, fontSize: 15 }}>{currentMovie.overview}</Text>
+				<Text style={{ padding: 10, fontSize: 15, color: 'white' }}>{currentMovie.overview}</Text>
 			</View>
 			<SelectorAction />
 		</ScrollView>

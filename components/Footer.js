@@ -12,7 +12,9 @@ const Footer = ({ navigation }) =>
 
 	return (
 		<View style={{
-			display: 'flex', flexDirection: 'row',
+			backgroundColor: '#2c2c35',
+			display: 'flex',
+			flexDirection: 'row',
 			justifyContent: 'space-around',
 			paddingTop: 20,
 			borderTopColor: '#e4e4e5',

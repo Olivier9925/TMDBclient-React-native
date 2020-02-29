@@ -46,7 +46,7 @@ export const searchMovie = (searchValue) =>
 {
 	return (dispatch) =>
 	{
-		axios.get("https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&language=en-US&page=1&include_adult=false&query=" + searchValue)
+		axios.get("https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&language=fr-FR&page=1&include_adult=false&query=" + searchValue)
 			.then((response) => dispatch({
 				type: actionList.GET_SEARCH_MOVIES,
 				searchResult: response.data.results
