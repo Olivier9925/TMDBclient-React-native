@@ -11,9 +11,9 @@ const SearchBar = () =>
 	const [search, setsearch] = useState(null);
 
 	return (
-		<View style={{ display: 'flex', flexDirection: 'column', marginTop: 5, marginLeft: 20 }}>
+		<View style={{ display: 'flex', flexDirection: 'column', }}>
 			<TextInput
-				placeholder="recherche"
+				placeholder="rechercher"
 				style={styles.inputSearch}
 				onChangeText={text => setsearch(text)}
 			/>
@@ -34,10 +34,12 @@ const styles = StyleSheet.create({
 	inputSearch: {
 		color: 'white',
 		width: 180,
+		height: 50,
 		padding: 10,
 		borderWidth: 1,
 		borderColor: "#ABABAB",
 		borderRadius: 5,
 		backgroundColor: '#34343f',
+		marginBottom: 10,
 	},
 });

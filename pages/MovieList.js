@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, connect } from 'react-redux'
 import { getDiscoverMovies, getTopMovies, searchMovie, getWatchList, getWatched } from '../actions';
-import { Image, View, TouchableHighlight } from 'react-native';
+import { Image, View, TouchableHighlight, Text, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler'
 import 'react-native-gesture-handler';
 import Footer from '../components/Footer'
@@ -26,6 +26,8 @@ const MovieList = ({ dispatch, navigation }) =>
 		dispatch(getWatched(user));
 	}, [dispatch, search, user])
 
+	console.log('watchedList :', watchedList)
+	console.log('watchList :', watchList)
 
 	const displayList = (movies) =>
 	{
@@ -75,14 +77,28 @@ const MovieList = ({ dispatch, navigation }) =>
 	}
 
 	return (
-		<View style={{ flex: 1 }}>
-			<ScrollView style={{ flex: .85, backgroundColor: '#2c2c35' }}>
-				<View style={{ flexDirection: 'row', flexWrap: 'wrap', alignContent: 'space-around', justifyContent: 'space-around', paddingTop: 50 }}>
-					{displayList(list)}
-				</View>
-			</ScrollView>
-			<View style={{ flex: .15 }}><Footer /></View>
-		</View>
+		<>
+
+			<View style={{ flex: 1 }}>
+				<ScrollView style={{ flex: .85, backgroundColor: '#2c2c35' }}>
+					<Text style={styles.title}>{filter}</Text>
+					<View style={{ flexDirection: 'row', flexWrap: 'wrap', alignContent: 'space-around', justifyContent: 'space-around', paddingTop: 50 }}>
+						{displayList(list)}
+					</View>
+				</ScrollView>
+				<View style={{ flex: .15 }}><Footer /></View>
+			</View>
+		</>
 	)
 }
 export default connect()(MovieList);
+
+const styles = StyleSheet.create({
+	title: {
+		marginTop: 50,
+		marginLeft: 20,
+		color: 'white',
+		fontSize: 30,
+		fontWeight: 'bold'
+	}
+});

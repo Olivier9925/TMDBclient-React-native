@@ -3,26 +3,20 @@ import MovieList from '../pages/MovieList'
 import Movie from '../pages/Movie'
 import Home from '../pages/Home'
 import { createStackNavigator } from '@react-navigation/stack';
-import { useSelector } from 'react-redux'
+import Connexion from '../pages/Connexion'
 import { View, Text } from 'react-native'
 
 const Stack = createStackNavigator();
 
 const MyTabs = () =>
 {
-	const filter = useSelector(state => state.movieReducer.filter)
-
 	function StatusBar()
 	{
 		return (
 			<View>
-				<Text style={{ color: 'white' }}>
-					{filter}
-				</Text>
 			</View>
 		);
 	}
-
 
 	return (
 		<Stack.Navigator
@@ -49,6 +43,10 @@ const MyTabs = () =>
 			<Stack.Screen
 				name={'MOVIE'}
 				component={Movie}
+			/>
+			<Stack.Screen
+				name={'Connexion'}
+				component={Connexion}
 			/>
 		</Stack.Navigator>
 	);

@@ -11,6 +11,7 @@ const StartButton = () =>
 	return (
 		<>
 			<CustomButton
+				style={{ marginTop: 30, marginBottom: 40, }}
 				title='Discover'
 				onPress={() =>
 				{

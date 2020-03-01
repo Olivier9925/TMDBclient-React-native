@@ -1,16 +1,22 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import StartButton from '../components/StartButton'
 import SearchBar from '../components/SearchBar'
+import ConnexionButton from '../components/ConnexionButton'
 
 
 const Home = () =>
 {
+
 	return (
-		<View style={styles.homeView} >
-			<StartButton />
-			<SearchBar />
-		</View>
+		<>
+			<Text style={styles.title}>Movie Tracker</Text>
+			<View style={styles.homeView} >
+				<StartButton />
+				<ConnexionButton />
+				<SearchBar />
+			</View>
+		</>
 	)
 }
 export default Home
@@ -20,6 +26,12 @@ const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'column',
 		alignItems: 'center',
-		padding: 50,
 	},
+	title: {
+		marginTop: 50,
+		marginLeft: 20,
+		color: 'white',
+		fontSize: 30,
+		fontWeight: 'bold'
+	}
 });
