@@ -10,10 +10,12 @@ const Home = () =>
 {
 
 	const connexion = useSelector(state => state.userReducer.connexion)
+	const user = useSelector(state => state.userReducer.user)
 
 	return (
 		<>
 			<Text style={styles.title}>Movie Tracker</Text>
+			{connexion ? <Text>{user[0].email}</Text> : <></>}
 			<View style={styles.homeView} >
 				<StartButton />
 				{!connexion ? <ConnexionButton /> : <></>}

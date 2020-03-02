@@ -6,7 +6,8 @@ const initState = {
 	connexion: false,
 	watchList: [],
 	watchedList: [],
-	alreadyWatched: 0
+	alreadyWatched: 0,
+	user: []
 }
 
 export default (state = initState, action) =>
@@ -14,6 +15,7 @@ export default (state = initState, action) =>
 	switch (action.type) {
 
 		case actionsList.LOGIN:
+			console.log('coucocu')
 			return {
 				...state,
 				user: action.user,

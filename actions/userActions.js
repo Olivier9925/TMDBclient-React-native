@@ -16,10 +16,10 @@ export const login = (email, password) =>
 		})
 			.then(response1 =>
 			{
-				console.log('response :', response1.data)
 				dispatch({
 					type: actionList.LOGIN,
 					connexion: true,
+					user: response1.data.USER
 				});
 			}
 			)
