@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, connect } from 'react-redux'
-import { getDiscoverMovies, getTopMovies, searchMovie, getWatchList, getWatched } from '../actions';
+import { getDiscoverMovies, getTopMovies, searchMovie } from '../actions';
 import { Image, View, TouchableHighlight, Text, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler'
 import 'react-native-gesture-handler';
@@ -22,8 +22,8 @@ const MovieList = ({ dispatch, navigation }) =>
 		dispatch(getDiscoverMovies());
 		dispatch(getTopMovies());
 		dispatch(searchMovie(search));
-		dispatch(getWatchList(user));
-		dispatch(getWatched(user));
+		//dispatch(getWatchList(user));
+		//dispatch(getWatched(user));
 	}, [dispatch, search, user])
 
 	console.log('watchedList :', watchedList)

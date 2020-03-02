@@ -9,7 +9,6 @@ const initState = {
 	search: 'batman',
 	currentMovieId: 0,
 	currentMovie: [],
-	user: 0,
 	movieDetails: [],
 	movieCredits: []
 }

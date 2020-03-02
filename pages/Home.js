@@ -3,17 +3,21 @@ import { View, StyleSheet, Text } from 'react-native'
 import StartButton from '../components/StartButton'
 import SearchBar from '../components/SearchBar'
 import ConnexionButton from '../components/ConnexionButton'
+import { useSelector } from 'react-redux'
 
 
 const Home = () =>
 {
+
+	const connexion = useSelector(state => state.userReducer.connexion)
 
 	return (
 		<>
 			<Text style={styles.title}>Movie Tracker</Text>
 			<View style={styles.homeView} >
 				<StartButton />
-				<ConnexionButton />
+				{!connexion ? <ConnexionButton /> : <></>}
+
 				<SearchBar />
 			</View>
 		</>
