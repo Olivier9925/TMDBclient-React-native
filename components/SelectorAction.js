@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { saveToList, saveToWatchedList, isAlreadyWatched } from '../actions'
+import React, { useEffect } from 'react'
+import { saveToList, saveToWatchedList, isAlreadyWatched } from '../actions/userActions'
 import { useSelector, connect } from 'react-redux'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { CustomButton } from './CustomButton.js';
+import { useNavigation } from '@react-navigation/native';
 
 
 const SelectorAction = ({ dispatch }) =>
 {
+	const navigation = useNavigation()
 	const currentMovieId = useSelector(state => state.movieReducer.currentMovieId)
-	const user = useSelector(state => state.movieReducer.user)
+	const user = useSelector(state => state.userReducer.user)
 
 	useEffect(() =>
 	{
 		dispatch(isAlreadyWatched(currentMovieId, user));
 	}, [dispatch, user])
-
-
-	const connexion = useSelector(state => state.movieReducer.connexion)
-	const [redirectList, setRedirectList] = useState(false)
-
-	if (redirectList) return (<Redirect to='/' />)
-
 
 	return (
 		<View style={{
@@ -36,20 +31,23 @@ const SelectorAction = ({ dispatch }) =>
 			borderRightColor: 'transparent',
 		}}>
 
-			<CustomButton onClick={() =>
-			{
-				dispatch(saveToList(currentMovieId));
-				setRedirectList(true)
-			}} title='+' />
+			<CustomButton
+				onPress={() =>
+				{
+					dispatch(saveToList(currentMovieId, user[0].id));
+					navigation.navigate('MOVIES')
+				}}
+				title='+'
+			/>
 
-
-
-			<CustomButton onClick={() =>
-			{
-				dispatch(saveToWatchedList(currentMovieId, user));
-				setRedirectList(true)
-			}} title='vu' />
-
+			<CustomButton
+				onPress={() =>
+				{
+					dispatch(saveToWatchedList(currentMovieId, user[0].id));
+					navigation.navigate('MOVIES')
+				}}
+				title='vu'
+			/>
 		</View>
 	)
 }

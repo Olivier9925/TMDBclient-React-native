@@ -11,6 +11,8 @@ const Movie = ({ dispatch }) =>
 	const currentMovie = useSelector(state => state.movieReducer.currentMovie)
 	//const movieDetails = useSelector(state => state.movieReducer.movieDetails)
 	const movieCredits = useSelector(state => state.movieReducer.movieCredits)
+	const connexion = useSelector(state => state.userReducer.connexion)
+
 
 	useEffect(() =>
 	{
@@ -50,7 +52,7 @@ const Movie = ({ dispatch }) =>
 			<View style={{ paddingHorizontal: 20, paddingVertical: 30 }}>
 				{displayCredits(movieCredits.cast)}
 			</View>
-			<SelectorAction />
+			{connexion ? <SelectorAction /> : <></>}
 		</ScrollView>
 	)
 }

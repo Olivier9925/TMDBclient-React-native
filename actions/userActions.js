@@ -1,21 +1,21 @@
 import axios from "axios";
 import actionList from './actions';
 
-
 const apiKey = "e709f2ea9104a5d71ac4f13607ce4100";
-
+const backEndUrl = "https://movietrackerback.herokuapp.com/movieTrack";
+const backEndUrlTest = "http://localhost:5000/movieTrack"
 
 export const login = (email, password) =>
 {
 	return (dispatch) =>
 	{
-		console.log(email, password)
-		axios.post("http://localhost:5000/movieTrack/login", {
+		axios.post(backEndUrl + "/login", {
 			email: email,
 			passwordSaisie: password
 		})
 			.then(response1 =>
 			{
+				console.log('response ==> :', response1.data.USER)
 				dispatch({
 					type: actionList.LOGIN,
 					connexion: true,
@@ -27,11 +27,11 @@ export const login = (email, password) =>
 	}
 }
 
-export const saveToList = (movieId) =>
+export const saveToList = (movieId, user) =>
 {
 	return (dispatch) =>
 	{
-		axios.post("http://localhost:5000/movieTrack/movie/" + movieId)
+		axios.post(backEndUrl + "/movie/" + movieId + "/user/" + user + "/watchList")
 			.catch(error => console.log(error));
 
 	}
@@ -40,7 +40,7 @@ export const saveToWatchedList = (movieId, user) =>
 {
 	return (dispatch) =>
 	{
-		axios.post("http://localhost:5000/movieTrack/movie/" + movieId + "/user/" + user + "/watched")
+		axios.post(backEndUrl + "/movie/" + movieId + "/user/" + user + "/watched")
 			.catch(error => console.log(error));
 
 	}

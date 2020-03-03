@@ -5,9 +5,11 @@ import { Image, View, TouchableHighlight, Text, StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import 'react-native-gesture-handler';
 import Footer from '../components/Footer'
+import { useNavigation } from '@react-navigation/native';
 
-const MovieList = ({ dispatch, navigation }) =>
+const MovieList = ({ dispatch }) =>
 {
+	const navigation = useNavigation()
 	const discoverMovies = useSelector(state => state.movieReducer.discoverMovies)
 	const topMovies = useSelector(state => state.movieReducer.topMovies)
 	const watchList = useSelector(state => state.movieReducer.watchList)
@@ -34,16 +36,18 @@ const MovieList = ({ dispatch, navigation }) =>
 		return movies.map((t, i) =>
 		{
 			return (
-				<TouchableHighlight onPress={
-					() =>
-					{
-						dispatch({
-							type: "SET_CURRENT_MOVIE",
-							currentMovieId: t.id,
-						});
-						navigation.navigate('MOVIE')
+				<TouchableHighlight
+					onPress={
+						() =>
+						{
+							dispatch({
+								type: "SET_CURRENT_MOVIE",
+								currentMovieId: t.id,
+							});
+							navigation.navigate('MOVIE')
+						}
 					}
-				} key={i}>
+					key={i}>
 					<Image
 						source={{ uri: 'https://image.tmdb.org/t/p/original/' + t.poster_path }}
 						style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }}

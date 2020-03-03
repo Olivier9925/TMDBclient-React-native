@@ -7,7 +7,7 @@ const initState = {
 	watchList: [],
 	watchedList: [],
 	alreadyWatched: 0,
-	user: []
+	user: [{ id: 0 }]
 }
 
 export default (state = initState, action) =>
