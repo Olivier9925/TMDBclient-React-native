@@ -12,29 +12,27 @@ const MovieList = ({ dispatch }) =>
 	const navigation = useNavigation()
 	const discoverMovies = useSelector(state => state.movieReducer.discoverMovies)
 	const topMovies = useSelector(state => state.movieReducer.topMovies)
-	const watchList = useSelector(state => state.movieReducer.watchList)
+	const watchList = useSelector(state => state.userReducer.watchList)
+	const watchedList = useSelector(state => state.userReducer.watchedList)
 	const search = useSelector(state => state.movieReducer.search)
 	const searchResult = useSelector(state => state.movieReducer.searchResult)
 	const filter = useSelector(state => state.movieReducer.filter)
-	const user = useSelector(state => state.movieReducer.user)
-	const watchedList = useSelector(state => state.movieReducer.watchedList)
+	const user = useSelector(state => state.userReducer.user)
 
 	useEffect(() =>
 	{
 		dispatch(getDiscoverMovies());
 		dispatch(getTopMovies());
 		dispatch(searchMovie(search));
-		//dispatch(getWatchList(user));
-		//dispatch(getWatched(user));
 	}, [dispatch, search, user])
 
-	console.log('watchedList :', watchedList)
-	console.log('watchList :', watchList)
 
 	const displayList = (movies) =>
 	{
+
 		return movies.map((t, i) =>
 		{
+			console.log('Movie :', t)
 			return (
 				<TouchableHighlight
 					onPress={
@@ -79,6 +77,8 @@ const MovieList = ({ dispatch }) =>
 		default:
 			break;
 	}
+
+	console.log('list :', list)
 
 	return (
 		<>

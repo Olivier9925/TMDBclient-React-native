@@ -5,7 +5,6 @@ import { View } from 'react-native'
 import { CustomButton } from './CustomButton.js';
 import { useNavigation } from '@react-navigation/native';
 
-
 const SelectorAction = ({ dispatch }) =>
 {
 	const navigation = useNavigation()

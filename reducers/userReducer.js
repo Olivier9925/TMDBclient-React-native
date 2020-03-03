@@ -2,7 +2,6 @@ import actionsList from '../actions/actions';
 
 const initState = {
 	apiKey: "e709f2ea9104a5d71ac4f13607ce4100",
-	token: 0,
 	connexion: false,
 	watchList: [],
 	watchedList: [],
@@ -15,7 +14,6 @@ export default (state = initState, action) =>
 	switch (action.type) {
 
 		case actionsList.LOGIN:
-			console.log('coucocu')
 			return {
 				...state,
 				user: action.user,

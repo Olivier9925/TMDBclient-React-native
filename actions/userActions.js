@@ -47,7 +47,7 @@ export const saveToWatchedList = (movieId, user) =>
 }
 
 
-export const getWatchList = () =>
+export const getWatchList = (user) =>
 {
 	return (dispatch) =>
 	{
@@ -58,7 +58,7 @@ export const getWatchList = () =>
 		let moviesId = [];
 		let movies = [];
 
-		axios.get("http://localhost:5000/movieTrack/watchlist/")
+		axios.get(backEndUrlTest + "/user/" + user + "/watchlist/")
 			.then((response) =>
 			{
 				response.data.map((m, i) => moviesId.push(m.movie_id))
@@ -97,7 +97,7 @@ export const getWatched = (user) =>
 		let moviesId = [];
 		let movies = [];
 
-		axios.get("http://localhost:5000/movieTrack/user/" + user + "/watched/")
+		axios.get(backEndUrlTest + "/user/" + user + "/watched/")
 			.then((response) =>
 			{
 				response.data.map((m, i) => moviesId.push(m.movie_id))
