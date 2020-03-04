@@ -11,7 +11,7 @@ const SearchBar = () =>
 	const [search, setsearch] = useState(null);
 
 	return (
-		<View style={{ display: 'flex', flexDirection: 'column', }}>
+		<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
 			<TextInput
 				placeholder="rechercher"
 				style={styles.inputSearch}

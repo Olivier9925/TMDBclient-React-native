@@ -26,13 +26,10 @@ const MovieList = ({ dispatch }) =>
 		dispatch(searchMovie(search));
 	}, [dispatch, search, user])
 
-
 	const displayList = (movies) =>
 	{
-
 		return movies.map((t, i) =>
 		{
-			console.log('Movie :', t)
 			return (
 				<TouchableHighlight
 					onPress={
@@ -45,7 +42,8 @@ const MovieList = ({ dispatch }) =>
 							navigation.navigate('MOVIE')
 						}
 					}
-					key={i}>
+					key={i}
+				>
 					<Image
 						source={{ uri: 'https://image.tmdb.org/t/p/original/' + t.poster_path }}
 						style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }}
@@ -78,15 +76,12 @@ const MovieList = ({ dispatch }) =>
 			break;
 	}
 
-	console.log('list :', list)
-
 	return (
 		<>
-
 			<View style={{ flex: 1 }}>
 				<ScrollView style={{ flex: .85, backgroundColor: '#2c2c35' }}>
 					<Text style={styles.title}>{filter}</Text>
-					<View style={{ flexDirection: 'row', flexWrap: 'wrap', alignContent: 'space-around', justifyContent: 'space-around', paddingTop: 50 }}>
+					<View style={styles.movieList}>
 						{displayList(list)}
 					</View>
 				</ScrollView>
@@ -104,5 +99,12 @@ const styles = StyleSheet.create({
 		color: 'white',
 		fontSize: 30,
 		fontWeight: 'bold'
+	},
+	movieList: {
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+		alignContent: 'space-around',
+		justifyContent: 'space-around',
+		paddingTop: 50,
 	}
 });

@@ -5,6 +5,7 @@ const apiKey = "e709f2ea9104a5d71ac4f13607ce4100";
 const backEndUrl = "https://movietrackerback.herokuapp.com/movieTrack";
 const backEndUrlTest = "http://localhost:5000/movieTrack"
 
+
 export const login = (email, password) =>
 {
 	return (dispatch) =>
@@ -15,12 +16,13 @@ export const login = (email, password) =>
 		})
 			.then(response1 =>
 			{
-				console.log('response ==> :', response1.data.USER)
 				dispatch({
 					type: actionList.LOGIN,
 					connexion: true,
 					user: response1.data.USER
 				});
+				dispatch(getWatched(response1.data.USER[0].id));
+				dispatch(getWatchList(response1.data.USER[0].id))
 			}
 			)
 			.catch(error => console.log(error));
@@ -58,7 +60,7 @@ export const getWatchList = (user) =>
 		let moviesId = [];
 		let movies = [];
 
-		axios.get(backEndUrlTest + "/user/" + user + "/watchlist/")
+		axios.get(backEndUrl + "/user/" + user + "/watchlist/")
 			.then((response) =>
 			{
 				response.data.map((m, i) => moviesId.push(m.movie_id))
@@ -97,7 +99,7 @@ export const getWatched = (user) =>
 		let moviesId = [];
 		let movies = [];
 
-		axios.get(backEndUrlTest + "/user/" + user + "/watched/")
+		axios.get(backEndUrl + "/user/" + user + "/watched/")
 			.then((response) =>
 			{
 				response.data.map((m, i) => moviesId.push(m.movie_id))
