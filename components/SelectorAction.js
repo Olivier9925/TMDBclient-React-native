@@ -20,7 +20,6 @@ const SelectorAction = ({ dispatch }) =>
 
 	return (
 		<View style={styles.selectorAction}>
-
 			<CustomButton
 				onPress={() =>
 				{
@@ -30,7 +29,6 @@ const SelectorAction = ({ dispatch }) =>
 				}}
 				title='+'
 			/>
-
 			<CustomButton
 				onPress={() =>
 				{

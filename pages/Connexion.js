@@ -31,7 +31,7 @@ const Connexion = () =>
 					onChangeText={text => setPassword(text)}
 				/>
 				<CustomButton
-					style={{ margin: 30 }}
+					style={styles.button}
 					title='OK'
 					onPress={() =>
 					{
@@ -70,5 +70,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#34343f',
 		marginBottom: 10,
 	},
-
+	button: {
+		margin: 30
+	},
 });

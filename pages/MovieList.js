@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, connect } from 'react-redux'
 import { getDiscoverMovies, getTopMovies, searchMovie } from '../actions';
 import { Image, View, TouchableHighlight, Text, StyleSheet } from 'react-native';

@@ -10,11 +10,7 @@ const Movie = ({ dispatch }) =>
 	const currentMovieId = useSelector(state => state.movieReducer.currentMovieId)
 	const currentMovie = useSelector(state => state.movieReducer.currentMovie)
 	const movieCredits = useSelector(state => state.movieReducer.movieCredits)
-	const movieDetails = useSelector(state => state.movieReducer.movieDetails)
-
 	const connexion = useSelector(state => state.userReducer.connexion)
-
-	console.log('movieDetails =>', movieDetails)
 
 	useEffect(() =>
 	{
