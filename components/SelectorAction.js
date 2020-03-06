@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { saveToList, saveToWatchedList, isAlreadyWatched } from '../actions/userActions'
+import React from 'react'
+import { saveToList, saveToWatchedList } from '../actions/userActions'
 import { useSelector, connect } from 'react-redux'
 import { View, StyleSheet } from 'react-native'
 import { CustomButton } from './CustomButton.js';
@@ -13,10 +13,6 @@ const SelectorAction = ({ dispatch }) =>
 	const currentMovieId = useSelector(state => state.movieReducer.currentMovieId)
 	const user = useSelector(state => state.userReducer.user)
 
-	useEffect(() =>
-	{
-		dispatch(isAlreadyWatched(currentMovieId, user));
-	}, [dispatch, user])
 
 	return (
 		<View style={styles.selectorAction}>

@@ -1,19 +1,12 @@
 import axios from "axios";
 import actionList from './actions';
 
-
 const apiKey = "e709f2ea9104a5d71ac4f13607ce4100";
-
-
 
 export const getDiscoverMovies = () =>
 {
 	return (dispatch) =>
 	{
-		dispatch({
-			type: actionList.GET_DISCOVER_MOVIES,
-			discoverMovies: []
-		})
 		axios.get("https://api.themoviedb.org/3/discover/movie?api_key=" + apiKey + "&language=fr-FR&region=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1")
 			.then((response) => dispatch({
 				type: actionList.GET_DISCOVER_MOVIES,
@@ -27,11 +20,6 @@ export const getTopMovies = () =>
 {
 	return (dispatch) =>
 	{
-		dispatch({
-			type: actionList.GET_TOP_MOVIES,
-			topMovies: []
-		})
-
 		axios.get("https://api.themoviedb.org/3/movie/top_rated?api_key=" + apiKey + "&language=fr-FR&page=1")
 			.then((response) => dispatch({
 				type: actionList.GET_TOP_MOVIES,
@@ -69,8 +57,6 @@ export const displayCurrentMovie = (currentMovieId) =>
 			)
 	}
 }
-
-
 
 export const getMovieDetails = (currentMovieId) =>
 {

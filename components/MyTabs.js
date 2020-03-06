@@ -5,15 +5,21 @@ import Home from '../pages/Home'
 import { createStackNavigator } from '@react-navigation/stack';
 import Connexion from '../pages/Connexion'
 import { View, Text } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../actions/userActions'
 
 const Stack = createStackNavigator();
 
 const MyTabs = () =>
 {
+	const dispatch = useDispatch()
+	const connexion = useSelector(state => state.userReducer.connexion)
+
 	function StatusBar()
 	{
 		return (
 			<View>
+				{connexion ? <Text onPress={() => dispatch(logout())}>Déco</Text> : <></>}
 			</View>
 		);
 	}

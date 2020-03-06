@@ -36,11 +36,6 @@ export default (state = initState, action) =>
 				...state,
 				watchedList: action.watchedList
 			}
-		case actionsList.ALREADY_WATCHED:
-			return {
-				...state,
-				alreadyWatched: action.alreadyWatched
-			}
 		default:
 			return state;
 	}

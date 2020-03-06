@@ -3,7 +3,7 @@ import actionList from './actions';
 
 const apiKey = "e709f2ea9104a5d71ac4f13607ce4100";
 const backEndUrl = "https://movietrackerback.herokuapp.com/movieTrack";
-const backEndUrlTest = "http://localhost:5000/movieTrack"
+//const backEndUrlTest = "http://localhost:5000/movieTrack"
 
 export const login = (email, password) =>
 {
@@ -27,23 +27,30 @@ export const login = (email, password) =>
 			.catch(error => console.log(error));
 	}
 }
+export const logout = () =>
+{
+	return (dispatch) => 
+	{
+		dispatch({
+			type: actionList.DECO,
+		})
+	}
+}
 
 export const saveToList = (movieId, user) =>
 {
-	return (dispatch) =>
+	return () =>
 	{
 		axios.post(backEndUrl + "/movie/" + movieId + "/user/" + user + "/watchList")
 			.catch(error => console.log(error));
-
 	}
 }
 export const saveToWatchedList = (movieId, user) =>
 {
-	return (dispatch) =>
+	return () =>
 	{
 		axios.post(backEndUrl + "/movie/" + movieId + "/user/" + user + "/watched")
 			.catch(error => console.log(error));
-
 	}
 }
 
@@ -52,10 +59,6 @@ export const getWatchList = (user) =>
 {
 	return (dispatch) =>
 	{
-		dispatch({
-			type: actionList.GET_WATCHLIST,
-			watchList: []
-		})
 		let moviesId = [];
 		let movies = [];
 
@@ -63,15 +66,13 @@ export const getWatchList = (user) =>
 			.then((response) =>
 			{
 				response.data.map((m, i) => moviesId.push(m.movie_id))
-
 			})
-			.then((response) =>
+			.then(() =>
 			{
 				for (let i = 0; i < moviesId.length; i++) {
 					axios.get("https://api.themoviedb.org/3/movie/" + moviesId[i] + "?api_key=" + apiKey + "&language=fr-FR")
 						.then((response) =>
 						{
-							//console.log('resultats movies =>', response.data)
 							movies.push(response.data)
 						}
 						)
@@ -91,10 +92,6 @@ export const getWatched = (user) =>
 {
 	return (dispatch) =>
 	{
-		dispatch({
-			type: actionList.GET_WATCHED,
-			watchedList: []
-		})
 		let moviesId = [];
 		let movies = [];
 
@@ -122,23 +119,4 @@ export const getWatched = (user) =>
 			)
 			.catch(error => console.log(error));
 	}
-}
-
-
-export const isAlreadyWatched = (currentMovieId, userId) =>
-{
-	return (dispatch) =>
-	{
-		axios.get("http://localhost:5000/movieTrack/movie/" + currentMovieId + "/user/" + userId + "/watched")
-			.then((response) =>
-			{
-				dispatch({
-					type: actionList.ALREADY_WATCHED,
-					AlreadyWatched: response.data
-				})
-			})
-			.catch(error => console.log(error));
-	}
-
-
 }
