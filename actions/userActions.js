@@ -27,15 +27,13 @@ export const login = (email, password) =>
 			.catch(error => console.log(error));
 	}
 }
-export const logout = () =>
+export const logout = () => (dispatch) => 
 {
-	return (dispatch) => 
-	{
-		dispatch({
-			type: actionList.DECO,
-		})
-	}
+	dispatch({
+		type: actionList.DECO,
+	})
 }
+
 
 export const saveToList = (movieId, user) =>
 {
