@@ -29,7 +29,7 @@ const Footer = () =>
 
 const styles = StyleSheet.create({
 	footer: {
-		backgroundColor: '#2c2c35',
+		backgroundColor: '#23232b',
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-around',

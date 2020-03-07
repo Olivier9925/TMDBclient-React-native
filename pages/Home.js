@@ -36,7 +36,6 @@ const Home = () =>
 				{homeMenuButton('TOP')}
 				{connexion ? homeMenuButton('VU') : <></>}
 				{connexion ? homeMenuButton('LISTE') : <></>}
-				{!connexion ? <ConnexionButton /> : <></>}
 			</View>
 			<SearchBar />
 		</View>

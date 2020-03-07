@@ -31,7 +31,7 @@ const MyTheme = {
   dark: false,
   colors: {
     primary: '#ee121e',
-    background: '#2c2c35',
+    background: '#23232b',
     card: 'rgb(255, 255, 255)',
     text: '#ee121e',
     border: 'rgb(199, 199, 204)',

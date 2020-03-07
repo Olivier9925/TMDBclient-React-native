@@ -1,25 +1,34 @@
-import React from 'react'
-import MovieList from '../pages/MovieList'
-import Movie from '../pages/Movie'
-import Home from '../pages/Home'
+import React from 'react';
+import MovieList from '../pages/MovieList';
+import Movie from '../pages/Movie';
+import Home from '../pages/Home';
 import { createStackNavigator } from '@react-navigation/stack';
-import Connexion from '../pages/Connexion'
-import { View, Text } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '../actions/userActions'
+import Connexion from '../pages/Connexion';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../actions/userActions';
+import { useNavigation } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
+let width = Dimensions.get('window').width;
 
 const MyTabs = () =>
 {
-	const dispatch = useDispatch()
-	const connexion = useSelector(state => state.userReducer.connexion)
+	const dispatch = useDispatch();
+	const connexion = useSelector(state => state.userReducer.connexion);
 
 	function StatusBar()
 	{
+		const navigation = useNavigation();
+
 		return (
-			<View>
-				{connexion ? <Text onPress={() => dispatch(logout())}>Déco</Text> : <></>}
+			<View style={styles.statusBar}>
+				{
+					connexion ?
+						<Text style={styles.logText} onPress={() => { dispatch(logout()); navigation.navigate('Movie Tracker') }}>Logout</Text>
+						:
+						<Text style={styles.logText} onPress={() => navigation.navigate('Connexion')}> Login </Text>
+				}
 			</View>
 		);
 	}
@@ -29,7 +38,7 @@ const MyTabs = () =>
 			initialRouteName={Home}
 			screenOptions={{
 				headerStyle: {
-					backgroundColor: '#2c2c35',
+					backgroundColor: '#23232b',
 				},
 				headerTintColor: '#fff',
 				headerTitleStyle: {
@@ -59,3 +68,19 @@ const MyTabs = () =>
 }
 
 export default MyTabs;
+
+const styles = StyleSheet.create({
+	statusBar: {
+		width: width - 100,
+		marginLeft: 100,
+		flex: 1,
+		flexDirection: 'row',
+		justifyContent: 'flex-end',
+		alignItems: 'center',
+		alignContent: 'center',
+	},
+	logText: {
+		color: 'white',
+		padding: 10,
+	},
+});

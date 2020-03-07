@@ -27,13 +27,8 @@ export const login = (email, password) =>
 			.catch(error => console.log(error));
 	}
 }
-export const logout = () => (dispatch) => 
-{
-	dispatch({
-		type: actionList.DECO,
-	})
-}
 
+export const logout = () => (dispatch) => dispatch({ type: actionList.DECO })
 
 export const saveToList = (movieId, user) =>
 {
@@ -51,7 +46,6 @@ export const saveToWatchedList = (movieId, user) =>
 			.catch(error => console.log(error));
 	}
 }
-
 
 export const getWatchList = (user) =>
 {
@@ -84,7 +78,6 @@ export const getWatchList = (user) =>
 			.catch(error => console.log(error));
 	}
 }
-
 
 export const getWatched = (user) =>
 {
