@@ -2,6 +2,7 @@ import React from 'react';
 import MovieList from '../pages/MovieList';
 import Movie from '../pages/Movie';
 import Home from '../pages/Home';
+import Signup from '../pages/Signup'
 import { createStackNavigator } from '@react-navigation/stack';
 import Connexion from '../pages/Connexion';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
@@ -63,6 +64,10 @@ const MyTabs = () =>
 			<Stack.Screen
 				name={'Connexion'}
 				component={Connexion}
+			/>
+			<Stack.Screen
+				name={'Signup'}
+				component={Signup}
 			/>
 		</Stack.Navigator>
 	);

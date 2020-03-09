@@ -3,7 +3,7 @@ import actionList from './actions';
 
 const apiKey = "e709f2ea9104a5d71ac4f13607ce4100";
 const backEndUrl = "https://movietrackerback.herokuapp.com/movieTrack";
-//const backEndUrlTest = "http://localhost:5000/movieTrack"
+const backEndUrlTest = "http://localhost:5000/movieTrack"
 
 export const login = (email, password) =>
 {
@@ -29,6 +29,18 @@ export const login = (email, password) =>
 }
 
 export const logout = () => (dispatch) => dispatch({ type: actionList.DECO })
+
+export const signup = (email, password) =>
+{
+	return (dispatch) =>
+	{
+		axios.post(backEndUrl + "/signup", {
+			email: email,
+			passwordSaisie: password
+		})
+			.catch(error => console.log(error));
+	}
+}
 
 export const saveToList = (movieId, user) =>
 {

@@ -15,6 +15,7 @@ const SearchBar = () =>
 		<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
 			<TextInput
 				placeholder="rechercher"
+				placeholderTextColor={colorConstants.TEXT}
 				style={styles.inputSearch}
 				onChangeText={text => setsearch(text)}
 			/>
