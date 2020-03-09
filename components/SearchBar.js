@@ -3,7 +3,7 @@ import { TextInput, View, StyleSheet } from 'react-native'
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { CustomButton } from './CustomButton'
-import { colorConstants } from '@constants';
+import { colorConstants } from '../constants';
 
 const SearchBar = () =>
 {
@@ -33,14 +33,14 @@ export default SearchBar;
 
 const styles = StyleSheet.create({
 	inputSearch: {
-		color: ColorConstants.TEXT,
+		color: colorConstants.TEXT,
 		width: 180,
 		height: 50,
 		padding: 10,
 		borderWidth: 1,
-		borderColor: ColorConstants.BORDER_COLOR,
+		borderColor: colorConstants.BORDER_COLOR,
 		borderRadius: 5,
-		backgroundColor: ColorConstants.BACK_SECOND,
+		backgroundColor: colorConstants.BACK_SECOND,
 		marginBottom: 10,
 	},
 });

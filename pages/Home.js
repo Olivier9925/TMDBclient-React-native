@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import SearchBar from '../components/SearchBar'
-import ConnexionButton from '../components/ConnexionButton'
 import { useSelector, useDispatch } from 'react-redux'
 import { CustomButton } from '../components/CustomButton';
 import { useNavigation } from '@react-navigation/native'
