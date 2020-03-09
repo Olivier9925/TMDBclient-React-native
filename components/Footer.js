@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { View, StyleSheet } from 'react-native'
 import { CustomButton } from './CustomButton.js';
+import { colorConstants } from '../constants';
 
 const Footer = () =>
 {
@@ -29,7 +30,7 @@ const Footer = () =>
 
 const styles = StyleSheet.create({
 	footer: {
-		backgroundColor: '#23232b',
+		backgroundColor: colorConstants.BACK_FIRST,
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-around',

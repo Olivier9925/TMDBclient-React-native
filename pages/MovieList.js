@@ -6,6 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import 'react-native-gesture-handler';
 import Footer from '../components/Footer'
 import { useNavigation } from '@react-navigation/native';
+import { colorConstants } from '../constants';
 
 const MovieList = ({ dispatch }) =>
 {
@@ -79,7 +80,7 @@ const MovieList = ({ dispatch }) =>
 	return (
 		<>
 			<View style={{ flex: 1 }}>
-				<ScrollView style={{ flex: .85, backgroundColor: '#2c2c35' }}>
+				<ScrollView style={{ flex: .85, backgroundColor: colorConstants.BACK_SECOND }}>
 					<Text style={styles.title}>{filter}</Text>
 					<View style={styles.movieList}>
 						{displayList(list)}
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
 	title: {
 		marginTop: 50,
 		marginLeft: 20,
-		color: 'white',
+		color: colorConstants.TEXT,
 		fontSize: 30,
 		fontWeight: 'bold'
 	},

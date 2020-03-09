@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Text } from 'react-native';
-
+import { colorConstants } from '../constants';
 
 export const CustomButton = (props) =>
 {
@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
 		borderRadius: 5,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#ee121e',
-		shadowColor: '#ee121e',
+		backgroundColor: colorConstants.ACCENT_COLOR,
+		shadowColor: colorConstants.ACCENT_COLOR,
 		shadowOpacity: 0.4,
 		shadowOffset: { height: 5, width: 0 },
 		shadowRadius: 5,
@@ -31,6 +31,6 @@ const styles = StyleSheet.create({
 	text: {
 		fontSize: 16,
 		textTransform: 'uppercase',
-		color: '#FFFFFF',
+		color: colorConstants.TEXT,
 	},
 });

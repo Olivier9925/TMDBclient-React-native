@@ -4,24 +4,8 @@ import { Provider } from 'react-redux';
 import reducers from './reducers'
 import thunk from 'redux-thunk';
 import 'react-native-gesture-handler';
-import
-{
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import
-{
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { colorConstants } from './constants';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import MyTabs from './components/MyTabs'
 
@@ -30,11 +14,11 @@ const store = createStore(reducers, applyMiddleware(thunk))
 const MyTheme = {
   dark: false,
   colors: {
-    primary: '#ee121e',
-    background: '#23232b',
-    card: 'rgb(255, 255, 255)',
-    text: '#ee121e',
-    border: 'rgb(199, 199, 204)',
+    primary: colorConstants.ACCENT_COLOR,
+    background: colorConstants.BACK_FIRST,
+    card: colorConstants.TEXT,
+    text: colorConstants.ACCENT_COLOR,
+    border: colorConstants.BORDER_COLOR,
   },
 };
 

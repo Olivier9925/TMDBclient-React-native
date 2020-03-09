@@ -48,6 +48,9 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-around',
 		paddingTop: 20,
 		borderTopColor: colorConstants.ACCENT_COLOR,
+		borderBottomColor: 'transparent',
+		borderRightColor: 'transparent',
+		borderLeftColor: 'transparent',
 		borderWidth: 2,
 	},
 });

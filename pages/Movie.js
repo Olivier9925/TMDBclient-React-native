@@ -4,6 +4,7 @@ import { displayCurrentMovie, getMovieDetails, getMovieCredits } from '../action
 import { ScrollView } from 'react-native-gesture-handler'
 import { View, Image, Text, ImageBackground, StyleSheet } from 'react-native'
 import SelectorAction from '../components/SelectorAction'
+import { colorConstants } from '../constants';
 
 const Movie = ({ dispatch }) =>
 {
@@ -27,8 +28,8 @@ const Movie = ({ dispatch }) =>
 			if (i > 10) return
 			return (
 				<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
-					<Text style={{ color: 'red' }}>{m.character}</Text>
-					<Text style={{ color: 'white' }}>{m.name}</Text>
+					<Text style={{ color: colorConstants.ACCENT_COLOR }}>{m.character}</Text>
+					<Text style={{ color: colorConstants.TEXT }}>{m.name}</Text>
 				</View>
 			)
 		}
@@ -36,7 +37,7 @@ const Movie = ({ dispatch }) =>
 	}
 
 	return (
-		<ScrollView style={{ backgroundColor: '#2c2c35' }}>
+		<ScrollView style={{ backgroundColor: colorConstants.BACK_SECOND }}>
 			<ImageBackground
 				source={{ uri: `https://image.tmdb.org/t/p/original/${currentMovie.backdrop_path}` }}
 				style={styles.backGroundImage}
@@ -49,7 +50,7 @@ const Movie = ({ dispatch }) =>
 					/>
 				</View>
 			</ImageBackground>
-			<View style={{ display: 'flex', marginTop: 60, color: 'white', paddingHorizontal: 20 }}>
+			<View style={{ display: 'flex', marginTop: 60, color: colorConstants.TEXT, paddingHorizontal: 20 }}>
 				<Text style={styles.title}>{currentMovie.title}</Text>
 				<Text style={styles.tagLine}>{currentMovie.tagline}</Text>
 				<Text style={styles.date}>{currentMovie.release_date}</Text>
@@ -78,26 +79,26 @@ const styles = StyleSheet.create({
 		marginTop: 300,
 		marginLeft: 20,
 		borderWidth: 4,
-		borderColor: '#ee121e',
+		borderColor: colorConstants.ACCENT_COLOR,
 	},
 	title: {
 		paddingVertical: 10,
 		fontSize: 30,
 		fontWeight: 'bold',
-		color: 'white',
+		color: colorConstants.TEXT,
 	},
 	tagLine: {
 		paddingVertical: 10,
 		fontSize: 25,
-		color: 'white',
+		color: colorConstants.TEXT,
 	},
 	date: {
-		color: 'red',
+		color: colorConstants.ACCENT_COLOR,
 	},
 	overView: {
 		paddingVertical: 10,
 		fontSize: 15,
-		color: 'white',
+		color: colorConstants.TEXT,
 	},
 	credits: {
 		paddingHorizontal: 20,

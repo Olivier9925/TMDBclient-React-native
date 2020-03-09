@@ -5,6 +5,7 @@ import { CustomButton } from '../components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
 import { login } from '../actions/userActions'
 import { useDispatch } from 'react-redux'
+import { colorConstants } from '../constants';
 
 const Connexion = () =>
 {
@@ -15,7 +16,7 @@ const Connexion = () =>
 	const [password, setPassword] = useState("");
 
 	return (
-		<>
+		<View>
 			<Text style={styles.title}>Connexion</Text>
 			<View style={styles.homeView} >
 				<TextInput
@@ -40,7 +41,7 @@ const Connexion = () =>
 					}}
 				/>
 			</View>
-		</>
+		</View>
 	)
 }
 export default Connexion;
@@ -55,19 +56,19 @@ const styles = StyleSheet.create({
 	title: {
 		marginTop: 50,
 		marginLeft: 20,
-		color: 'white',
+		color: colorConstants.TEXT,
 		fontSize: 30,
 		fontWeight: 'bold'
 	},
 	inputSearch: {
-		color: 'white',
+		color: colorConstants.TEXT,
 		width: 180,
 		height: 50,
 		padding: 10,
 		borderWidth: 1,
-		borderColor: "#ABABAB",
+		borderColor: colorConstants.BORDER_COLOR,
 		borderRadius: 5,
-		backgroundColor: '#34343f',
+		backgroundColor: colorConstants.BACK_SECOND,
 		marginBottom: 10,
 	},
 	button: {

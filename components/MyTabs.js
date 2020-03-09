@@ -8,6 +8,7 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../actions/userActions';
 import { useNavigation } from '@react-navigation/native';
+import { colorConstants } from '../constants';
 
 const Stack = createStackNavigator();
 let width = Dimensions.get('window').width;
@@ -38,9 +39,9 @@ const MyTabs = () =>
 			initialRouteName={Home}
 			screenOptions={{
 				headerStyle: {
-					backgroundColor: '#23232b',
+					backgroundColor: colorConstants.BACK_FIRST,
 				},
-				headerTintColor: '#fff',
+				headerTintColor: colorConstants.TEXT,
 				headerTitleStyle: {
 					fontWeight: 'bold',
 				},
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
 		alignContent: 'center',
 	},
 	logText: {
-		color: 'white',
+		color: colorConstants.TEXT,
 		padding: 10,
 	},
 });

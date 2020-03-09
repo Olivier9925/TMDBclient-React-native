@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar'
 import { useSelector, useDispatch } from 'react-redux'
 import { CustomButton } from '../components/CustomButton';
 import { useNavigation } from '@react-navigation/native'
+import { colorConstants } from '../constants';
 
 const homeMenuButton = (choice) =>
 {
@@ -28,7 +29,7 @@ const Home = () =>
 	const connexion = useSelector(state => state.userReducer.connexion)
 
 	return (
-		<View style={{ flex: 1 }}>
+		<View style={{ flex: 1, backgroundColor: colorConstants.BACK_SECOND }}>
 			<Text style={styles.title}>Movie Tracker</Text>
 			<View style={styles.homeView} >
 				{homeMenuButton('DISCOVER')}
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
 	title: {
 		marginTop: 50,
 		marginLeft: 20,
-		color: 'white',
+		color: colorConstants.TEXT,
 		fontSize: 30,
 		fontWeight: 'bold'
 	}
