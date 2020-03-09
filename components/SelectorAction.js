@@ -5,6 +5,7 @@ import { View, StyleSheet } from 'react-native'
 import { CustomButton } from './CustomButton.js';
 import { useNavigation } from '@react-navigation/native';
 import { getWatched, getWatchList } from '../actions/userActions'
+import { colorConstants } from '@constants';
 
 const SelectorAction = ({ dispatch }) =>
 {
@@ -46,10 +47,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-around',
 		paddingTop: 20,
-		borderTopColor: '#ee121e',
+		borderTopColor: ColorConstants.ACCENT_COLOR,
 		borderWidth: 2,
-		borderBottomColor: 'transparent',
-		borderLeftColor: 'transparent',
-		borderRightColor: 'transparent',
 	},
 });
