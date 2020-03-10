@@ -1,4 +1,4 @@
-import actionsList from '../actions/actions';
+import actionsList from '@actions/actions';
 
 const initState = {
 	apiKey: "e709f2ea9104a5d71ac4f13607ce4100",

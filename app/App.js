@@ -4,10 +4,10 @@ import { Provider } from 'react-redux';
 import reducers from './reducers'
 import thunk from 'redux-thunk';
 import 'react-native-gesture-handler';
-import { colorConstants } from './constants';
+import { colorConstants } from '@constants';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import MyTabs from './components/MyTabs'
+import MyTabs from '@navigators/MyTabs';
 
 const store = createStore(reducers, applyMiddleware(thunk))
 
@@ -31,7 +31,7 @@ const App = () =>
       <NavigationContainer theme={MyTheme}>
         <MyTabs />
       </NavigationContainer>
-    </Provider >
+    </Provider>
   );
 };
 

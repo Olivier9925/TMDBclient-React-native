@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useSelector, connect } from 'react-redux'
-import { getDiscoverMovies, getTopMovies, searchMovie } from '../actions';
+import { getDiscoverMovies, getTopMovies, searchMovie } from '@actions';
 import { Image, View, TouchableHighlight, Text, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler'
 import 'react-native-gesture-handler';
-import Footer from '../components/Footer'
+import Footer from '@components/Footer'
 import { useNavigation } from '@react-navigation/native';
 import { colorConstants } from '@constants';
 

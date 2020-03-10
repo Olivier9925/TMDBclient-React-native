@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
-import SearchBar from '../components/SearchBar'
 import { useSelector, useDispatch } from 'react-redux'
-import { CustomButton } from '../components/CustomButton';
+import SearchBar from '@components/SearchBar'
+import { CustomButton } from '@components/CustomButton';
 import { useNavigation } from '@react-navigation/native'
 import { colorConstants } from '@constants';
 

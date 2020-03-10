@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector, connect } from 'react-redux'
-import { displayCurrentMovie, getMovieDetails, getMovieCredits } from '../actions'
+import { displayCurrentMovie, getMovieDetails, getMovieCredits } from '@actions'
 import { ScrollView } from 'react-native-gesture-handler'
 import { View, Image, Text, ImageBackground, StyleSheet } from 'react-native'
-import SelectorAction from '../components/SelectorAction'
+import SelectorAction from '@components/SelectorAction'
 import { colorConstants } from '@constants';
 
 const Movie = ({ dispatch }) =>

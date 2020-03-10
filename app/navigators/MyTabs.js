@@ -1,17 +1,19 @@
 import React from 'react';
-import MovieList from '../scenes/MovieList';
-import Movie from '../scenes/Movie';
-import Home from '../scenes/Home';
-import Signup from '../scenes/Signup'
-import { createStackNavigator } from '@react-navigation/stack';
-import Connexion from '../scenes/Connexion';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../actions/userActions';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
 import { colorConstants } from '@constants';
+import { logout } from '@actions/userActions';
+import Movie from '@scenes/Movie';
+import Home from '@scenes/Home';
+import Signup from '@scenes/Signup'
+import Connexion from '@scenes/Connexion';
+import MovieList from '@scenes/MovieList';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
-const Stack = createStackNavigator();
+
+const Tab = createMaterialBottomTabNavigator();
+
 let width = Dimensions.get('window').width;
 
 const MyTabs = () =>
@@ -36,40 +38,28 @@ const MyTabs = () =>
 	}
 
 	return (
-		<Stack.Navigator
+		<Tab.Navigator
 			initialRouteName={Home}
 			screenOptions={{
-				headerStyle: {
-					backgroundColor: colorConstants.BACK_FIRST,
-				},
-				headerTintColor: colorConstants.TEXT,
-				headerTitleStyle: {
-					fontWeight: 'bold',
-				},
-				headerTitle: props => <StatusBar {...props} />
+				headerShown : false,
 			}}
+  			activeColor={colorConstants.TEXT}
+			inactiveColor={colorConstants.ACCENT_COLOR}
+			barStyle={{ backgroundColor: colorConstants.BACK_SECOND }}
 		>
-			<Stack.Screen
+			<Tab.Screen
 				name={'Movie Tracker'}
 				component={Home}
 			/>
-			<Stack.Screen
+			<Tab.Screen
 				name={'MOVIES'}
 				component={MovieList}
 			/>
-			<Stack.Screen
-				name={'MOVIE'}
-				component={Movie}
-			/>
-			<Stack.Screen
+			<Tab.Screen
 				name={'Connexion'}
 				component={Connexion}
 			/>
-			<Stack.Screen
-				name={'Signup'}
-				component={Signup}
-			/>
-		</Stack.Navigator>
+		</Tab.Navigator>
 	);
 }
 

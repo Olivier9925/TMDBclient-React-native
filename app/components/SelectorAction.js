@@ -1,10 +1,9 @@
 import React from 'react'
-import { saveToList, saveToWatchedList } from '../actions/userActions'
+import { saveToList, saveToWatchedList, getWatched, getWatchList } from '@actions/userActions'
 import { useSelector, connect } from 'react-redux'
 import { View, StyleSheet } from 'react-native'
 import { CustomButton } from './CustomButton.js';
 import { useNavigation } from '@react-navigation/native';
-import { getWatched, getWatchList } from '../actions/userActions'
 import { colorConstants } from '@constants';
 
 const SelectorAction = ({ dispatch }) =>

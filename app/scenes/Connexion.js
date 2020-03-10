@@ -1,24 +1,23 @@
 import React, { useState } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
-import { CustomButton } from '../components/CustomButton'
+import { CustomButton } from '@components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
-import { signup } from '../actions/userActions'
+import { login } from '@actions/userActions'
 import { useDispatch } from 'react-redux'
 import { colorConstants } from '@constants';
 
-const Signup = () =>
+const Connexion = () =>
 {
 	const navigation = useNavigation();
 	const dispatch = useDispatch()
 
 	const [email, setEmail] = useState("");
-	const [password1, setPassword1] = useState("");
-	const [password2, setPassword2] = useState("");
+	const [password, setPassword] = useState("");
 
 	return (
 		<View>
-			<Text style={styles.title}>Inscription</Text>
+			<Text style={styles.title}>Connexion</Text>
 			<View style={styles.homeView} >
 				<TextInput
 					placeholder="eMail"
@@ -32,32 +31,31 @@ const Signup = () =>
 					placeholder="Password"
 					placeholderTextColor={colorConstants.TEXT}
 					style={styles.inputSearch}
-					onChangeText={text => setPassword1(text)}
-				/>
-				<TextInput
-					secureTextEntry={true}
-					textContentType='password'
-					placeholder="encore...password"
-					placeholderTextColor={colorConstants.TEXT}
-					style={styles.inputSearch}
-					onChangeText={text => setPassword2(text)}
+					onChangeText={text => setPassword(text)}
 				/>
 				<CustomButton
 					style={styles.button}
 					title='OK'
 					onPress={() =>
 					{
-						if (password1 === password2) {
-							dispatch(signup(email, password1));
-							navigation.navigate('Movie Tracker')
-						}
+						dispatch(login(email, password));
+						navigation.navigate('Movie Tracker')
 					}}
 				/>
+				<View>
+					<CustomButton
+						title="S'inscrire"
+						onPress={() =>
+						{
+							navigation.navigate('Signup')
+						}}
+					/>
+				</View>
 			</View>
 		</View>
 	)
 }
-export default Signup;
+export default Connexion;
 
 const styles = StyleSheet.create({
 	homeView: {

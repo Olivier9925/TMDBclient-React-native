@@ -1,4 +1,4 @@
-import colors from './colorConstants';
+import colors from '@constants/colorConstants';
 import styles from '@constants/stylesConstants';
 
 export const colorConstants = colors;
