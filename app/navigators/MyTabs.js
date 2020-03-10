@@ -48,7 +48,7 @@ const MyTabs = () =>
 			barStyle={{ backgroundColor: colorConstants.BACK_SECOND }}
 		>
 			<Tab.Screen
-				name={'Movie Tracker'}
+				name={'Home'}
 				component={Home}
 			/>
 			<Tab.Screen
