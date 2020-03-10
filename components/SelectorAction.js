@@ -42,15 +42,15 @@ export default connect()(SelectorAction);
 
 const styles = StyleSheet.create({
 	selectorAction: {
+		borderTopColor: colorConstants.ACCENT_COLOR,
+		borderBottomColor: 'transparent',
+		borderRightColor: 'transparent',
+		borderLeftColor: 'transparent',
 		marginBottom: 50,
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-around',
 		paddingTop: 20,
-		borderTopColor: colorConstants.ACCENT_COLOR,
-		borderBottomColor: 'transparent',
-		borderRightColor: 'transparent',
-		borderLeftColor: 'transparent',
 		borderWidth: 2,
 	},
 });

@@ -95,9 +95,9 @@ export default connect()(MovieList);
 
 const styles = StyleSheet.create({
 	title: {
+		color: colorConstants.TEXT,
 		marginTop: 50,
 		marginLeft: 20,
-		color: colorConstants.TEXT,
 		fontSize: 30,
 		fontWeight: 'bold'
 	},

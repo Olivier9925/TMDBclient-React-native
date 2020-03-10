@@ -15,14 +15,14 @@ export const CustomButton = (props) =>
 
 const styles = StyleSheet.create({
 	button: {
+		backgroundColor: colorConstants.ACCENT_COLOR,
+		shadowColor: colorConstants.ACCENT_COLOR,
 		display: 'flex',
 		flexDirection: 'row',
 		height: 50,
 		borderRadius: 5,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: colorConstants.ACCENT_COLOR,
-		shadowColor: colorConstants.ACCENT_COLOR,
 		shadowOpacity: 0.4,
 		shadowOffset: { height: 5, width: 0 },
 		shadowRadius: 5,

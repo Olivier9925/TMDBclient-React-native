@@ -1,10 +1,10 @@
 import React from 'react';
-import MovieList from '../pages/MovieList';
-import Movie from '../pages/Movie';
-import Home from '../pages/Home';
-import Signup from '../pages/Signup'
+import MovieList from '../scenes/MovieList';
+import Movie from '../scenes/Movie';
+import Home from '../scenes/Home';
+import Signup from '../scenes/Signup'
 import { createStackNavigator } from '@react-navigation/stack';
-import Connexion from '../pages/Connexion';
+import Connexion from '../scenes/Connexion';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../actions/userActions';

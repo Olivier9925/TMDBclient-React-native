@@ -67,21 +67,21 @@ const styles = StyleSheet.create({
 		marginTop: 50,
 	},
 	title: {
+		color: colorConstants.TEXT,
 		marginTop: 50,
 		marginLeft: 20,
-		color: colorConstants.TEXT,
 		fontSize: 30,
 		fontWeight: 'bold'
 	},
 	inputSearch: {
 		color: colorConstants.TEXT,
+		borderColor: colorConstants.BORDER_COLOR,
+		backgroundColor: colorConstants.BACK_SECOND,
 		width: 180,
 		height: 50,
 		padding: 10,
 		borderWidth: 1,
-		borderColor: colorConstants.BORDER_COLOR,
 		borderRadius: 5,
-		backgroundColor: colorConstants.BACK_SECOND,
 		marginBottom: 10,
 	},
 	button: {

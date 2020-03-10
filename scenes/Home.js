@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-around'
 	},
 	title: {
+		color: colorConstants.TEXT,
 		marginTop: 50,
 		marginLeft: 20,
-		color: colorConstants.TEXT,
 		fontSize: 30,
 		fontWeight: 'bold'
 	}

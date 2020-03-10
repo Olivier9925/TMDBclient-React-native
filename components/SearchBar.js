@@ -35,13 +35,13 @@ export default SearchBar;
 const styles = StyleSheet.create({
 	inputSearch: {
 		color: colorConstants.TEXT,
+		borderColor: colorConstants.BORDER_COLOR,
+		backgroundColor: colorConstants.BACK_SECOND,
 		width: 180,
 		height: 50,
 		padding: 10,
 		borderWidth: 1,
-		borderColor: colorConstants.BORDER_COLOR,
 		borderRadius: 5,
-		backgroundColor: colorConstants.BACK_SECOND,
 		marginBottom: 10,
 	},
 });

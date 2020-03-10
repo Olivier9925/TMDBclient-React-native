@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
 		padding: 0,
 	},
 	posterImage: {
+		borderColor: colorConstants.ACCENT_COLOR,
 		width: 180,
 		height: 250,
 		marginBottom: 20,
@@ -79,26 +80,25 @@ const styles = StyleSheet.create({
 		marginTop: 300,
 		marginLeft: 20,
 		borderWidth: 4,
-		borderColor: colorConstants.ACCENT_COLOR,
 	},
 	title: {
+		color: colorConstants.TEXT,
 		paddingVertical: 10,
 		fontSize: 30,
 		fontWeight: 'bold',
-		color: colorConstants.TEXT,
 	},
 	tagLine: {
+		color: colorConstants.TEXT,
 		paddingVertical: 10,
 		fontSize: 25,
-		color: colorConstants.TEXT,
 	},
 	date: {
 		color: colorConstants.ACCENT_COLOR,
 	},
 	overView: {
+		color: colorConstants.TEXT,
 		paddingVertical: 10,
 		fontSize: 15,
-		color: colorConstants.TEXT,
 	},
 	credits: {
 		paddingHorizontal: 20,
