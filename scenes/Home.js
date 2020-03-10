@@ -4,7 +4,7 @@ import SearchBar from '../components/SearchBar'
 import { useSelector, useDispatch } from 'react-redux'
 import { CustomButton } from '../components/CustomButton';
 import { useNavigation } from '@react-navigation/native'
-import { colorConstants } from '../constants';
+import { colorConstants } from '@constants';
 
 const homeMenuButton = (choice) =>
 {

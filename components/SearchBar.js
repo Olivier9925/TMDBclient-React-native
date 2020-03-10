@@ -3,7 +3,7 @@ import { TextInput, View, StyleSheet } from 'react-native'
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { CustomButton } from './CustomButton'
-import { colorConstants } from '../constants';
+import { colorConstants } from '@constants';
 
 const SearchBar = () =>
 {

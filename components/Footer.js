@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { View, StyleSheet } from 'react-native'
 import { CustomButton } from './CustomButton.js';
-import { colorConstants } from '../constants';
+import { colorConstants } from '@constants';
 
 const Footer = () =>
 {

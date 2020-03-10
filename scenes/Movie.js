@@ -4,7 +4,7 @@ import { displayCurrentMovie, getMovieDetails, getMovieCredits } from '../action
 import { ScrollView } from 'react-native-gesture-handler'
 import { View, Image, Text, ImageBackground, StyleSheet } from 'react-native'
 import SelectorAction from '../components/SelectorAction'
-import { colorConstants } from '../constants';
+import { colorConstants } from '@constants';
 
 const Movie = ({ dispatch }) =>
 {

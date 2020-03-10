@@ -5,7 +5,7 @@ import { CustomButton } from '../components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
 import { signup } from '../actions/userActions'
 import { useDispatch } from 'react-redux'
-import { colorConstants } from '../constants';
+import { colorConstants } from '@constants';
 
 const Signup = () =>
 {

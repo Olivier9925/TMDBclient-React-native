@@ -6,7 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import 'react-native-gesture-handler';
 import Footer from '../components/Footer'
 import { useNavigation } from '@react-navigation/native';
-import { colorConstants } from '../constants';
+import { colorConstants } from '@constants';
 
 const MovieList = ({ dispatch }) =>
 {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Text } from 'react-native';
-import { colorConstants } from '../constants';
+import { colorConstants } from '@constants';
 
 export const CustomButton = (props) =>
 {

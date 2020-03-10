@@ -5,7 +5,7 @@ import { View, StyleSheet } from 'react-native'
 import { CustomButton } from './CustomButton.js';
 import { useNavigation } from '@react-navigation/native';
 import { getWatched, getWatchList } from '../actions/userActions'
-import { colorConstants } from '../constants';
+import { colorConstants } from '@constants';
 
 const SelectorAction = ({ dispatch }) =>
 {
