@@ -1,24 +1,23 @@
-import React, { useState } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
-import { TextInput } from 'react-native-gesture-handler'
-import { CustomButton } from '@components/CustomButton'
-import { useNavigation } from '@react-navigation/native'
-import { login } from '@actions/userActions'
-import { useDispatch } from 'react-redux'
-import { colorConstants } from '@constants';
+import React, {useState} from 'react';
+import {Text, View, StyleSheet} from 'react-native';
+import {TextInput} from 'react-native-gesture-handler';
+import {CustomButton} from '@components/CustomButton';
+import {useNavigation} from '@react-navigation/native';
+import {login} from '@actions/userActions';
+import {useDispatch} from 'react-redux';
+import {colorConstants} from '@constants';
 
-const Connexion = () =>
-{
+const Connexion = () => {
 	const navigation = useNavigation();
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
 	return (
 		<View>
 			<Text style={styles.title}>Connexion</Text>
-			<View style={styles.homeView} >
+			<View style={styles.homeView}>
 				<TextInput
 					placeholder="eMail"
 					placeholderTextColor={colorConstants.TEXT}
@@ -27,7 +26,7 @@ const Connexion = () =>
 				/>
 				<TextInput
 					secureTextEntry={true}
-					textContentType='password'
+					textContentType="password"
 					placeholder="Password"
 					placeholderTextColor={colorConstants.TEXT}
 					style={styles.inputSearch}
@@ -35,26 +34,24 @@ const Connexion = () =>
 				/>
 				<CustomButton
 					style={styles.button}
-					title='OK'
-					onPress={() =>
-					{
+					title="OK"
+					onPress={() => {
 						dispatch(login(email, password));
-						navigation.navigate('Movie Tracker')
+						navigation.navigate('Home');
 					}}
 				/>
 				<View>
 					<CustomButton
 						title="S'inscrire"
-						onPress={() =>
-						{
-							navigation.navigate('Signup')
+						onPress={() => {
+							navigation.navigate('Signup');
 						}}
 					/>
 				</View>
 			</View>
 		</View>
-	)
-}
+	);
+};
 export default Connexion;
 
 const styles = StyleSheet.create({
@@ -69,7 +66,7 @@ const styles = StyleSheet.create({
 		marginTop: 50,
 		marginLeft: 20,
 		fontSize: 30,
-		fontWeight: 'bold'
+		fontWeight: 'bold',
 	},
 	inputSearch: {
 		color: colorConstants.TEXT,
@@ -83,6 +80,6 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	button: {
-		margin: 30
+		margin: 30,
 	},
 });

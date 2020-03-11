@@ -1,38 +1,47 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import { colorConstants } from '@constants';
-import { logout } from '@actions/userActions';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {colorConstants} from '@constants';
+import {logout} from '@actions/userActions';
 import Movie from '@scenes/Movie';
 import Home from '@scenes/Home';
-import Signup from '@scenes/Signup'
+import Signup from '@scenes/Signup';
 import Connexion from '@scenes/Connexion';
 import MovieList from '@scenes/MovieList';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-
+import MovieNavigator from '@navigators/MovieNavigator';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 
 const Tab = createMaterialBottomTabNavigator();
 
 let width = Dimensions.get('window').width;
 
-const MyTabs = () =>
-{
+const MyTabs = () => {
 	const dispatch = useDispatch();
 	const connexion = useSelector(state => state.userReducer.connexion);
 
-	function StatusBar()
-	{
+	function StatusBar() {
 		const navigation = useNavigation();
 
 		return (
 			<View style={styles.statusBar}>
-				{
-					connexion ?
-						<Text style={styles.logText} onPress={() => { dispatch(logout()); navigation.navigate('Movie Tracker') }}>Logout</Text>
-						:
-						<Text style={styles.logText} onPress={() => navigation.navigate('Connexion')}> Login </Text>
-				}
+				{connexion ? (
+					<Text
+						style={styles.logText}
+						onPress={() => {
+							dispatch(logout());
+							navigation.navigate('Movie Tracker');
+						}}>
+						Logout
+					</Text>
+				) : (
+					<Text
+						style={styles.logText}
+						onPress={() => navigation.navigate('Connexion')}>
+						{' '}
+						Login{' '}
+					</Text>
+				)}
 			</View>
 		);
 	}
@@ -41,27 +50,17 @@ const MyTabs = () =>
 		<Tab.Navigator
 			initialRouteName={Home}
 			screenOptions={{
-				headerShown : false,
+				headerShown: false,
 			}}
-  			activeColor={colorConstants.TEXT}
+			activeColor={colorConstants.TEXT}
 			inactiveColor={colorConstants.ACCENT_COLOR}
-			barStyle={{ backgroundColor: colorConstants.BACK_SECOND }}
-		>
-			<Tab.Screen
-				name={'Home'}
-				component={Home}
-			/>
-			<Tab.Screen
-				name={'MOVIES'}
-				component={MovieList}
-			/>
-			<Tab.Screen
-				name={'Connexion'}
-				component={Connexion}
-			/>
+			barStyle={{backgroundColor: colorConstants.BACK_SECOND}}>
+			<Tab.Screen name={'Home'} component={Home} />
+			<Tab.Screen name={'MOVIES'} component={MovieList} />
+			<Tab.Screen name={'Connexion'} component={Connexion} />
 		</Tab.Navigator>
 	);
-}
+};
 
 export default MyTabs;
 

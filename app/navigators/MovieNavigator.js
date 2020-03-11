@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import { createStackNavigator } from '@react-navigation/stack';
-import { colorConstants } from '@constants';
-import { logout } from '@actions/userActions';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {createStackNavigator} from '@react-navigation/stack';
+import {colorConstants} from '@constants';
+import {logout} from '@actions/userActions';
 import Movie from '@scenes/Movie';
 import Home from '@scenes/Home';
-import Signup from '@scenes/Signup'
+import Signup from '@scenes/Signup';
 import Connexion from '@scenes/Connexion';
 import MovieList from '@scenes/MovieList';
 
@@ -15,48 +15,23 @@ const Stack = createStackNavigator();
 
 let width = Dimensions.get('window').width;
 
-const MyTabs = () =>
-{
+const MovieNavigator = () => {
 	const dispatch = useDispatch();
 	const connexion = useSelector(state => state.userReducer.connexion);
 
-	function StatusBar()
-	{
-		const navigation = useNavigation();
-
-		return (
-			<View style={styles.statusBar}>
-				{
-					connexion ?
-						<Text style={styles.logText} onPress={() => { dispatch(logout()); navigation.navigate('Movie Tracker') }}>Logout</Text>
-						:
-						<Text style={styles.logText} onPress={() => navigation.navigate('Connexion')}> Login </Text>
-				}
-			</View>
-		);
-	}
-
 	return (
 		<Stack.Navigator
-			initialRouteName={Home}
+			initialRouteName={Movie}
 			screenOptions={{
-				headerShown : false,
-			}}
-		>
-			<Stack.Screen
-				name={'MOVIE'}
-				component={Movie}
-			/>
+				headerShown: false,
+			}}>
+			<Stack.Screen name={'MOVIE'} component={Movie} />
 
-			<Stack.Screen
-				name={'Signup'}
-				component={Signup}
-			/>
+			<Stack.Screen name={'Signup'} component={Signup} />
 		</Stack.Navigator>
 	);
-}
-
-export default MyTabs;
+};
+export default MovieNavigator;
 
 const styles = StyleSheet.create({
 	statusBar: {
@@ -73,3 +48,4 @@ const styles = StyleSheet.create({
 		padding: 10,
 	},
 });
+
