@@ -13,9 +13,35 @@ import MovieNavigator from '@navigators/MovieNavigator';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import home from '@assets/home.png'
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 
-const Tab = createMaterialBottomTabNavigator();
+const AppNavigator = createBottomTabNavigator(
+	{
+		Home: {
+			screen: HomeNavigator,
+			navigationOptions: {
+				tabBarIcon: ({ tintColor }) =>
+					<Icon name="home" size={25} color={tintColor} />
+			}
+		},
+		HighScores: {
+			screen: HighScoresScreen,
+			navigationOptions: {
+				tabBarLabel: 'High Scores',
+				tabBarIcon: ({ tintColor }) =>
+					<Icon name="chart-bar" size={25} color={tintColor} />
+			}
+		},
+		Settings: {
+			screen: SettingsScreen,
+			navigationOptions: {
+				tabBarIcon: ({ tintColor }) =>
+					<Icon name="cogs" size={25} color={tintColor} />
+			}
+		}
+	}
+);
 
 let width = Dimensions.get('window').width;
 
@@ -31,9 +57,7 @@ const MyTabs = () =>
 			activeColor={colorConstants.TEXT}
 			inactiveColor={colorConstants.ACCENT_COLOR}
 			barStyle={{ backgroundColor: colorConstants.BACK_SECOND }}>
-			<Tab.Screen name={'Home'} component={Home} />
-			<Tab.Screen name={'Movies'} component={MovieNavigator} />
-			<Tab.Screen name={'Connexion'} component={ConnexionNavigator} />
+			<AppNavigator />
 		</Tab.Navigator>
 	);
 };
