@@ -24,7 +24,7 @@ const SearchBar = () =>
 				onPress={() =>
 				{
 					dispatch({ type: 'SEARCH', search: search })
-					navigation.navigate('MOVIES')
+					navigation.navigate('Movie list')
 				}}
 			/>
 		</View>

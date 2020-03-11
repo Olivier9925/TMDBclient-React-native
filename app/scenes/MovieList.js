@@ -40,7 +40,7 @@ const MovieList = ({ dispatch }) =>
 								type: "SET_CURRENT_MOVIE",
 								currentMovieId: t.id,
 							});
-							navigation.navigate('MOVIE')
+							navigation.navigate('Movie')
 						}
 					}
 					key={i}

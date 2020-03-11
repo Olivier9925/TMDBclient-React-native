@@ -26,8 +26,8 @@ const MovieNavigator = () =>
 			screenOptions={{
 				headerShown: false,
 			}}>
-			<Stack.Screen name={'Movie list'} component={MovieList} />
-			<Stack.Screen name={'Movie'} component={Movie} />
+			<Stack.Screen name={'Connexion'} component={Connexion} />
+			<Stack.Screen name={'Signup'} component={Signup} />
 		</Stack.Navigator>
 	);
 };

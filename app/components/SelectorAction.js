@@ -21,7 +21,7 @@ const SelectorAction = ({ dispatch }) =>
 				{
 					dispatch(saveToList(currentMovieId, user[0].id));
 					dispatch(getWatchList(user[0].id));
-					navigation.navigate('MOVIES')
+					navigation.navigate('Movie list')
 				}}
 				title='+'
 			/>
@@ -30,7 +30,7 @@ const SelectorAction = ({ dispatch }) =>
 				{
 					dispatch(saveToWatchedList(currentMovieId, user[0].id));
 					dispatch(getWatched(user[0].id));
-					navigation.navigate('MOVIES')
+					navigation.navigate('Movie list')
 				}}
 				title='vu'
 			/>

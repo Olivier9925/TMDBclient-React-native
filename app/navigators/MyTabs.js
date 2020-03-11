@@ -1,26 +1,28 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch, useSelector} from 'react-redux';
-import {colorConstants} from '@constants';
-import {logout} from '@actions/userActions';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { colorConstants } from '@constants';
+import { logout } from '@actions/userActions';
 import Movie from '@scenes/Movie';
 import Home from '@scenes/Home';
 import Signup from '@scenes/Signup';
-import Connexion from '@scenes/Connexion';
+import ConnexionNavigator from '@navigators/ConnexionNavigator';
 import MovieList from '@scenes/MovieList';
 import MovieNavigator from '@navigators/MovieNavigator';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 const Tab = createMaterialBottomTabNavigator();
 
 let width = Dimensions.get('window').width;
 
-const MyTabs = () => {
+const MyTabs = () =>
+{
 	const dispatch = useDispatch();
 	const connexion = useSelector(state => state.userReducer.connexion);
 
-	function StatusBar() {
+	function StatusBar()
+	{
 		const navigation = useNavigation();
 
 		return (
@@ -28,20 +30,21 @@ const MyTabs = () => {
 				{connexion ? (
 					<Text
 						style={styles.logText}
-						onPress={() => {
+						onPress={() =>
+						{
 							dispatch(logout());
 							navigation.navigate('Movie Tracker');
 						}}>
 						Logout
 					</Text>
 				) : (
-					<Text
-						style={styles.logText}
-						onPress={() => navigation.navigate('Connexion')}>
-						{' '}
+						<Text
+							style={styles.logText}
+							onPress={() => navigation.navigate('Connexion')}>
+							{' '}
 						Login{' '}
-					</Text>
-				)}
+						</Text>
+					)}
 			</View>
 		);
 	}
@@ -54,10 +57,10 @@ const MyTabs = () => {
 			}}
 			activeColor={colorConstants.TEXT}
 			inactiveColor={colorConstants.ACCENT_COLOR}
-			barStyle={{backgroundColor: colorConstants.BACK_SECOND}}>
+			barStyle={{ backgroundColor: colorConstants.BACK_SECOND }}>
 			<Tab.Screen name={'Home'} component={Home} />
-			<Tab.Screen name={'MOVIES'} component={MovieList} />
-			<Tab.Screen name={'Connexion'} component={Connexion} />
+			<Tab.Screen name={'Movies'} component={MovieNavigator} />
+			<Tab.Screen name={'Connexion'} component={ConnexionNavigator} />
 		</Tab.Navigator>
 	);
 };
