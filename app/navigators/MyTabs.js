@@ -1,19 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import { colorConstants } from '@constants';
-import { logout } from '@actions/userActions';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {colorConstants} from '@constants';
+import {logout} from '@actions/userActions';
 import Movie from '@scenes/Movie';
 import Home from '@scenes/Home';
 import Signup from '@scenes/Signup';
 import ConnexionNavigator from '@navigators/ConnexionNavigator';
 import MovieList from '@scenes/MovieList';
 import MovieNavigator from '@navigators/MovieNavigator';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import home from '@assets/home.png'
-import { MaterialCommunityIcons } from 'react-native-vector-icons';
-
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import home from '@assets/home.png';
+import {MaterialCommunityIcons} from 'react-native-vector-icons';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -28,11 +27,11 @@ const MyTabs = () => {
 			initialRouteName={Home}
 			activeColor={colorConstants.TEXT}
 			inactiveColor={colorConstants.ACCENT_COLOR}
-			barStyle={{ backgroundColor: colorConstants.BACK_SECOND }}>
+			barStyle={{backgroundColor: colorConstants.BACK_SECOND}}>
 			<Tab.Screen name={'Home'} component={Home} />
 			<Tab.Screen name={'Movies'} component={MovieNavigator} />
-			<Tab.Screen 
-				name={'Connexion'} 
+			<Tab.Screen
+				name={'Connexion'}
 				component={ConnexionNavigator}
 				options={{
 					tabBarLabel: connexion ? 'Mon compte' : 'Connexion',
