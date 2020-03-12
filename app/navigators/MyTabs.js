@@ -19,11 +19,9 @@ const Tab = createMaterialBottomTabNavigator();
 
 let width = Dimensions.get('window').width;
 
-const MyTabs = () =>
-{
+const MyTabs = () => {
 	const dispatch = useDispatch();
 	const connexion = useSelector(state => state.userReducer.connexion);
-
 
 	return (
 		<Tab.Navigator
@@ -33,7 +31,13 @@ const MyTabs = () =>
 			barStyle={{ backgroundColor: colorConstants.BACK_SECOND }}>
 			<Tab.Screen name={'Home'} component={Home} />
 			<Tab.Screen name={'Movies'} component={MovieNavigator} />
-			<Tab.Screen name={'Connexion'} component={ConnexionNavigator} />
+			<Tab.Screen 
+				name={'Connexion'} 
+				component={ConnexionNavigator}
+				options={{
+					tabBarLabel: connexion ? 'Mon compte' : 'Connexion',
+				}}
+			/>
 		</Tab.Navigator>
 	);
 };

@@ -3,21 +3,34 @@ import {Text, View, StyleSheet} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import {CustomButton} from '@components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
-import {login} from '@actions/userActions';
-import {useDispatch} from 'react-redux';
+import {login, logout} from '@actions/userActions';
+import {useDispatch, useSelector} from 'react-redux';
 import {colorConstants} from '@constants';
 
 const Connexion = () => {
 	const navigation = useNavigation();
 	const dispatch = useDispatch();
 
+	const connexion = useSelector(state => state.userReducer.connexion);
+
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
+	let display,
+		display_inv = 'none';
+
+	if (connexion) {
+		display = 'none';
+		display_inv = 'flex';
+	} else {
+		display = 'flex';
+		display_inv = 'none';
+	}
 
 	return (
 		<View>
 			<Text style={styles.title}>Connexion</Text>
-			<View style={styles.homeView}>
+			<View style={[styles.homeView, {display: display}]}>
 				<TextInput
 					placeholder="eMail"
 					placeholderTextColor={colorConstants.TEXT}
@@ -34,20 +47,26 @@ const Connexion = () => {
 				/>
 				<CustomButton
 					style={styles.button}
-					title="OK"
+					title="Se connecter"
 					onPress={() => {
 						dispatch(login(email, password));
-						navigation.navigate('Home');
+						//navigation.navigate('Home');
 					}}
 				/>
-				<View>
-					<CustomButton
-						title="S'inscrire"
-						onPress={() => {
-							navigation.navigate('Signup');
-						}}
-					/>
-				</View>
+				<CustomButton
+					title="S'inscrire"
+					onPress={() => {
+						navigation.navigate('Signup');
+					}}
+				/>
+			</View>
+			<View style={[styles.homeView, {display: display_inv}]}>
+				<CustomButton
+					title="Se déconnecter"
+					onPress={() => {
+						dispatch(logout());
+					}}
+				/>
 			</View>
 		</View>
 	);

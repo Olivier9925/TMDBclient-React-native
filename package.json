@@ -6,10 +6,13 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "configure": "npx jetify && cd ios/ && pod install && cd ..",
+    "fix-android": "adb kill-server && adb start-server && adb reverse tcp:8081 tcp:8081",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.8.1",
     "@react-native-community/masked-view": "^0.1.6",
     "@react-navigation/bottom-tabs": "^5.1.1",
     "@react-navigation/material-bottom-tabs": "^5.1.1",
@@ -39,7 +42,8 @@
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
-    "react-test-renderer": "16.9.0"
+    "react-test-renderer": "16.9.0",
+    "reactotron-react-native": "^4.0.3"
   },
   "jest": {
     "preset": "react-native"

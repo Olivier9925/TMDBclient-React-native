@@ -8,6 +8,9 @@ import {colorConstants} from '@constants';
 import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import MyTabs from '@navigators/MyTabs';
+if(__DEV__) {
+  import('../ReactotronConfig').then(() => console.log('Reactotron Configured'))
+}
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
