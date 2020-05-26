@@ -1,32 +1,36 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
 import {View, StyleSheet} from 'react-native';
-import {CustomButton} from '@components/CustomButton.js';
+import {CustomButton} from '@components/CustomButton';
 import {colorConstants} from '@constants';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 
-const Footer = () => {
+const homeMenuButton = choice => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.footer}>
-      <CustomButton
-        title="Découvrir"
-        onPress={() => {
-          dispatch({type: 'DISCOVER'});
-        }}
-      />
-      <CustomButton
-        title="Les tops"
-        onPress={() => {
-          dispatch({type: 'TOP'});
-        }}
-      />
+    <CustomButton
+      title={choice}
+      onPress={() => {
+        dispatch({type: choice});
+        navigation.navigate('Movie list');
+      }}
+    />
+  );
+};
+
+const ConnectedMenu = props => {
+  return (
+    <View style={styles.connectedMenu}>
+      {homeMenuButton('VU')}
+      {homeMenuButton('LISTE')}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  footer: {
+  connectedMenu: {
     backgroundColor: colorConstants.BACK_SECOND,
     display: 'flex',
     flexDirection: 'row',
@@ -41,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Footer;
+export default ConnectedMenu;

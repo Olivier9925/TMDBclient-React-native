@@ -19,42 +19,43 @@ const Tab = createMaterialBottomTabNavigator();
 let width = Dimensions.get('window').width;
 
 const MyTabs = () => {
-	const dispatch = useDispatch();
-	const connexion = useSelector(state => state.userReducer.connexion);
+  const connexion = useSelector(state => state.userReducer.connexion);
 
-	return (
-		<Tab.Navigator
-			initialRouteName={Home}
-			activeColor={colorConstants.TEXT}
-			inactiveColor={colorConstants.ACCENT_COLOR}
-			barStyle={{backgroundColor: colorConstants.BACK_SECOND}}>
-			<Tab.Screen name={'Home'} component={Home} />
-			<Tab.Screen name={'Movies'} component={MovieNavigator} />
-			<Tab.Screen
-				name={'Connexion'}
-				component={ConnexionNavigator}
-				options={{
-					tabBarLabel: connexion ? 'Mon compte' : 'Connexion',
-				}}
-			/>
-		</Tab.Navigator>
-	);
+  return (
+    <Tab.Navigator
+      initialRouteName={Home}
+      activeColor={colorConstants.TEXT}
+      inactiveColor={colorConstants.ACCENT_COLOR}
+      barStyle={{
+        backgroundColor: colorConstants.BACK_SECOND,
+      }}>
+      <Tab.Screen name={'Accueil'} component={Home} />
+      <Tab.Screen name={'Films'} component={MovieNavigator} />
+      <Tab.Screen
+        name={'Connexion'}
+        component={ConnexionNavigator}
+        options={{
+          tabBarLabel: connexion ? 'Mon compte' : 'Connexion',
+        }}
+      />
+    </Tab.Navigator>
+  );
 };
 
 export default MyTabs;
 
 const styles = StyleSheet.create({
-	statusBar: {
-		width: width - 100,
-		marginLeft: 100,
-		flex: 1,
-		flexDirection: 'row',
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-		alignContent: 'center',
-	},
-	logText: {
-		color: colorConstants.TEXT,
-		padding: 10,
-	},
+  statusBar: {
+    width: width - 100,
+    marginLeft: 100,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    alignContent: 'center',
+  },
+  logText: {
+    color: colorConstants.TEXT,
+    padding: 10,
+  },
 });
