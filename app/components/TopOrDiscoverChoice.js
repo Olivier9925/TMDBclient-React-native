@@ -4,11 +4,11 @@ import {View, StyleSheet} from 'react-native';
 import {CustomButton} from '@components/CustomButton.js';
 import {colorConstants} from '@constants';
 
-const Footer = () => {
+const TopOrDiscoverChoice = () => {
   const dispatch = useDispatch();
 
   return (
-    <View style={styles.footer}>
+    <View style={styles.TopOrDiscoverChoice}>
       <CustomButton
         title="Découvrir"
         onPress={() => {
@@ -26,7 +26,7 @@ const Footer = () => {
 };
 
 const styles = StyleSheet.create({
-  footer: {
+  TopOrDiscoverChoice: {
     backgroundColor: colorConstants.BACK_SECOND,
     display: 'flex',
     flexDirection: 'row',
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Footer;
+export default TopOrDiscoverChoice;
