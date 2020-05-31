@@ -1,25 +1,22 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
-import {View, StyleSheet} from 'react-native';
-import {CustomButton} from '@components/CustomButton.js';
-import {colorConstants} from '@constants';
+import { connect } from 'react-redux';
+import { View, StyleSheet } from 'react-native';
+import { CustomButton } from '@components/CustomButton.js';
+import { colorConstants } from '@constants';
+import MoviesReducer from '@reducers/MoviesReducer';
 
-const TopOrDiscoverChoice = () => {
-  const dispatch = useDispatch();
+const TopOrDiscoverChoice = (props) =>
+{
 
   return (
     <View style={styles.TopOrDiscoverChoice}>
       <CustomButton
         title="Découvrir"
-        onPress={() => {
-          dispatch({type: 'DISCOVER'});
-        }}
+        onPress={() => props.selectDiscoverMovies()}
       />
       <CustomButton
         title="Les tops"
-        onPress={() => {
-          dispatch({type: 'TOP'});
-        }}
+        onPress={() => props.selectTopMovies()}
       />
     </View>
   );
@@ -41,4 +38,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TopOrDiscoverChoice;
+function mapStateToProps(state)
+{
+  return {
+  }
+}
+
+export default connect(mapStateToProps, {
+  selectDiscoverMovies: MoviesReducer.actions.selectDiscoverMovies,
+  selectTopMovies: MoviesReducer.actions.selectTopMovies,
+})(TopOrDiscoverChoice);

@@ -1,18 +1,26 @@
 import * as React from 'react';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
 import reducers from './reducers';
 import thunk from 'redux-thunk';
 import 'react-native-gesture-handler';
-import {colorConstants} from '@constants';
-import {StatusBar} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import { colorConstants } from '@constants';
+import { StatusBar } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import MyTabs from '@navigators/MyTabs';
-if(__DEV__) {
-  import('../ReactotronConfig').then(() => console.log('Reactotron Configured'))
-}
+import createSagaMiddleware from 'redux-saga';
+import Reactotron from '../ReactotronConfig';
+import rootSaga from './sagas';
 
-const store = createStore(reducers, applyMiddleware(thunk));
+let sagaMiddleware;
+
+const sagaMonitor = Reactotron.createSagaMonitor();
+sagaMiddleware = createSagaMiddleware({ sagaMonitor })
+const store = createStore(reducers, compose(applyMiddleware(sagaMiddleware), Reactotron.createEnhancer()));
+
+
+
+sagaMiddleware.run(rootSaga);
 
 const MyTheme = {
   dark: false,
@@ -25,7 +33,8 @@ const MyTheme = {
   },
 };
 
-const App = () => {
+const App = () =>
+{
   return (
     <Provider store={store}>
       <StatusBar barStyle="light-content" />
