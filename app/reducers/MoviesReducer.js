@@ -2,6 +2,7 @@ import actionsList from '@actions/actions';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initState = {
+  appStart: false,
   apiKey: 'e709f2ea9104a5d71ac4f13607ce4100',
   discoverMovies: [],
   topMovies: [],
@@ -17,6 +18,12 @@ export default createSlice({
   name: 'MoviesReducer',
   initialState: initState,
   reducers: {
+    startingApp: {
+      reducer: (state, action) =>
+      {
+        state.appStart = true;
+      }
+    },
     getDiscoverMovies: {
       reducer: (state, action) =>
       {
@@ -29,22 +36,19 @@ export default createSlice({
       {
         state.topMovies = action?.payload?.topMovies;
       },
-      // prepare: (topMovies) => { return { payload: { topMovies } }; }
+      prepare: (topMovies) => { return { payload: { topMovies } }; }
     },
     selectTopMovies: {
       reducer: (state, action) =>
       {
         state.filter = 'TOP';
       },
-      // prepare: (filter) => { return { filter: { filter } }; }
     },
     selectDiscoverMovies: {
       reducer: (state, action) =>
       {
-        console.log('coucou reducer discover')
         state.filter = 'DISCOVER';
       },
-      // prepare: (filter) => { return { filter: { filter } }; }
     },
     selectMyListMovies: {
       reducer: (state, action) =>
@@ -64,16 +68,16 @@ export default createSlice({
       reducer: (state, action) =>
       {
         state.search = action?.payload?.search;
-        state.filter = 'VU';
       },
-      // prepare: (filter) => { return { filter: { filter } }; }
+      prepare: (search) => { return { payload: { search } }; }
     },
     getSearchedMovies: {
       reducer: (state, action) =>
       {
         state.searchResult = action?.payload?.searchResult;
+        state.filter = 'SEARCH'
       },
-      // prepare: (filter) => { return { filter: { filter } }; }
+      prepare: (searchResult) => { return { payload: { searchResult } }; }
     },
     setCurrentMovie: {
       reducer: (state, action) =>

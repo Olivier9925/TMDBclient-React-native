@@ -1,24 +1,32 @@
-import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useEffect } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import SearchBar from '@components/SearchBar';
-import {CustomButton} from '@components/CustomButton';
-import {useNavigation} from '@react-navigation/native';
-import {colorConstants} from '@constants';
+import { CustomButton } from '@components/CustomButton';
+import { useNavigation } from '@react-navigation/native';
+import { colorConstants } from '@constants';
 import ConnectedMenu from '@components/ConnectedMenu';
+import MoviesReducer from '@reducers/MoviesReducer';
 
-const Home = () => {
+const Home = () =>
+{
+  const dispatch = useDispatch();
+
+  useEffect(() =>
+  {
+    dispatch(MoviesReducer.actions.startingApp())
+  }, [])
+
   const connexion = useSelector(state => state.userReducer.connexion);
 
   return (
-    <View style={{flex: 1, backgroundColor: colorConstants.BACK_FIRST}}>
+    <View style={{ flex: 1, backgroundColor: colorConstants.BACK_FIRST }}>
       <Text style={styles.title}>MOVIE TRACKER</Text>
       <SearchBar />
       {connexion ? <ConnectedMenu /> : <></>}
     </View>
   );
 };
-export default Home;
 
 const styles = StyleSheet.create({
   homeView: {
@@ -37,3 +45,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+export default Home;

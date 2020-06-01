@@ -1,45 +1,45 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { createSagaRoot } from '@sagas';
-import MoviesServices, { WSgetDiscoverMovies } from '@services/MoviesServices';
+import MoviesServices, { WSgetDiscoverMovies, WSgetTopMovies, WSsearchMovie } from '@services/MoviesServices';
 import MoviesReducer from '@reducers/MoviesReducer';
+import { NavigationActions } from 'react-navigation';
 
 // //////////////////
 // SAGA FUNCTIONS
 // //////////////////
-export function* getDiscoverMoviesSaga()
+export function* appStartSaga()
 {
   try {
-    const response = yield call(WSgetDiscoverMovies);
-    if (response) {
-      discoverMovies = response.data.results;
+    const responseDiscoverMovies = yield call(WSgetDiscoverMovies);
+    const responseTopMovies = yield call(WSgetTopMovies);
+    if (responseDiscoverMovies && responseTopMovies) {
+      discoverMovies = responseDiscoverMovies.data.results;
+      topMovies = responseTopMovies.data.results;
     } else {
-      console.log("Pas de films recup...");
+      console.log('error retrieving movies...')
     }
     yield put(MoviesReducer.actions.getDiscoverMovies(discoverMovies));
-  } catch (error) {
-    console.log(`error getDiscoverMoviesSaga`);
-  }
-}
-
-export function* getTopMoviesSaga()
-{
-  try {
-    const topMovies = yield call(MoviesServices.WSgetTopMovies);
-    console.log('topMovies : ', topMovies);
     yield put(MoviesReducer.actions.getTopMovies(topMovies));
   } catch (error) {
-    console.log(`error getTopMoviesSaga`);
+    console.log('error getDiscoverAndTopMoviesSaga')
   }
 }
 
 export function* getSearchedMoviesSaga(action)
 {
   try {
-    const searchedMovies = yield call(MoviesServices.WSsearchMovie, action.searchValue);
-    console.log('searchedMovies : ', searchedMovies);
+    const response = yield call(WSsearchMovie, action?.payload?.search);
+    if (response) {
+      searchedMovies = response.data.results;
+    } else {
+      console.log('error retrieving searched movies...')
+    }
+
     yield put(MoviesReducer.actions.getSearchedMovies(searchedMovies));
+    // yield put(NavigationActions.navigate({ routeName: 'Movie list' })); a changer
+
   } catch (error) {
-    console.log(`error getTopMoviesSaga`);
+    console.log(`error getSearchedMoviesSaga`);
   }
 }
 
@@ -57,10 +57,13 @@ export function* getCurrentMoviesSaga()
 // //////////////////
 // WATCH FUNCTIONS
 // //////////////////
-function* watchDiscoverMovies()
+function* watchAppStart()
 {
-  yield takeEvery(MoviesReducer.actions.selectDiscoverMovies, getDiscoverMoviesSaga);
+  yield takeEvery(MoviesReducer.actions.startingApp, appStartSaga)
+}
+function* watchSearch()
+{
+  yield takeEvery(MoviesReducer.actions.selectSearchedMovies, getSearchedMoviesSaga)
 }
 
-
-export default createSagaRoot(watchDiscoverMovies);
+export default createSagaRoot(watchAppStart, watchSearch);

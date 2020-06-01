@@ -14,33 +14,24 @@ export const WSgetDiscoverMovies = () =>
 
 export const WSgetTopMovies = () =>
 {
-  axios
+  return axios
     .get(
       'https://api.themoviedb.org/3/movie/top_rated?api_key=' +
       apiKey +
       '&language=fr-FR&page=1',
     )
-    .then(response =>
-    {
-      response.data.results;
-    })
-    .catch(error => console.log(error));
 };
 
 export const WSsearchMovie = searchValue =>
 {
-  axios
+  console.log('searchValue : ', searchValue)
+  return axios
     .get(
       'https://api.themoviedb.org/3/search/movie?api_key=' +
       apiKey +
       '&language=fr-FR&page=1&include_adult=false&query=' +
       searchValue,
     )
-    .then(response =>
-    {
-      response.data.results;
-    })
-    .catch(error => console.log(error));
 };
 
 export const WSdisplayCurrentMovie = currentMovieId =>

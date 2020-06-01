@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { CustomButton } from './CustomButton'
 import { colorConstants } from '@constants';
+import MoviesReducer from '@reducers/MoviesReducer';
 
 const SearchBar = () =>
 {
@@ -23,8 +24,7 @@ const SearchBar = () =>
 				title='OK'
 				onPress={() =>
 				{
-					dispatch({ type: 'SEARCH', search: search })
-					navigation.navigate('Movie list')
+					dispatch(MoviesReducer.actions.selectSearchedMovies(search))
 				}}
 			/>
 		</View>
