@@ -1,33 +1,23 @@
-import React, {useEffect} from 'react';
-import {useSelector, connect} from 'react-redux';
-import {
-  displayCurrentMovie,
-  getMovieDetails,
-  getMovieCredits,
-} from '@actions/movieActions';
-import {ScrollView} from 'react-native-gesture-handler';
-import {View, Image, Text, ImageBackground, StyleSheet} from 'react-native';
+import React from 'react';
+import { useSelector, connect } from 'react-redux';
+import { ScrollView } from 'react-native-gesture-handler';
+import { View, Image, Text, ImageBackground, StyleSheet } from 'react-native';
 import SelectorAction from '@components/SelectorAction';
-import {colorConstants} from '@constants';
+import { colorConstants } from '@constants';
 
-const Movie = ({dispatch}) => {
-  const currentMovieId = useSelector(
-    state => state.MoviesReducer.currentMovieId,
-  );
+const Movie = () =>
+{
   const currentMovie = useSelector(state => state.MoviesReducer.currentMovie);
-  const movieCredits = useSelector(state => state.MoviesReducer.movieCredits);
+  const currentMovieCredits = useSelector(state => state.MoviesReducer.currentMovieCredits);
   const connexion = useSelector(state => state.userReducer.connexion);
 
-  useEffect(() => {
-    dispatch(displayCurrentMovie(currentMovieId));
-    dispatch(getMovieDetails(currentMovieId));
-    dispatch(getMovieCredits(currentMovieId));
-  }, [dispatch, currentMovieId]);
 
-  const displayCredits = movieCredits => {
-    if (movieCredits == undefined || movieCredits == null) return;
+  const displayCredits = currentMovieCredits =>
+  {
+    if (currentMovieCredits == undefined || currentMovieCredits == null) return;
     else
-      return movieCredits.map((m, i) => {
+      return currentMovieCredits.map((m, i) =>
+      {
         if (i > 10) return;
         return (
           <View
@@ -36,22 +26,22 @@ const Movie = ({dispatch}) => {
               flexDirection: 'row',
               justifyContent: 'space-between',
             }}>
-            <Text style={{color: colorConstants.ACCENT_COLOR}}>
+            <Text style={{ color: colorConstants.ACCENT_COLOR }}>
               {m.character}
             </Text>
-            <Text style={{color: colorConstants.TEXT}}>{m.name}</Text>
+            <Text style={{ color: colorConstants.TEXT }}>{m.name}</Text>
           </View>
         );
       });
   };
 
   return (
-    <ScrollView style={{backgroundColor: colorConstants.BACK_SECOND}}>
+    <ScrollView style={{ backgroundColor: colorConstants.BACK_SECOND }}>
       <ImageBackground
         source={{
           uri: `https://image.tmdb.org/t/p/original/${
             currentMovie.backdrop_path
-          }`,
+            }`,
         }}
         style={styles.backGroundImage}>
         <View>
@@ -59,7 +49,7 @@ const Movie = ({dispatch}) => {
             source={{
               uri: `https://image.tmdb.org/t/p/original/${
                 currentMovie.poster_path
-              }`,
+                }`,
             }}
             key={currentMovie.title + '_p'}
             style={styles.posterImage}
@@ -78,12 +68,12 @@ const Movie = ({dispatch}) => {
         <Text style={styles.date}>{currentMovie.release_date}</Text>
         <Text style={styles.overView}>{currentMovie.overview}</Text>
       </View>
-      <View style={styles.credits}>{displayCredits(movieCredits.cast)}</View>
+      <View style={styles.credits}>{displayCredits(currentMovieCredits.cast)}</View>
       {connexion ? <SelectorAction /> : <></>}
     </ScrollView>
   );
 };
-export default connect()(Movie);
+export default Movie;
 
 const styles = StyleSheet.create({
   backGroundImage: {

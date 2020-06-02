@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
-import thunk from 'redux-thunk';
 import 'react-native-gesture-handler';
 import { colorConstants } from '@constants';
 import { StatusBar } from 'react-native';
@@ -17,8 +16,6 @@ let sagaMiddleware;
 const sagaMonitor = Reactotron.createSagaMonitor();
 sagaMiddleware = createSagaMiddleware({ sagaMonitor })
 const store = createStore(reducers, compose(applyMiddleware(sagaMiddleware), Reactotron.createEnhancer()));
-
-
 
 sagaMiddleware.run(rootSaga);
 

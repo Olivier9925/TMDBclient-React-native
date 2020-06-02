@@ -1,35 +1,26 @@
-import React, { useEffect } from 'react';
-import { useSelector, connect } from 'react-redux';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Image, View, TouchableHighlight, Text, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import 'react-native-gesture-handler';
 import TopOrDiscoverChoice from '@components/TopOrDiscoverChoice';
 import { useNavigation } from '@react-navigation/native';
-import { colorConstants } from '@constants';
+import { colorConstants, NavigationConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
 
-const MovieList = (props) =>
+const MovieList = () =>
 {
   const navigation = useNavigation();
+  const dispatch = useDispatch()
+
   const discoverMovies = useSelector(
     state => state.MoviesReducer.discoverMovies
   );
   const topMovies = useSelector(state => state.MoviesReducer.topMovies);
   const watchList = useSelector(state => state.userReducer.watchList);
   const watchedList = useSelector(state => state.userReducer.watchedList);
-  const search = useSelector(state => state.MoviesReducer.search);
-  const searchResult = useSelector(state => state.MoviesReducer.searchResult);
+  const searchedMovie = useSelector(state => state.MoviesReducer.searchedMovie);
   const filter = useSelector(state => state.MoviesReducer.filter);
-  const user = useSelector(state => state.userReducer.user);
-
-
-  useEffect(() =>
-  {
-    //props.selectDiscoverMovies()
-    //getDiscoverMovies();
-    //dispatch(getTopMovies());
-    //dispatch(searchMovie(search));
-  });
 
   const displayList = movies =>
   {
@@ -39,11 +30,8 @@ const MovieList = (props) =>
         <TouchableHighlight
           onPress={() =>
           {
-            dispatch({
-              type: 'SET_CURRENT_MOVIE',
-              currentMovieId: t.id,
-            });
-            navigation.navigate('Movie');
+            dispatch(MoviesReducer.actions.setCurrentMovie(t.id))
+            navigation.navigate(NavigationConstants.MOVIE);
           }}
           key={i}>
           <Image
@@ -67,7 +55,7 @@ const MovieList = (props) =>
       list = discoverMovies;
       break;
     case 'SEARCH':
-      list = searchResult;
+      list = searchedMovie;
       break;
     case 'LISTE':
       list = watchList;
@@ -80,7 +68,7 @@ const MovieList = (props) =>
       list = discoverMovies;
       break;
   }
-  console.log('filter : ', filter);
+
   return (
     <>
       <View style={{ flex: 1 }}>
@@ -115,14 +103,4 @@ const styles = StyleSheet.create({
 });
 
 
-function mapStateToProps(state)
-{
-  return {
-  }
-}
-
-
-export default connect(mapStateToProps, {
-  selectDiscoverMovies: MoviesReducer.actions.selectDiscoverMovies,
-  selectTopMovies: MoviesReducer.actions.selectTopMovies,
-})(MovieList);
+export default MovieList;

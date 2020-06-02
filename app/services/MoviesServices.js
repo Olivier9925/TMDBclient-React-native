@@ -34,9 +34,9 @@ export const WSsearchMovie = searchValue =>
     )
 };
 
-export const WSdisplayCurrentMovie = currentMovieId =>
+export const WSgetCurrentMovie = currentMovieId =>
 {
-  axios
+  return axios
     .get(
       'https://api.themoviedb.org/3/movie/' +
       currentMovieId +
@@ -44,15 +44,11 @@ export const WSdisplayCurrentMovie = currentMovieId =>
       apiKey +
       '&language=fr-FR',
     )
-    .then(response =>
-    {
-      response.data;
-    });
 };
 
 export const WSgetMovieDetails = currentMovieId =>
 {
-  axios
+  return axios
     .get(
       'https://api.themoviedb.org/3/movie/' +
       currentMovieId +
@@ -60,25 +56,15 @@ export const WSgetMovieDetails = currentMovieId =>
       apiKey +
       '&language=fr-FR',
     )
-    .then(response =>
-    {
-      response.data;
-    })
-    .catch(error => console.log(error));
 };
 
 export const WSgetMovieCredits = currentMovieId =>
 {
-  axios
+  return axios
     .get(
       'https://api.themoviedb.org/3/movie/' +
       currentMovieId +
       '/credits?api_key=' +
       apiKey,
     )
-    .then(response =>
-    {
-      response.data;
-    })
-    .catch(error => console.log(error));
 };

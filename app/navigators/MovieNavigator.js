@@ -1,22 +1,23 @@
 import React from 'react';
-import {Dimensions} from 'react-native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { Dimensions } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 import Movie from '@scenes/Movie';
 import MovieList from '@scenes/MovieList';
+import { NavigationConstants } from '@constants';
+
 
 const Stack = createStackNavigator();
 
-let width = Dimensions.get('window').width;
-
-const MovieNavigator = () => {
+const MovieNavigator = () =>
+{
   return (
     <Stack.Navigator
       initialRouteName={Movie}
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name={'Movie list'} component={MovieList} />
-      <Stack.Screen name={'Movie'} component={Movie} />
+      <Stack.Screen name={NavigationConstants.MOVIE_LIST} component={MovieList} />
+      <Stack.Screen name={NavigationConstants.MOVIE} component={Movie} />
     </Stack.Navigator>
   );
 };

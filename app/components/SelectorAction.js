@@ -1,17 +1,19 @@
 import React from 'react';
-import {
+import
+{
   saveToList,
   saveToWatchedList,
   getWatched,
   getWatchList,
 } from '@actions/userActions';
-import {useSelector, connect} from 'react-redux';
-import {View, StyleSheet} from 'react-native';
-import {CustomButton} from './CustomButton.js';
-import {useNavigation} from '@react-navigation/native';
-import {colorConstants} from '@constants';
+import { useSelector, connect } from 'react-redux';
+import { View, StyleSheet } from 'react-native';
+import { CustomButton } from './CustomButton.js';
+import { useNavigation } from '@react-navigation/native';
+import { colorConstants, NavigationConstants } from '@constants';
 
-const SelectorAction = ({dispatch}) => {
+const SelectorAction = ({ dispatch }) =>
+{
   const navigation = useNavigation();
 
   const currentMovieId = useSelector(
@@ -22,18 +24,20 @@ const SelectorAction = ({dispatch}) => {
   return (
     <View style={styles.selectorAction}>
       <CustomButton
-        onPress={() => {
+        onPress={() =>
+        {
           dispatch(saveToList(currentMovieId, user[0].id));
           dispatch(getWatchList(user[0].id));
-          navigation.navigate('Movie list');
+          navigation.navigate(NavigationConstants.MOVIE_LIST);
         }}
         title="+"
       />
       <CustomButton
-        onPress={() => {
+        onPress={() =>
+        {
           dispatch(saveToWatchedList(currentMovieId, user[0].id));
           dispatch(getWatched(user[0].id));
-          navigation.navigate('Movie list');
+          navigation.navigate(NavigationConstants.MOVIE_LIST);
         }}
         title="vu"
       />

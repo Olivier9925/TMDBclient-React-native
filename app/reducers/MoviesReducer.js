@@ -1,4 +1,3 @@
-import actionsList from '@actions/actions';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initState = {
@@ -7,12 +6,12 @@ const initState = {
   discoverMovies: [],
   topMovies: [],
   filter: 'DISCOVER',
-  searchResult: [],
+  searchedMovie: [],
   search: 'batman',
   currentMovieId: 0,
   currentMovie: [],
-  movieDetails: [],
-  movieCredits: [],
+  currentMovieDetails: [],
+  currentMovieCredits: [],
 };
 export default createSlice({
   name: 'MoviesReducer',
@@ -74,38 +73,38 @@ export default createSlice({
     getSearchedMovies: {
       reducer: (state, action) =>
       {
-        state.searchResult = action?.payload?.searchResult;
+        state.searchedMovie = action?.payload?.searchedMovie;
         state.filter = 'SEARCH'
       },
-      prepare: (searchResult) => { return { payload: { searchResult } }; }
+      prepare: (searchedMovie) => { return { payload: { searchedMovie } }; }
     },
     setCurrentMovie: {
       reducer: (state, action) =>
       {
         state.currentMovieId = action?.payload?.currentMovieId;
       },
-      // prepare: (filter) => { return { filter: { filter } }; }
+      prepare: (currentMovieId) => { return { payload: { currentMovieId } }; }
     },
     getCurrentMovie: {
       reducer: (state, action) =>
       {
         state.currentMovie = action?.payload?.currentMovie;
       },
-      // prepare: (filter) => { return { filter: { filter } }; }
+      prepare: (currentMovie) => { return { payload: { currentMovie } }; }
     },
     getMovieDetails: {
       reducer: (state, action) =>
       {
-        state.movieDetails = action?.payload?.movieDetails;
+        state.currentMovieDetails = action?.payload?.currentMovieDetails;
       },
-      // prepare: (filter) => { return { filter: { filter } }; }
+      prepare: (currentMovieDetails) => { return { payload: { currentMovieDetails } }; }
     },
     getMovieCredits: {
       reducer: (state, action) =>
       {
-        state.movieCredits = action?.payload?.movieCredits;
+        state.currentMovieCredits = action?.payload?.currentMovieCredits;
       },
-      // prepare: (filter) => { return { filter: { filter } }; }
+      prepare: (currentMovieCredits) => { return { payload: { currentMovieCredits } }; }
     },
   },
 });

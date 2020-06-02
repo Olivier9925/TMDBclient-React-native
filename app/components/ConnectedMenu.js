@@ -1,26 +1,29 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {CustomButton} from '@components/CustomButton';
-import {colorConstants} from '@constants';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
+import { View, StyleSheet } from 'react-native';
+import { CustomButton } from '@components/CustomButton';
+import { colorConstants, NavigationConstants } from '@constants';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 
-const homeMenuButton = choice => {
+const homeMenuButton = choice =>
+{
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
   return (
     <CustomButton
       title={choice}
-      onPress={() => {
-        dispatch({type: choice});
-        navigation.navigate('Movie list');
+      onPress={() =>
+      {
+        dispatch({ type: choice });
+        navigation.navigate(NavigationConstants.MOVIE_LIST);
       }}
     />
   );
 };
 
-const ConnectedMenu = props => {
+const ConnectedMenu = props =>
+{
   return (
     <View style={styles.connectedMenu}>
       {homeMenuButton('VU')}
