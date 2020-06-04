@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
 
 const initState = {
   appStart: false,
@@ -37,17 +37,12 @@ export default createSlice({
       },
       prepare: (topMovies) => { return { payload: { topMovies } }; }
     },
-    selectTopMovies: {
+    selectChoiceFilter: {
       reducer: (state, action) =>
       {
-        state.filter = 'TOP';
+        state.filter = action?.payload?.filter;
       },
-    },
-    selectDiscoverMovies: {
-      reducer: (state, action) =>
-      {
-        state.filter = 'DISCOVER';
-      },
+      prepare: (filter) => { return { payload: { filter } }; }
     },
     selectMyListMovies: {
       reducer: (state, action) =>

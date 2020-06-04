@@ -2,6 +2,7 @@
 import { all, fork } from 'redux-saga/effects';
 // Sagas
 import MoviesSaga from '@sagas/MoviesSaga';
+import UserSaga from '@sagas/UserSaga';
 
 export function createSagaRoot(...sagas)
 {
@@ -11,4 +12,4 @@ export function createSagaRoot(...sagas)
   };
 }
 
-export default createSagaRoot(MoviesSaga);
+export default createSagaRoot(MoviesSaga, UserSaga);

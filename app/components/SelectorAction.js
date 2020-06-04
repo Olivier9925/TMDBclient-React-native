@@ -11,14 +11,13 @@ import { View, StyleSheet } from 'react-native';
 import { CustomButton } from './CustomButton.js';
 import { useNavigation } from '@react-navigation/native';
 import { colorConstants, NavigationConstants } from '@constants';
+import userReducer from '@reducers/userReducer';
 
 const SelectorAction = ({ dispatch }) =>
 {
   const navigation = useNavigation();
 
-  const currentMovieId = useSelector(
-    state => state.MoviesReducer.currentMovieId,
-  );
+  const currentMovieId = useSelector(state => state.MoviesReducer.currentMovieId);
   const user = useSelector(state => state.userReducer.user);
 
   return (
@@ -26,18 +25,16 @@ const SelectorAction = ({ dispatch }) =>
       <CustomButton
         onPress={() =>
         {
-          dispatch(saveToList(currentMovieId, user[0].id));
-          dispatch(getWatchList(user[0].id));
-          navigation.navigate(NavigationConstants.MOVIE_LIST);
+          dispatch(userReducer.actions.saveToWatchList(currentMovieId, user.id));
+          navigation.navigate(NavigationConstants.MOVIES);
         }}
         title="+"
       />
       <CustomButton
         onPress={() =>
         {
-          dispatch(saveToWatchedList(currentMovieId, user[0].id));
-          dispatch(getWatched(user[0].id));
-          navigation.navigate(NavigationConstants.MOVIE_LIST);
+          dispatch(userReducer.actions.saveToWatchedList(currentMovieId, user.id));
+          navigation.navigate(NavigationConstants.MOVIES);
         }}
         title="vu"
       />

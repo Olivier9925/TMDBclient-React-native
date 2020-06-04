@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Image, View, TouchableHighlight, Text, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import 'react-native-gesture-handler';
-import TopOrDiscoverChoice from '@components/TopOrDiscoverChoice';
 import { useNavigation } from '@react-navigation/native';
 import { colorConstants, NavigationConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
@@ -23,10 +22,8 @@ const MovieList = () =>
   const filter = useSelector(state => state.MoviesReducer.filter);
 
   const displayList = movies =>
-  {
-    return movies.map((t, i) =>
-    {
-      return (
+    movies.map((t, i) =>
+      (
         <TouchableHighlight
           onPress={() =>
           {
@@ -35,16 +32,12 @@ const MovieList = () =>
           }}
           key={i}>
           <Image
-            source={{
-              uri: 'https://image.tmdb.org/t/p/original/' + t.poster_path,
-            }}
+            source={{ uri: 'https://image.tmdb.org/t/p/original/' + t.poster_path, }}
             style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }}
             key={`${i}_${t.original_title}`}
           />
         </TouchableHighlight>
-      );
-    });
-  };
+      ));
 
   let list;
   switch (filter) {
@@ -77,9 +70,6 @@ const MovieList = () =>
           <Text style={styles.title}>{filter}</Text>
           <View style={styles.movieList}>{displayList(list)}</View>
         </ScrollView>
-        <View>
-          <TopOrDiscoverChoice />
-        </View>
       </View>
     </>
   );

@@ -8,7 +8,7 @@ export const WSgetDiscoverMovies = () =>
     .get(
       'https://api.themoviedb.org/3/discover/movie?api_key=' +
       apiKey +
-      '&language=fr-FR&region=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1',
+      '&language=fr-FR&region=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
     )
 };
 
@@ -18,19 +18,18 @@ export const WSgetTopMovies = () =>
     .get(
       'https://api.themoviedb.org/3/movie/top_rated?api_key=' +
       apiKey +
-      '&language=fr-FR&page=1',
+      '&language=fr-FR&page=1'
     )
 };
 
 export const WSsearchMovie = searchValue =>
 {
-  console.log('searchValue : ', searchValue)
   return axios
     .get(
       'https://api.themoviedb.org/3/search/movie?api_key=' +
       apiKey +
       '&language=fr-FR&page=1&include_adult=false&query=' +
-      searchValue,
+      searchValue
     )
 };
 
@@ -42,7 +41,7 @@ export const WSgetCurrentMovie = currentMovieId =>
       currentMovieId +
       '?api_key=' +
       apiKey +
-      '&language=fr-FR',
+      '&language=fr-FR'
     )
 };
 
@@ -54,7 +53,7 @@ export const WSgetMovieDetails = currentMovieId =>
       currentMovieId +
       '?api_key=' +
       apiKey +
-      '&language=fr-FR',
+      '&language=fr-FR'
     )
 };
 
@@ -65,6 +64,6 @@ export const WSgetMovieCredits = currentMovieId =>
       'https://api.themoviedb.org/3/movie/' +
       currentMovieId +
       '/credits?api_key=' +
-      apiKey,
+      apiKey
     )
 };

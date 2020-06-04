@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
-import {CustomButton} from '@components/CustomButton';
-import {useNavigation} from '@react-navigation/native';
-import {login, logout} from '@actions/userActions';
-import {useDispatch, useSelector} from 'react-redux';
-import {colorConstants} from '@constants';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
+import { CustomButton } from '@components/CustomButton';
+import { useNavigation } from '@react-navigation/native';
+import { login, logout } from '@actions/userActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { colorConstants } from '@constants';
+import userReducer from '@reducers/userReducer';
+import { WSlogin } from '@services/UserServices'
 
-const Connexion = () => {
+const Connexion = () =>
+{
 	const navigation = useNavigation();
 	const dispatch = useDispatch();
 
@@ -30,7 +33,7 @@ const Connexion = () => {
 	return (
 		<View>
 			<Text style={styles.title}>Connexion</Text>
-			<View style={[styles.homeView, {display: display}]}>
+			<View style={[styles.homeView, { display: display }]}>
 				<TextInput
 					placeholder="eMail"
 					placeholderTextColor={colorConstants.TEXT}
@@ -48,23 +51,26 @@ const Connexion = () => {
 				<CustomButton
 					style={styles.button}
 					title="Se connecter"
-					onPress={() => {
-						dispatch(login(email, password));
+					onPress={() =>
+					{
+						dispatch(userReducer.actions.loginSaisie(email, password));
 						//navigation.navigate('Home');
 					}}
 				/>
 				<CustomButton
 					title="S'inscrire"
-					onPress={() => {
+					onPress={() =>
+					{
 						navigation.navigate('Signup');
 					}}
 				/>
 			</View>
-			<View style={[styles.homeView, {display: display_inv}]}>
+			<View style={[styles.homeView, { display: display_inv }]}>
 				<CustomButton
 					title="Se déconnecter"
-					onPress={() => {
-						dispatch(logout());
+					onPress={() =>
+					{
+						dispatch(userReducer.actions.logout());
 					}}
 				/>
 			</View>

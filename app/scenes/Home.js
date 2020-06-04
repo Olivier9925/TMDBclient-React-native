@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchBar from '@components/SearchBar';
-import { CustomButton } from '@components/CustomButton';
-import { useNavigation } from '@react-navigation/native';
 import { colorConstants } from '@constants';
 import ConnectedMenu from '@components/ConnectedMenu';
+import TopOrDiscoverChoice from '@components/TopOrDiscoverChoice';
 import MoviesReducer from '@reducers/MoviesReducer';
 
 const Home = () =>
@@ -23,6 +22,7 @@ const Home = () =>
     <View style={{ flex: 1, backgroundColor: colorConstants.BACK_FIRST }}>
       <Text style={styles.title}>MOVIE TRACKER</Text>
       <SearchBar />
+      <TopOrDiscoverChoice />
       {connexion ? <ConnectedMenu /> : <></>}
     </View>
   );
