@@ -20,14 +20,13 @@ const Home = () =>
 
   useEffect(() =>
   {
-    const resetCurrentMovie = navigation.addListener('tabPress', e =>
+    const currentRoute = navigation.addListener('tabPress', e =>
     {
-      dispatch(MoviesReducer.actions.resetCurrentMovie());
+      dispatch(MoviesReducer.actions.resetCurrentMovie())
       navigation.navigate(NavigationConstants.MOVIE_LIST)
     });
-
-    return resetCurrentMovie;
-  }, [navigation]);
+    return currentRoute;
+  }, [navigation])
 
   const connexion = useSelector(state => state.userReducer.connexion);
 

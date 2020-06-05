@@ -111,6 +111,13 @@ export default createSlice({
       },
       prepare: (currentMovieId, currentMovie, currentMovieDetails, currentMovieCredits) => { return { payload: { currentMovieId, currentMovie, currentMovieDetails, currentMovieCredits } }; }
     },
+    setCurrentRoute: {
+      reducer: (state, action) =>
+      {
+        state.currentRoute = action?.payload?.currentRoute;
+      },
+      prepare: (currentRoute) => { return { payload: { currentRoute } }; }
+    }
   },
 });
 

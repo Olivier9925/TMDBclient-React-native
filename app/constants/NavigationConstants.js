@@ -1,5 +1,5 @@
 export default {
-	HOME: 'Accueil',
+	HOME: 'home',
 	MOVIES: 'movies',
 	MOVIE_LIST: 'Films',
 	MOVIE: 'Film',
