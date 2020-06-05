@@ -26,7 +26,7 @@ const SelectorAction = ({ dispatch }) =>
         onPress={() =>
         {
           dispatch(userReducer.actions.saveToWatchList(currentMovieId, user.id));
-          navigation.navigate(NavigationConstants.MOVIES);
+          navigation.navigate(NavigationConstants.MOVIE_LIST);
         }}
         title="+"
       />
@@ -34,7 +34,7 @@ const SelectorAction = ({ dispatch }) =>
         onPress={() =>
         {
           dispatch(userReducer.actions.saveToWatchedList(currentMovieId, user.id));
-          navigation.navigate(NavigationConstants.MOVIES);
+          navigation.navigate(NavigationConstants.MOVIE_LIST);
         }}
         title="vu"
       />
