@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { CustomButton } from '@components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
-import { login, logout } from '@actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { colorConstants } from '@constants';
+import { colorConstants, NavigationConstants } from '@constants';
 import userReducer from '@reducers/userReducer';
-import { WSlogin } from '@services/UserServices'
 
 const Connexion = () =>
 {
 	const navigation = useNavigation();
 	const dispatch = useDispatch();
-
 	const connexion = useSelector(state => state.userReducer.connexion);
-
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
+
 
 	let display,
 		display_inv = 'none';

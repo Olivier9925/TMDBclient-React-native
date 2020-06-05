@@ -18,16 +18,26 @@ import { useSelector } from 'react-redux';
 // //////////////////
 export function* loginSaga(action)
 {
+
+	try {
+		const response = yield call(WSlogin, action.payload.user, action.payload.password);
+		yield put(userReducer.actions.setUserLog(response?.data?.USER[0]));
+		yield call(loadingLists, response?.data?.USER[0]?.id);
+
+	} catch (error) {
+		console.log('error loginSaga')
+	}
+}
+
+export function* loadingLists(userId)
+{
 	let watchListMoviesId = [];
 	let watchListMovies = [];
 	let watchedMoviesId = [];
 	let watchedMovies = [];
 
 	try {
-		const response = yield call(WSlogin, action.payload.user, action.payload.password);
-		yield put(userReducer.actions.setUserLog(response?.data?.USER[0]));
-
-		const watchListIds = yield call(WSgetWatchListIds, response?.data?.USER[0]?.id);
+		const watchListIds = yield call(WSgetWatchListIds, userId);
 		watchListIds?.data?.map((m, i) => watchListMoviesId.push(m.movie_id))
 
 		for (let i = 0; i < watchListMoviesId.length; i++) {
@@ -35,7 +45,7 @@ export function* loginSaga(action)
 			watchListMovies.push(watchListMovie.data)
 		}
 
-		const watchedListIds = yield call(WSgetWatchedListIds, response?.data?.USER[0]?.id);
+		const watchedListIds = yield call(WSgetWatchedListIds, userId);
 		watchedListIds?.data?.map((m, i) => watchedMoviesId.push(m.movie_id))
 
 		for (let i = 0; i < watchedMoviesId.length; i++) {
@@ -47,10 +57,9 @@ export function* loginSaga(action)
 		yield put(userReducer.actions.getWatchedList(watchedMovies));
 
 	} catch (error) {
-		console.log('error loginSaga')
+		console.log('error loadingLists')
 	}
 }
-
 
 export function* logoutSaga()
 {
@@ -65,6 +74,7 @@ export function* saveToWatchListSaga(action)
 {
 	try {
 		yield call(WSsaveToWatchList, action?.payload?.currentMovieId, action?.payload?.userId);
+		yield call(loadingLists, action?.payload?.userId);
 	} catch (error) {
 		console.log('error saveToWatchListSaga')
 	}
@@ -73,6 +83,7 @@ export function* saveToWatchedListSaga(action)
 {
 	try {
 		yield call(WSsaveToWatchedList, action?.payload?.currentMovieId, action?.payload?.userId);
+		yield call(loadingLists, action?.payload?.userId);
 	} catch (error) {
 		console.log('error saveToWatchListSaga')
 	}

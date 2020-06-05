@@ -1,7 +1,9 @@
 export default {
 	HOME: 'Accueil',
 	MOVIES: 'movies',
-	MOVIE_LIST: 'movieList',
-	MOVIE: 'movie',
+	MOVIE_LIST: 'Films',
+	MOVIE: 'Film',
 	LOGIN: 'login',
+	SIGNUP: 'signup',
+	CONNEXION: 'connexion'
 };

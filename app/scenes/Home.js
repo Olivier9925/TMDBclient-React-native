@@ -2,19 +2,32 @@ import React, { useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchBar from '@components/SearchBar';
-import { colorConstants } from '@constants';
+import { colorConstants, NavigationConstants } from '@constants';
 import ConnectedMenu from '@components/ConnectedMenu';
 import TopOrDiscoverChoice from '@components/TopOrDiscoverChoice';
 import MoviesReducer from '@reducers/MoviesReducer';
+import { useNavigation } from '@react-navigation/native';
 
 const Home = () =>
 {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   useEffect(() =>
   {
     dispatch(MoviesReducer.actions.startingApp())
   }, [])
+
+  useEffect(() =>
+  {
+    const resetCurrentMovie = navigation.addListener('tabPress', e =>
+    {
+      dispatch(MoviesReducer.actions.resetCurrentMovie());
+      navigation.navigate(NavigationConstants.MOVIE_LIST)
+    });
+
+    return resetCurrentMovie;
+  }, [navigation]);
 
   const connexion = useSelector(state => state.userReducer.connexion);
 

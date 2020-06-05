@@ -101,6 +101,16 @@ export default createSlice({
       },
       prepare: (currentMovieCredits) => { return { payload: { currentMovieCredits } }; }
     },
+    resetCurrentMovie: {
+      reducer: (state, action) =>
+      {
+        state.currentMovieId = null;
+        state.currentMovie = {};
+        state.currentMovieDetails = {};
+        state.currentMovieCredits = {};
+      },
+      prepare: (currentMovieId, currentMovie, currentMovieDetails, currentMovieCredits) => { return { payload: { currentMovieId, currentMovie, currentMovieDetails, currentMovieCredits } }; }
+    },
   },
 });
 

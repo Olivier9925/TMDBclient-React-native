@@ -30,8 +30,10 @@ export default createSlice({
 			{
 				state.user = null;
 				state.connexion = false;
+				state.watchList = [];
+				state.watchedList = []
 			},
-			prepare: (user, connexion) => { return { payload: { user, connexion } }; }
+			prepare: (user, connexion, watchList, watchedList) => { return { payload: { user, connexion, watchList, watchedList } }; }
 		},
 		getWatchList: {
 			reducer: (state, action) =>
