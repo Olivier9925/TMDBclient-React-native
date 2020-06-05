@@ -17,7 +17,7 @@ const HomeMenuButton = (props) =>
       onPress={() =>
       {
         dispatch(MoviesReducer.actions.selectChoiceFilter(choice))
-        navigation.navigate(NavigationConstants.MOVIES);
+        navigation.navigate(NavigationConstants.MOVIE_LIST);
       }}
     />
   );

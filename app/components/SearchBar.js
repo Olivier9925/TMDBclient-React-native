@@ -25,7 +25,7 @@ const SearchBar = () =>
 				onPress={() =>
 				{
 					dispatch(MoviesReducer.actions.selectSearchedMovies(search))
-					navigation.navigate(NavigationConstants.MOVIES)
+					navigation.navigate(NavigationConstants.MOVIE_LIST)
 				}}
 			/>
 		</View>
