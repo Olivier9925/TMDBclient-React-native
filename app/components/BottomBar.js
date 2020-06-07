@@ -5,7 +5,7 @@ import NavigationConstants from '@constants/NavigationConstants';
 import { useDispatch } from 'react-redux';
 import MoviesReducer from '@reducers/MoviesReducer';
 
-function BottomBar({ state, descriptors, navigation })
+function BottomBar({ state, navigation })
 {
   const dispatch = useDispatch();
   return (
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: colorConstants.BACK_SECOND,
+    // backgroundColor: colorConstants.BACK_SECOND,
+    backgroundColor: 'yellow',
     height: 80,
 
   },

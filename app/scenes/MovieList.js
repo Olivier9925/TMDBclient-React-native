@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Image, View, TouchableHighlight, Text, StyleSheet } from 'react-native';
+import { Image, SafeAreaView, View, TouchableHighlight, Text, StyleSheet, FlatList } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -21,23 +21,24 @@ const MovieList = () =>
   const searchedMovie = useSelector(state => state.MoviesReducer.searchedMovie);
   const filter = useSelector(state => state.MoviesReducer.filter);
 
-  const displayList = movies =>
-    movies.map((t, i) =>
-      (
-        <TouchableHighlight
-          onPress={() =>
-          {
-            dispatch(MoviesReducer.actions.setCurrentMovie(t.id))
-            navigation.navigate(NavigationConstants.MOVIE);
-          }}
-          key={i}>
-          <Image
-            source={{ uri: 'https://image.tmdb.org/t/p/original/' + t.poster_path, }}
-            style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }}
-            key={`${i}_${t.original_title}`}
-          />
-        </TouchableHighlight>
-      ));
+  const displayList = movie =>
+  {
+    return (
+      <TouchableHighlight
+        onPress={() =>
+        {
+          dispatch(MoviesReducer.actions.setCurrentMovie(movie.id))
+          navigation.navigate(NavigationConstants.MOVIE);
+        }}
+      >
+        <Image
+          source={{ uri: 'https://image.tmdb.org/t/p/original/' + movie.poster_path, }}
+          style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }}
+          key={`${movie.original_title}`}
+        />
+      </TouchableHighlight>
+    )
+  };
 
   let list;
   switch (filter) {
@@ -63,15 +64,22 @@ const MovieList = () =>
   }
 
   return (
-    <>
-      <View style={{ flex: 1 }}>
-        <ScrollView
-          style={{ flex: 0.85, backgroundColor: colorConstants.BACK_FIRST }}>
-          <Text style={styles.title}>{filter}</Text>
-          <View style={styles.movieList}>{displayList(list)}</View>
-        </ScrollView>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View>
+
+        <FlatList
+          data={list}
+          renderItem={({ item }) => displayList(item)}
+          keyExtractor={item => item.id}
+          ListHeaderComponent={() => <Text style={styles.title}>{filter}</Text>}
+          numColumns={2}
+          refreshing={true}
+          columnWrapperStyle={{
+            justifyContent: 'space-around',
+          }}
+        />
       </View>
-    </>
+    </SafeAreaView>
   );
 };
 
@@ -79,6 +87,7 @@ const styles = StyleSheet.create({
   title: {
     color: colorConstants.TEXT,
     marginTop: 50,
+    marginBottom: 50,
     marginLeft: 20,
     fontSize: 30,
     fontWeight: 'bold',
