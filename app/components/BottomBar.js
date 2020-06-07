@@ -30,9 +30,9 @@ function BottomBar({ state, navigation })
         {
           switch (route.name) {
             case NavigationConstants.HOME:
-              return <Image source={require('@assets/movie.png')} style={{ tintColor: colorConstants.ACCENT_COLOR, width: 30 }} resizeMode="contain" />
+              return <Image source={require('@assets/movie.png')} style={{ tintColor: colorConstants.ACCENT_COLOR, width: 30, height: 30 }} resizeMode="contain" />
             case NavigationConstants.LOGIN:
-              return <Image source={require('@assets/account.png')} style={{ tintColor: colorConstants.ACCENT_COLOR, width: 30 }} resizeMode="contain" />
+              return <Image source={require('@assets/account.png')} style={{ tintColor: colorConstants.ACCENT_COLOR, width: 30, height: 30 }} resizeMode="contain" />
             default:
               break;
           }
@@ -60,8 +60,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    // backgroundColor: colorConstants.BACK_SECOND,
-    backgroundColor: 'yellow',
+    backgroundColor: colorConstants.BACK_SECOND,
     height: 80,
 
   },
