@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { ScrollView } from 'react-native-gesture-handler';
 import { View, Image, Text, ImageBackground, StyleSheet } from 'react-native';
 import SelectorAction from '@components/SelectorAction';

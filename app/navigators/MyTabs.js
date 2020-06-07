@@ -1,13 +1,14 @@
 import React from 'react';
 import { Dimensions } from 'react-native';
 import { useSelector } from 'react-redux';
-import { colorConstants, NavigationConstants } from '@constants';
-import Home from '@scenes/Home';
+import { NavigationConstants } from '@constants';
 import ConnexionNavigator from '@navigators/ConnexionNavigator';
 import MovieNavigator from '@navigators/MovieNavigator';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import BottomBar from '@components/BottomBar';
 
-const Tab = createMaterialBottomTabNavigator();
+
+const Tab = createBottomTabNavigator();
 
 let width = Dimensions.get('window').width;
 
@@ -16,20 +17,13 @@ const MyTabs = () =>
   const connexion = useSelector(state => state.userReducer.connexion);
 
   return (
-    <Tab.Navigator
-      initialRouteName={Home}
-      activeColor={colorConstants.TEXT}
-      inactiveColor={colorConstants.ACCENT_COLOR}
-      barStyle={{
-        backgroundColor: colorConstants.BACK_SECOND,
-      }}>
+    <Tab.Navigator tabBar={props => <BottomBar {...props} />}>
       <Tab.Screen name={NavigationConstants.HOME} component={MovieNavigator} />
       <Tab.Screen
         name={NavigationConstants.LOGIN}
         component={ConnexionNavigator}
-        options={{
-          tabBarLabel: connexion ? 'Mon compte' : 'Connexion',
-        }}
+        options={{ tabBarLabel: connexion ? 'Mon compte' : 'Connexion' }}
+
       />
     </Tab.Navigator>
   );
