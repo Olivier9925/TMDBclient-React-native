@@ -10,8 +10,6 @@ import BottomBar from '@components/BottomBar';
 
 const Tab = createBottomTabNavigator();
 
-let width = Dimensions.get('window').width;
-
 const MyTabs = () =>
 {
   const connexion = useSelector(state => state.userReducer.connexion);

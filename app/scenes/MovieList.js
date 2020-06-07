@@ -1,8 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Image, SafeAreaView, View, TouchableHighlight, Text, StyleSheet, FlatList } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { colorConstants, NavigationConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
@@ -12,33 +10,12 @@ const MovieList = () =>
   const navigation = useNavigation();
   const dispatch = useDispatch()
 
-  const discoverMovies = useSelector(
-    state => state.MoviesReducer.discoverMovies
-  );
+  const discoverMovies = useSelector(state => state.MoviesReducer.discoverMovies);
   const topMovies = useSelector(state => state.MoviesReducer.topMovies);
   const watchList = useSelector(state => state.userReducer.watchList);
   const watchedList = useSelector(state => state.userReducer.watchedList);
   const searchedMovie = useSelector(state => state.MoviesReducer.searchedMovie);
   const filter = useSelector(state => state.MoviesReducer.filter);
-
-  const displayList = movie =>
-  {
-    return (
-      <TouchableHighlight
-        onPress={() =>
-        {
-          dispatch(MoviesReducer.actions.setCurrentMovie(movie.id))
-          navigation.navigate(NavigationConstants.MOVIE);
-        }}
-      >
-        <Image
-          source={{ uri: 'https://image.tmdb.org/t/p/original/' + movie.poster_path, }}
-          style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }}
-          key={`${movie.original_title}`}
-        />
-      </TouchableHighlight>
-    )
-  };
 
   let list;
   switch (filter) {
@@ -63,13 +40,31 @@ const MovieList = () =>
       break;
   }
 
+  const renderList = movie =>
+  {
+    return (
+      <TouchableHighlight
+        onPress={() =>
+        {
+          dispatch(MoviesReducer.actions.setCurrentMovie(movie.id))
+          navigation.navigate(NavigationConstants.MOVIE);
+        }}
+      >
+        <Image
+          source={{ uri: 'https://image.tmdb.org/t/p/original/' + movie.poster_path, }}
+          style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }}
+          key={`${movie.original_title}`}
+        />
+      </TouchableHighlight>
+    )
+  };
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View>
-
         <FlatList
           data={list}
-          renderItem={({ item }) => displayList(item)}
+          renderItem={({ item }) => renderList(item)}
           keyExtractor={item => item.id}
           ListHeaderComponent={() => <Text style={styles.title}>{filter}</Text>}
           numColumns={2}
@@ -77,6 +72,8 @@ const MovieList = () =>
           columnWrapperStyle={{
             justifyContent: 'space-around',
           }}
+          initialNumToRender={6}
+          removeClippedSubviews={true}
         />
       </View>
     </SafeAreaView>
@@ -92,14 +89,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
   },
-  movieList: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignContent: 'space-around',
-    justifyContent: 'space-around',
-    paddingTop: 50,
-  },
 });
-
 
 export default MovieList;

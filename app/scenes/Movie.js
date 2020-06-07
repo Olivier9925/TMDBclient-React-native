@@ -11,14 +11,13 @@ const Movie = () =>
   const currentMovieCredits = useSelector(state => state.MoviesReducer.currentMovieCredits);
   const connexion = useSelector(state => state.userReducer.connexion);
 
-
   const displayCredits = currentMovieCredits =>
   {
     if (currentMovieCredits == undefined || currentMovieCredits == null) return;
     else
       return currentMovieCredits.map((m, i) =>
       {
-        if (i > 10) return;
+        if (i > 15) return;
         return (
           <View
             style={{
@@ -69,7 +68,7 @@ const Movie = () =>
         <Text style={styles.overView}>{currentMovie.overview}</Text>
       </View>
       <View style={styles.credits}>{displayCredits(currentMovieCredits.cast)}</View>
-      {connexion ? <SelectorAction /> : <></>}
+      {connexion ? <SelectorAction /> : <View></View>}
     </ScrollView>
   );
 };

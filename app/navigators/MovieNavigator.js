@@ -16,7 +16,7 @@ const MovieNavigator = () =>
       initialRouteName={MovieList}
       screenOptions={{
         headerShown: true,
-        headerStyle: { backgroundColor: colorConstants.BACK_FIRST },
+        headerStyle: { backgroundColor: colorConstants.BACK_SECOND },
         headerTitleStyle: { display: 'none' }
       }}
     >
