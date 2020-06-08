@@ -13,7 +13,11 @@ const initState = {
   currentMovieDetails: [],
   currentMovieCredits: [],
   currentActorId: null,
-  currentActor: {},
+  currentActor: {
+    details: {},
+    Image: [],
+    filmo: []
+  },
 };
 export default createSlice({
   name: 'MoviesReducer',

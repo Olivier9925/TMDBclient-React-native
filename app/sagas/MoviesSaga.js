@@ -5,8 +5,7 @@ import MoviesReducer from '@reducers/MoviesReducer'
 // //////////////////
 // SAGA FUNCTIONS
 // //////////////////
-export function* appStartSaga()
-{
+export function* appStartSaga() {
     try {
         const responseDiscoverMovies = yield call(WSgetDiscoverMovies);
         const responseTopMovies = yield call(WSgetTopMovies);
@@ -23,8 +22,7 @@ export function* appStartSaga()
     }
 }
 
-export function* getSearchedMoviesSaga(action)
-{
+export function* getSearchedMoviesSaga(action) {
     try {
         const response = yield call(WSsearchMovie, action?.payload?.search);
         if (response) {
@@ -38,8 +36,7 @@ export function* getSearchedMoviesSaga(action)
     }
 }
 
-export function* getCurrentMoviesSaga(action)
-{
+export function* getCurrentMoviesSaga(action) {
     try {
         const responseCurrentMovie = yield call(WSgetCurrentMovie, action?.payload?.currentMovieId);
         const responseCurrentMovieDetails = yield call(WSgetMovieDetails, action?.payload?.currentMovieId);
@@ -60,8 +57,7 @@ export function* getCurrentMoviesSaga(action)
     }
 }
 
-export function* getCurrentActorSaga(action)
-{
+export function* getCurrentActorSaga(action) {
     try {
         const currentActorImage = yield call(WSgetCurrentActorImage, action?.payload?.currentActorId);
         const currentActorDetails = yield call(WSgetCurrentActorDetails, action?.payload?.currentActorId);
@@ -75,8 +71,6 @@ export function* getCurrentActorSaga(action)
 
         yield put(MoviesReducer.actions.getCurrentActor(currentActor));
 
-        console.log('currentActor', currentActor)
-
     } catch (error) {
         console.log('error getCurrentActorSaga')
     }
@@ -85,20 +79,16 @@ export function* getCurrentActorSaga(action)
 // //////////////////
 // WATCH FUNCTIONS
 // //////////////////
-function* watchAppStart()
-{
+function* watchAppStart() {
     yield takeEvery(MoviesReducer.actions.startingApp, appStartSaga)
 }
-function* watchSearch()
-{
+function* watchSearch() {
     yield takeEvery(MoviesReducer.actions.selectSearchedMovies, getSearchedMoviesSaga)
 }
-function* watchCurrentMovie()
-{
+function* watchCurrentMovie() {
     yield takeEvery(MoviesReducer.actions.setCurrentMovie, getCurrentMoviesSaga)
 }
-function* watchCurrentActorSelection()
-{
+function* watchCurrentActorSelection() {
     yield takeEvery(MoviesReducer.actions.setCurrentActorId, getCurrentActorSaga)
 }
 

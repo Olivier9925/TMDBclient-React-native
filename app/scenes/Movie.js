@@ -1,12 +1,11 @@
 import React from 'react';
+import { View, Image, Text, ImageBackground, StyleSheet, ScrollView } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { ScrollView } from 'react-native-gesture-handler';
-import { View, Image, Text, ImageBackground, StyleSheet } from 'react-native';
-import SelectorAction from '@components/SelectorAction';
 import { ColorConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
-import NavigationConstants from '../constants/NavigationConstants';
+import NavigationConstants from '@constants/NavigationConstants';
 import { useNavigation } from '@react-navigation/native';
+import SelectorAction from '@components/SelectorAction';
 
 const Movie = () =>
 {
