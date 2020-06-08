@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { CustomButton } from '@components/CustomButton';

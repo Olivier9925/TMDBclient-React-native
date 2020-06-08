@@ -1,5 +1,4 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 import { NavigationConstants } from '@constants';
 import ConnexionNavigator from '@navigators/ConnexionNavigator';

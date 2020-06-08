@@ -11,7 +11,6 @@ import
 	WSsaveToWatchedList,
 } from '@services/UserServices';
 import UserReducer from '@reducers/UserReducer';
-import { useSelector } from 'react-redux';
 
 // //////////////////
 // SAGA FUNCTIONS
@@ -58,15 +57,6 @@ export function* loadingLists(userId)
 
 	} catch (error) {
 		console.log('error loadingLists')
-	}
-}
-
-export function* logoutSaga()
-{
-	try {
-
-	} catch (error) {
-
 	}
 }
 

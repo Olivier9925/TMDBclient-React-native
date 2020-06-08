@@ -59,30 +59,3 @@ export default createSlice({
 		}
 	}
 });
-
-// 		case actionsList.LOGIN:
-// 		return {
-// 			...state,
-// 			user: action.user,
-// 			connexion: action.connexion,
-// 		};
-// 		case actionsList.DECO:
-// 		return {
-// 			...state,
-// 			user: null,
-// 			connexion: false,
-// 		};
-
-// 		case actionsList.GET_WATCHLIST:
-// 		return {
-// 			...state,
-// 			watchList: action.watchList,
-// 		};
-// 		case actionsList.GET_WATCHED:
-// 		return {
-// 			...state,
-// 			watchedList: action.watchedList,
-// 		};
-// 		default:
-// 			return state;
-// 	}
