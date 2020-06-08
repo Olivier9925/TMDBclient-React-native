@@ -5,7 +5,7 @@ import { CustomButton } from '@components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
 import { signup } from '@actions/userActions'
 import { useDispatch } from 'react-redux'
-import { colorConstants } from '@constants';
+import { ColorConstants } from '@constants';
 
 const Signup = () =>
 {
@@ -22,7 +22,7 @@ const Signup = () =>
 			<View style={styles.homeView} >
 				<TextInput
 					placeholder="eMail"
-					placeholderTextColor={colorConstants.TEXT}
+					placeholderTextColor={ColorConstants.TEXT}
 					style={styles.inputSearch}
 					onChangeText={text => setEmail(text)}
 				/>
@@ -30,7 +30,7 @@ const Signup = () =>
 					secureTextEntry={true}
 					textContentType='password'
 					placeholder="Password"
-					placeholderTextColor={colorConstants.TEXT}
+					placeholderTextColor={ColorConstants.TEXT}
 					style={styles.inputSearch}
 					onChangeText={text => setPassword1(text)}
 				/>
@@ -38,7 +38,7 @@ const Signup = () =>
 					secureTextEntry={true}
 					textContentType='password'
 					placeholder="encore...password"
-					placeholderTextColor={colorConstants.TEXT}
+					placeholderTextColor={ColorConstants.TEXT}
 					style={styles.inputSearch}
 					onChangeText={text => setPassword2(text)}
 				/>
@@ -67,16 +67,16 @@ const styles = StyleSheet.create({
 		marginTop: 50,
 	},
 	title: {
-		color: colorConstants.TEXT,
+		color: ColorConstants.TEXT,
 		marginTop: 50,
 		marginLeft: 20,
 		fontSize: 30,
 		fontWeight: 'bold'
 	},
 	inputSearch: {
-		color: colorConstants.TEXT,
-		borderColor: colorConstants.BORDER_COLOR,
-		backgroundColor: colorConstants.BACK_SECOND,
+		color: ColorConstants.TEXT,
+		borderColor: ColorConstants.BORDER_COLOR,
+		backgroundColor: ColorConstants.BACK_SECOND,
 		width: 180,
 		height: 50,
 		padding: 10,

@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import { ScrollView } from 'react-native-gesture-handler';
 import { View, Image, Text, ImageBackground, StyleSheet } from 'react-native';
 import SelectorAction from '@components/SelectorAction';
-import { colorConstants } from '@constants';
+import { ColorConstants } from '@constants';
 
 const Movie = () =>
 {
   const currentMovie = useSelector(state => state.MoviesReducer.currentMovie);
   const currentMovieCredits = useSelector(state => state.MoviesReducer.currentMovieCredits);
-  const connexion = useSelector(state => state.userReducer.connexion);
+  const connexion = useSelector(state => state.UserReducer.connexion);
 
   const displayCredits = currentMovieCredits =>
   {
@@ -25,17 +25,17 @@ const Movie = () =>
               flexDirection: 'row',
               justifyContent: 'space-between',
             }}>
-            <Text style={{ color: colorConstants.ACCENT_COLOR }}>
+            <Text style={{ color: ColorConstants.ACCENT_COLOR }}>
               {m.character}
             </Text>
-            <Text style={{ color: colorConstants.TEXT }}>{m.name}</Text>
+            <Text style={{ color: ColorConstants.TEXT }}>{m.name}</Text>
           </View>
         );
       });
   };
 
   return (
-    <ScrollView style={{ backgroundColor: colorConstants.BACK_SECOND }}>
+    <ScrollView style={{ backgroundColor: ColorConstants.BACK_SECOND }}>
       <ImageBackground
         source={{
           uri: `https://image.tmdb.org/t/p/original/${
@@ -59,7 +59,7 @@ const Movie = () =>
         style={{
           display: 'flex',
           marginTop: 60,
-          color: colorConstants.TEXT,
+          color: ColorConstants.TEXT,
           paddingHorizontal: 20,
         }}>
         <Text style={styles.title}>{currentMovie.title}</Text>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     padding: 0,
   },
   posterImage: {
-    borderColor: colorConstants.ACCENT_COLOR,
+    borderColor: ColorConstants.ACCENT_COLOR,
     width: 180,
     height: 250,
     marginBottom: 20,
@@ -91,21 +91,21 @@ const styles = StyleSheet.create({
     borderWidth: 4,
   },
   title: {
-    color: colorConstants.TEXT,
+    color: ColorConstants.TEXT,
     paddingVertical: 10,
     fontSize: 30,
     fontWeight: 'bold',
   },
   tagLine: {
-    color: colorConstants.TEXT,
+    color: ColorConstants.TEXT,
     paddingVertical: 10,
     fontSize: 25,
   },
   date: {
-    color: colorConstants.ACCENT_COLOR,
+    color: ColorConstants.ACCENT_COLOR,
   },
   overView: {
-    color: colorConstants.TEXT,
+    color: ColorConstants.TEXT,
     paddingVertical: 10,
     fontSize: 15,
   },

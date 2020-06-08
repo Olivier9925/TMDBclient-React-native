@@ -10,7 +10,7 @@ import
 	WSsaveToWatchList,
 	WSsaveToWatchedList,
 } from '@services/UserServices';
-import userReducer from '@reducers/userReducer';
+import UserReducer from '@reducers/UserReducer';
 import { useSelector } from 'react-redux';
 
 // //////////////////
@@ -21,7 +21,7 @@ export function* loginSaga(action)
 
 	try {
 		const response = yield call(WSlogin, action.payload.user, action.payload.password);
-		yield put(userReducer.actions.setUserLog(response?.data?.USER[0]));
+		yield put(UserReducer.actions.setUserLog(response?.data?.USER[0]));
 		yield call(loadingLists, response?.data?.USER[0]?.id);
 
 	} catch (error) {
@@ -53,8 +53,8 @@ export function* loadingLists(userId)
 			watchedMovies.push(watchedListMovie.data)
 		}
 
-		yield put(userReducer.actions.getWatchList(watchListMovies));
-		yield put(userReducer.actions.getWatchedList(watchedMovies));
+		yield put(UserReducer.actions.getWatchList(watchListMovies));
+		yield put(UserReducer.actions.getWatchedList(watchedMovies));
 
 	} catch (error) {
 		console.log('error loadingLists')
@@ -94,21 +94,21 @@ export function* saveToWatchedListSaga(action)
 // //////////////////
 function* watchlogin()
 {
-	yield takeEvery(userReducer.actions.loginSaisie, loginSaga)
+	yield takeEvery(UserReducer.actions.loginSaisie, loginSaga)
 }
 
 function* watchLogout()
 {
-	yield takeEvery(userReducer.actions.logout, logoutSaga)
+	yield takeEvery(UserReducer.actions.logout, logoutSaga)
 }
 
 function* watchSaveToWatchList()
 {
-	yield takeEvery(userReducer.actions.saveToWatchList, saveToWatchListSaga)
+	yield takeEvery(UserReducer.actions.saveToWatchList, saveToWatchListSaga)
 }
 function* watchSaveToWatchedList()
 {
-	yield takeEvery(userReducer.actions.saveToWatchedList, saveToWatchedListSaga)
+	yield takeEvery(UserReducer.actions.saveToWatchedList, saveToWatchedListSaga)
 }
 
 export default createSagaRoot(watchlogin, watchLogout, watchSaveToWatchList, watchSaveToWatchedList);

@@ -4,14 +4,14 @@ import { TextInput } from 'react-native-gesture-handler';
 import { CustomButton } from '@components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { colorConstants, NavigationConstants } from '@constants';
-import userReducer from '@reducers/userReducer';
+import { ColorConstants } from '@constants';
+import UserReducer from '@reducers/UserReducer';
 
 const Connexion = () =>
 {
 	const navigation = useNavigation();
 	const dispatch = useDispatch();
-	const connexion = useSelector(state => state.userReducer.connexion);
+	const connexion = useSelector(state => state.UserReducer.connexion);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -34,7 +34,7 @@ const Connexion = () =>
 			<View style={[styles.homeView, { display: display }]}>
 				<TextInput
 					placeholder="eMail"
-					placeholderTextColor={colorConstants.TEXT}
+					placeholderTextColor={ColorConstants.TEXT}
 					style={styles.inputSearch}
 					onChangeText={text => setEmail(text)}
 				/>
@@ -42,7 +42,7 @@ const Connexion = () =>
 					secureTextEntry={true}
 					textContentType="password"
 					placeholder="Password"
-					placeholderTextColor={colorConstants.TEXT}
+					placeholderTextColor={ColorConstants.TEXT}
 					style={styles.inputSearch}
 					onChangeText={text => setPassword(text)}
 				/>
@@ -51,7 +51,7 @@ const Connexion = () =>
 					title="Se connecter"
 					onPress={() =>
 					{
-						dispatch(userReducer.actions.loginSaisie(email, password));
+						dispatch(UserReducer.actions.loginSaisie(email, password));
 						//navigation.navigate('Home');
 					}}
 				/>
@@ -68,7 +68,7 @@ const Connexion = () =>
 					title="Se déconnecter"
 					onPress={() =>
 					{
-						dispatch(userReducer.actions.logout());
+						dispatch(UserReducer.actions.logout());
 					}}
 				/>
 			</View>
@@ -85,16 +85,16 @@ const styles = StyleSheet.create({
 		marginTop: 50,
 	},
 	title: {
-		color: colorConstants.TEXT,
+		color: ColorConstants.TEXT,
 		marginTop: 50,
 		marginLeft: 20,
 		fontSize: 30,
 		fontWeight: 'bold',
 	},
 	inputSearch: {
-		color: colorConstants.TEXT,
-		borderColor: colorConstants.BORDER_COLOR,
-		backgroundColor: colorConstants.BACK_SECOND,
+		color: ColorConstants.TEXT,
+		borderColor: ColorConstants.BORDER_COLOR,
+		backgroundColor: ColorConstants.BACK_SECOND,
 		width: 180,
 		height: 50,
 		padding: 10,

@@ -10,7 +10,7 @@ const initState = {
 };
 
 export default createSlice({
-	name: 'userReducer',
+	name: 'UserReducer',
 	initialState: initState,
 	reducers: {
 		loginSaisie: {

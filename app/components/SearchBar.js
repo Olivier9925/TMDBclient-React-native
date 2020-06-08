@@ -3,7 +3,7 @@ import { TextInput, View, StyleSheet } from 'react-native'
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { CustomButton } from './CustomButton'
-import { colorConstants, NavigationConstants } from '@constants';
+import { ColorConstants, NavigationConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
 
 const SearchBar = () =>
@@ -16,7 +16,7 @@ const SearchBar = () =>
 		<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
 			<TextInput
 				placeholder="rechercher"
-				placeholderTextColor={colorConstants.TEXT}
+				placeholderTextColor={ColorConstants.TEXT}
 				style={styles.inputSearch}
 				onChangeText={text => setsearch(text)}
 			/>
@@ -35,9 +35,9 @@ export default SearchBar;
 
 const styles = StyleSheet.create({
 	inputSearch: {
-		color: colorConstants.TEXT,
-		borderColor: colorConstants.BORDER_COLOR,
-		backgroundColor: colorConstants.BACK_SECOND,
+		color: ColorConstants.TEXT,
+		borderColor: ColorConstants.BORDER_COLOR,
+		backgroundColor: ColorConstants.BACK_SECOND,
 		width: 180,
 		height: 50,
 		padding: 10,

@@ -3,22 +3,22 @@ import { useSelector, connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 import { CustomButton } from './CustomButton.js';
 import { useNavigation } from '@react-navigation/native';
-import { colorConstants, NavigationConstants } from '@constants';
-import userReducer from '@reducers/userReducer';
+import { ColorConstants, NavigationConstants } from '@constants';
+import UserReducer from '@reducers/UserReducer';
 
 const SelectorAction = ({ dispatch }) =>
 {
   const navigation = useNavigation();
 
   const currentMovieId = useSelector(state => state.MoviesReducer.currentMovieId);
-  const user = useSelector(state => state.userReducer.user);
+  const user = useSelector(state => state.UserReducer.user);
 
   return (
     <View style={styles.selectorAction}>
       <CustomButton
         onPress={() =>
         {
-          dispatch(userReducer.actions.saveToWatchList(currentMovieId, user.id));
+          dispatch(UserReducer.actions.saveToWatchList(currentMovieId, user.id));
           navigation.navigate(NavigationConstants.MOVIE_LIST);
         }}
         title="+"
@@ -26,7 +26,7 @@ const SelectorAction = ({ dispatch }) =>
       <CustomButton
         onPress={() =>
         {
-          dispatch(userReducer.actions.saveToWatchedList(currentMovieId, user.id));
+          dispatch(UserReducer.actions.saveToWatchedList(currentMovieId, user.id));
           navigation.navigate(NavigationConstants.MOVIE_LIST);
         }}
         title="vu"
@@ -38,7 +38,7 @@ export default connect()(SelectorAction);
 
 const styles = StyleSheet.create({
   selectorAction: {
-    borderTopColor: colorConstants.ACCENT_COLOR,
+    borderTopColor: ColorConstants.ACCENT_COLOR,
     borderBottomColor: 'transparent',
     borderRightColor: 'transparent',
     borderLeftColor: 'transparent',

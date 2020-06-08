@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { colorConstants } from '@constants';
+import { ColorConstants } from '@constants';
 import NavigationConstants from '@constants/NavigationConstants';
 import { useDispatch } from 'react-redux';
 import MoviesReducer from '@reducers/MoviesReducer';
@@ -30,9 +30,9 @@ function BottomBar({ state, navigation })
         {
           switch (route.name) {
             case NavigationConstants.HOME:
-              return <Image source={require('@assets/movie.png')} style={{ tintColor: colorConstants.ACCENT_COLOR, width: 30, height: 30 }} resizeMode="contain" />
+              return <Image source={require('@assets/movie.png')} style={{ tintColor: ColorConstants.ACCENT_COLOR, width: 30, height: 30 }} resizeMode="contain" />
             case NavigationConstants.LOGIN:
-              return <Image source={require('@assets/account.png')} style={{ tintColor: colorConstants.ACCENT_COLOR, width: 30, height: 30 }} resizeMode="contain" />
+              return <Image source={require('@assets/account.png')} style={{ tintColor: ColorConstants.ACCENT_COLOR, width: 30, height: 30 }} resizeMode="contain" />
             default:
               break;
           }
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: colorConstants.BACK_SECOND,
+    backgroundColor: ColorConstants.BACK_SECOND,
     height: 80,
 
   },

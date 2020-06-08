@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 
 const MyTabs = () =>
 {
-  const connexion = useSelector(state => state.userReducer.connexion);
+  const connexion = useSelector(state => state.UserReducer.connexion);
 
   return (
     <Tab.Navigator tabBar={props => <BottomBar {...props} />}>

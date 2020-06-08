@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import MoviesReducer from './MoviesReducer';
-import userReducer from './userReducer';
+import UserReducer from './UserReducer';
 
 export default combineReducers({
   [MoviesReducer.name]: MoviesReducer.reducer,
-  [userReducer.name]: userReducer.reducer,
+  [UserReducer.name]: UserReducer.reducer,
 });

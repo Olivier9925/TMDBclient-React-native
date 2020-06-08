@@ -4,7 +4,7 @@ import Movie from '@scenes/Movie';
 import MovieList from '@scenes/MovieList';
 import Home from '@scenes/Home';
 import { NavigationConstants } from '@constants';
-import { colorConstants } from '@constants';
+import { ColorConstants } from '@constants';
 
 
 const Stack = createStackNavigator();
@@ -16,7 +16,7 @@ const MovieNavigator = () =>
       initialRouteName={MovieList}
       screenOptions={{
         headerShown: true,
-        headerStyle: { backgroundColor: colorConstants.BACK_SECOND },
+        headerStyle: { backgroundColor: ColorConstants.BACK_SECOND },
         headerTitleStyle: { display: 'none' }
       }}
     >

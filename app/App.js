@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
 import 'react-native-gesture-handler';
-import { colorConstants } from '@constants';
+import { ColorConstants } from '@constants';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import MyTabs from '@navigators/MyTabs';
@@ -22,11 +22,11 @@ sagaMiddleware.run(rootSaga);
 const MyTheme = {
   dark: false,
   colors: {
-    primary: colorConstants.ACCENT_COLOR,
-    background: colorConstants.BACK_FIRST,
-    card: colorConstants.TEXT,
-    text: colorConstants.ACCENT_COLOR,
-    border: colorConstants.BORDER_COLOR,
+    primary: ColorConstants.ACCENT_COLOR,
+    background: ColorConstants.BACK_FIRST,
+    card: ColorConstants.TEXT,
+    text: ColorConstants.ACCENT_COLOR,
+    border: ColorConstants.BORDER_COLOR,
   },
 };
 

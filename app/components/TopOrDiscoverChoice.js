@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { colorConstants } from '@constants';
+import { ColorConstants } from '@constants';
 import HomeMenuButton from '@components/HomeMenuButton'
 
 
@@ -17,13 +17,13 @@ const TopOrDiscoverChoice = () =>
 
 const styles = StyleSheet.create({
   TopOrDiscoverChoice: {
-    backgroundColor: colorConstants.BACK_SECOND,
+    backgroundColor: ColorConstants.BACK_SECOND,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingTop: 20,
     paddingBottom: 20,
-    borderTopColor: colorConstants.BACK_FIRST,
+    borderTopColor: ColorConstants.BACK_FIRST,
     borderWidth: 1,
     borderBottomColor: 'transparent',
     borderLeftColor: 'transparent',
