@@ -12,6 +12,8 @@ const initState = {
   currentMovie: [],
   currentMovieDetails: [],
   currentMovieCredits: [],
+  currentActorId: null,
+  currentActor: {},
 };
 export default createSlice({
   name: 'MoviesReducer',
@@ -117,6 +119,20 @@ export default createSlice({
         state.currentRoute = action?.payload?.currentRoute;
       },
       prepare: (currentRoute) => { return { payload: { currentRoute } }; }
+    },
+    setCurrentActorId: {
+      reducer: (state, action) =>
+      {
+        state.currentActorId = action?.payload?.currentActorId
+      },
+      prepare: (currentActorId) => { return { payload: { currentActorId } }; }
+    },
+    getCurrentActor: {
+      reducer: (state, action) =>
+      {
+        state.currentActor = action?.payload?.currentActor;
+      },
+      prepare: (currentActor) => { return { payload: { currentActor } }; }
     }
   },
 });

@@ -1,12 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { ScrollView } from 'react-native-gesture-handler';
 import { View, Image, Text, ImageBackground, StyleSheet } from 'react-native';
 import SelectorAction from '@components/SelectorAction';
 import { ColorConstants } from '@constants';
+import MoviesReducer from '@reducers/MoviesReducer';
+import NavigationConstants from '../constants/NavigationConstants';
+import { useNavigation } from '@react-navigation/native';
 
 const Movie = () =>
 {
+  const dispatch = useDispatch();
+  const navigation = useNavigation()
   const currentMovie = useSelector(state => state.MoviesReducer.currentMovie);
   const currentMovieCredits = useSelector(state => state.MoviesReducer.currentMovieCredits);
   const connexion = useSelector(state => state.UserReducer.connexion);
@@ -28,8 +33,18 @@ const Movie = () =>
             <Text style={{ color: ColorConstants.ACCENT_COLOR }}>
               {m.character}
             </Text>
-            <Text style={{ color: ColorConstants.TEXT }}>{m.name}</Text>
-          </View>
+            <Text
+              style={{ color: ColorConstants.TEXT }}
+              onPress={() =>
+              {
+                dispatch(MoviesReducer.actions.setCurrentActorId(m.id));
+                navigation.navigate(NavigationConstants.ACTOR);
+
+              }}
+            >
+              {m.name}
+            </Text>
+          </View >
         );
       });
   };

@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { createSagaRoot } from '@sagas';
-import { WSgetDiscoverMovies, WSgetTopMovies, WSsearchMovie, WSgetCurrentMovie, WSgetMovieDetails, WSgetMovieCredits } from '@services/MoviesServices';
+import { WSgetDiscoverMovies, WSgetTopMovies, WSsearchMovie, WSgetCurrentMovie, WSgetMovieDetails, WSgetMovieCredits, WSgetCurrentActorImage, WSgetCurrentActorDetails, WSgetCurrentActorFilmo } from '@services/MoviesServices';
 import MoviesReducer from '@reducers/MoviesReducer'
 // //////////////////
 // SAGA FUNCTIONS
@@ -60,6 +60,28 @@ export function* getCurrentMoviesSaga(action)
     }
 }
 
+export function* getCurrentActorSaga(action)
+{
+    try {
+        const currentActorImage = yield call(WSgetCurrentActorImage, action?.payload?.currentActorId);
+        const currentActorDetails = yield call(WSgetCurrentActorDetails, action?.payload?.currentActorId);
+        const currentActorFilmo = yield call(WSgetCurrentActorFilmo, action?.payload?.currentActorId);
+
+        const currentActor = {
+            details: currentActorDetails.data,
+            Image: currentActorImage.data.profiles,
+            filmo: currentActorFilmo.data.cast
+        }
+
+        yield put(MoviesReducer.actions.getCurrentActor(currentActor));
+
+        console.log('currentActor', currentActor)
+
+    } catch (error) {
+        console.log('error getCurrentActorSaga')
+    }
+}
+
 // //////////////////
 // WATCH FUNCTIONS
 // //////////////////
@@ -75,5 +97,9 @@ function* watchCurrentMovie()
 {
     yield takeEvery(MoviesReducer.actions.setCurrentMovie, getCurrentMoviesSaga)
 }
+function* watchCurrentActorSelection()
+{
+    yield takeEvery(MoviesReducer.actions.setCurrentActorId, getCurrentActorSaga)
+}
 
-export default createSagaRoot(watchAppStart, watchSearch, watchCurrentMovie);
+export default createSagaRoot(watchAppStart, watchSearch, watchCurrentMovie, watchCurrentActorSelection);

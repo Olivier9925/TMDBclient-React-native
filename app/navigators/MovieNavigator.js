@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Movie from '@scenes/Movie';
 import MovieList from '@scenes/MovieList';
 import Home from '@scenes/Home';
+import Actor from '@scenes/Actor';
 import { NavigationConstants } from '@constants';
 import { ColorConstants } from '@constants';
 
@@ -23,6 +24,7 @@ const MovieNavigator = () =>
       <Stack.Screen name={NavigationConstants.HOME} component={Home} />
       <Stack.Screen name={NavigationConstants.MOVIE_LIST} component={MovieList} />
       <Stack.Screen name={NavigationConstants.MOVIE} component={Movie} />
+      <Stack.Screen name={NavigationConstants.ACTOR} component={Actor} />
     </Stack.Navigator>
   );
 };

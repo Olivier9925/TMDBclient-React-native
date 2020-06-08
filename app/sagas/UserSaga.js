@@ -87,10 +87,6 @@ function* watchlogin()
 	yield takeEvery(UserReducer.actions.loginSaisie, loginSaga)
 }
 
-function* watchLogout()
-{
-	yield takeEvery(UserReducer.actions.logout, logoutSaga)
-}
 
 function* watchSaveToWatchList()
 {
@@ -101,4 +97,4 @@ function* watchSaveToWatchedList()
 	yield takeEvery(UserReducer.actions.saveToWatchedList, saveToWatchedListSaga)
 }
 
-export default createSagaRoot(watchlogin, watchLogout, watchSaveToWatchList, watchSaveToWatchedList);
+export default createSagaRoot(watchlogin, watchSaveToWatchList, watchSaveToWatchedList);

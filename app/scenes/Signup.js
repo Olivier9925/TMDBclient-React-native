@@ -3,7 +3,6 @@ import { Text, View, StyleSheet } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import { CustomButton } from '@components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
-import { signup } from '@actions/userActions'
 import { useDispatch } from 'react-redux'
 import { ColorConstants } from '@constants';
 

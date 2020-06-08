@@ -4,5 +4,6 @@ export default {
 	MOVIE: 'Film',
 	LOGIN: 'login',
 	SIGNUP: 'signup',
-	CONNEXION: 'connexion'
+	CONNEXION: 'connexion',
+	ACTOR: 'actor',
 };

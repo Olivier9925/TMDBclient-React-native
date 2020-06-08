@@ -67,3 +67,23 @@ export const WSgetMovieCredits = currentMovieId =>
       apiKey
     )
 };
+
+export const WSgetCurrentActorFilmo = currentActorId =>
+{
+  return axios.get(
+    'https://api.themoviedb.org/3/person/' + currentActorId + '/movie_credits?api_key=' + apiKey + '&language=fr-FR'
+  )
+}
+
+export const WSgetCurrentActorDetails = currentActorId =>
+{
+  return axios.get(
+    'https://api.themoviedb.org/3/person/' + currentActorId + '?api_key=' + apiKey + '&language=fr-FR'
+  )
+}
+export const WSgetCurrentActorImage = currentActorId =>
+{
+  return axios.get(
+    'https://api.themoviedb.org/3/person/' + currentActorId + '/images?api_key=' + apiKey
+  )
+}
