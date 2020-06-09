@@ -4,11 +4,10 @@ import { TextInput } from 'react-native-gesture-handler';
 import { CustomButton } from '@components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { ColorConstants } from '@constants';
+import { ColorConstants, NavigationConstants } from '@constants';
 import UserReducer from '@reducers/UserReducer';
 
-const Connexion = () =>
-{
+const LoginScene = () => {
 	const navigation = useNavigation();
 	const dispatch = useDispatch();
 	const connexion = useSelector(state => state.UserReducer.connexion);
@@ -49,25 +48,22 @@ const Connexion = () =>
 				<CustomButton
 					style={styles.button}
 					title="Se connecter"
-					onPress={() =>
-					{
+					onPress={() => {
 						dispatch(UserReducer.actions.loginSaisie(email, password));
 						//navigation.navigate('Home');
 					}}
 				/>
 				<CustomButton
 					title="S'inscrire"
-					onPress={() =>
-					{
-						navigation.navigate('Signup');
+					onPress={() => {
+						navigation.navigate(NavigationConstants.SIGNUP);
 					}}
 				/>
 			</View>
 			<View style={[styles.homeView, { display: display_inv }]}>
 				<CustomButton
 					title="Se déconnecter"
-					onPress={() =>
-					{
+					onPress={() => {
 						dispatch(UserReducer.actions.logout());
 					}}
 				/>
@@ -75,7 +71,7 @@ const Connexion = () =>
 		</View>
 	);
 };
-export default Connexion;
+export default LoginScene;
 
 const styles = StyleSheet.create({
 	homeView: {

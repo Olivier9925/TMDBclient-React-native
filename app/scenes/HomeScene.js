@@ -8,20 +8,16 @@ import TopOrDiscoverChoice from '@components/TopOrDiscoverChoice';
 import MoviesReducer from '@reducers/MoviesReducer';
 import { useNavigation } from '@react-navigation/native';
 
-const Home = () =>
-{
+const HomeScene = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  useEffect(() =>
-  {
+  useEffect(() => {
     dispatch(MoviesReducer.actions.startingApp())
   }, [])
 
-  useEffect(() =>
-  {
-    const currentRoute = navigation.addListener('tabPress', e =>
-    {
+  useEffect(() => {
+    const currentRoute = navigation.addListener('tabPress', e => {
       dispatch(MoviesReducer.actions.resetCurrentMovie())
       navigation.navigate(NavigationConstants.MOVIE_LIST)
     });
@@ -58,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default HomeScene;

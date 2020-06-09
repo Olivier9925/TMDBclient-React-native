@@ -6,8 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
 import { ColorConstants } from '@constants';
 
-const Signup = () =>
-{
+const SignupScene = () => {
 	const navigation = useNavigation();
 	const dispatch = useDispatch()
 
@@ -44,8 +43,7 @@ const Signup = () =>
 				<CustomButton
 					style={styles.button}
 					title='OK'
-					onPress={() =>
-					{
+					onPress={() => {
 						if (password1 === password2) {
 							dispatch(signup(email, password1));
 							navigation.navigate('Movie Tracker')
@@ -56,7 +54,7 @@ const Signup = () =>
 		</View>
 	)
 }
-export default Signup;
+export default SignupScene;
 
 const styles = StyleSheet.create({
 	homeView: {

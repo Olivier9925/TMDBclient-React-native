@@ -6,7 +6,7 @@ import { ColorConstants, NavigationConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
 import MoviePoster from '@components/MoviePoster'
 
-const MovieList = () => {
+const MovieListScene = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch()
 
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MovieList;
+export default MovieListScene;

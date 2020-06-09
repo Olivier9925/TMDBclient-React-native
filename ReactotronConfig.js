@@ -3,8 +3,7 @@ import { reactotronRedux } from 'reactotron-redux';
 import sagaPlugin from 'reactotron-redux-saga';
 
 const yeOldeConsoleLog = console.log;
-console.log = (...args) =>
-{
+console.log = (...args) => {
   yeOldeConsoleLog(...args);
 
   Reactotron.display({
@@ -30,6 +29,7 @@ const reactotron = Reactotron
   })
   .use(sagaPlugin())
   .use(reactotronRedux())
+  .configure({ host: '192.168.1.62' })
   .connect();
 
 export default reactotron;

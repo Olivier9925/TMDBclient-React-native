@@ -1,22 +1,21 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationConstants } from '@constants';
-import Movie from '@scenes/Movie';
-import Signup from '@scenes/Signup';
-import Connexion from '@scenes/Connexion';
+import MovieScene from '@scenes/MovieScene';
+import SignupScene from '@scenes/SignupScene';
+import LoginScene from '@scenes/LoginScene';
 
 const Stack = createStackNavigator();
 
-const MovieNavigator = () =>
-{
+const MovieNavigator = () => {
 	return (
 		<Stack.Navigator
-			initialRouteName={Movie}
+			initialRouteName={MovieScene}
 			screenOptions={{
 				headerShown: false,
 			}}>
-			<Stack.Screen name={NavigationConstants.CONNEXION} component={Connexion} />
-			<Stack.Screen name={NavigationConstants.SIGNUP} component={Signup} />
+			<Stack.Screen name={NavigationConstants.LOGIN} component={LoginScene} />
+			<Stack.Screen name={NavigationConstants.SIGNUP} component={SignupScene} />
 		</Stack.Navigator>
 	);
 };

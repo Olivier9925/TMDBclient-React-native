@@ -2,8 +2,7 @@ import axios from 'axios';
 
 const apiKey = 'e709f2ea9104a5d71ac4f13607ce4100';
 
-export const WSgetDiscoverMovies = () =>
-{
+export const WSgetDiscoverMovies = () => {
   return axios
     .get(
       'https://api.themoviedb.org/3/discover/movie?api_key=' +
@@ -12,8 +11,7 @@ export const WSgetDiscoverMovies = () =>
     )
 };
 
-export const WSgetTopMovies = () =>
-{
+export const WSgetTopMovies = () => {
   return axios
     .get(
       'https://api.themoviedb.org/3/movie/top_rated?api_key=' +
@@ -22,8 +20,7 @@ export const WSgetTopMovies = () =>
     )
 };
 
-export const WSsearchMovie = searchValue =>
-{
+export const WSsearchMovie = searchValue => {
   return axios
     .get(
       'https://api.themoviedb.org/3/search/movie?api_key=' +
@@ -33,8 +30,7 @@ export const WSsearchMovie = searchValue =>
     )
 };
 
-export const WSgetCurrentMovie = currentMovieId =>
-{
+export const WSgetCurrentMovie = currentMovieId => {
   return axios
     .get(
       'https://api.themoviedb.org/3/movie/' +
@@ -45,8 +41,7 @@ export const WSgetCurrentMovie = currentMovieId =>
     )
 };
 
-export const WSgetMovieDetails = currentMovieId =>
-{
+export const WSgetMovieDetails = currentMovieId => {
   return axios
     .get(
       'https://api.themoviedb.org/3/movie/' +
@@ -57,8 +52,7 @@ export const WSgetMovieDetails = currentMovieId =>
     )
 };
 
-export const WSgetMovieCredits = currentMovieId =>
-{
+export const WSgetMovieCredits = currentMovieId => {
   return axios
     .get(
       'https://api.themoviedb.org/3/movie/' +
@@ -68,22 +62,25 @@ export const WSgetMovieCredits = currentMovieId =>
     )
 };
 
-export const WSgetCurrentActorFilmo = currentActorId =>
-{
+export const WSgetCurrentActorFilmo = currentActorId => {
   return axios.get(
     'https://api.themoviedb.org/3/person/' + currentActorId + '/movie_credits?api_key=' + apiKey + '&language=fr-FR'
   )
 }
 
-export const WSgetCurrentActorDetails = currentActorId =>
-{
+export const WSgetCurrentActorDetails = currentActorId => {
   return axios.get(
     'https://api.themoviedb.org/3/person/' + currentActorId + '?api_key=' + apiKey + '&language=fr-FR'
   )
 }
-export const WSgetCurrentActorImage = currentActorId =>
-{
+export const WSgetCurrentActorImage = currentActorId => {
   return axios.get(
     'https://api.themoviedb.org/3/person/' + currentActorId + '/images?api_key=' + apiKey
+  )
+}
+
+export const WSgetCurrentMovieImage = currentMovieId => {
+  return axios.get(
+    'https://api.themoviedb.org/3/movie/' + currentMovieId + '/images?api_key=' + apiKey
   )
 }

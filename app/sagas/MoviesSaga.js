@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { createSagaRoot } from '@sagas';
-import { WSgetDiscoverMovies, WSgetTopMovies, WSsearchMovie, WSgetCurrentMovie, WSgetMovieDetails, WSgetMovieCredits, WSgetCurrentActorImage, WSgetCurrentActorDetails, WSgetCurrentActorFilmo } from '@services/MoviesServices';
+import { WSgetDiscoverMovies, WSgetTopMovies, WSsearchMovie, WSgetCurrentMovie, WSgetMovieDetails, WSgetMovieCredits, WSgetCurrentActorImage, WSgetCurrentActorDetails, WSgetCurrentActorFilmo, WSgetCurrentMovieImage } from '@services/MoviesServices';
 import MoviesReducer from '@reducers/MoviesReducer'
 // //////////////////
 // SAGA FUNCTIONS
@@ -41,17 +41,21 @@ export function* getCurrentMoviesSaga(action) {
         const responseCurrentMovie = yield call(WSgetCurrentMovie, action?.payload?.currentMovieId);
         const responseCurrentMovieDetails = yield call(WSgetMovieDetails, action?.payload?.currentMovieId);
         const responseCurrentMovieCredits = yield call(WSgetMovieCredits, action?.payload?.currentMovieId);
+        const responseCurrentMovieImages = yield call(WSgetCurrentMovieImage, action?.payload?.currentMovieId);
 
         if (responseCurrentMovie) {
             currentMovie = responseCurrentMovie.data;
             currentMovieDetails = responseCurrentMovieDetails.data;
             currentMovieCredits = responseCurrentMovieCredits.data;
+            currentMovieImages = responseCurrentMovieImages.data;
         } else {
             console.log('error retrieving current movie...')
         }
         yield put(MoviesReducer.actions.getCurrentMovie(currentMovie));
         yield put(MoviesReducer.actions.getMovieDetails(currentMovieDetails));
         yield put(MoviesReducer.actions.getMovieCredits(currentMovieCredits));
+        yield put(MoviesReducer.actions.getCurrentMovieImages(currentMovieImages))
+
     } catch (error) {
         console.log(`error getCurrentMoviesSaga`);
     }

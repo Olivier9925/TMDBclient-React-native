@@ -5,9 +5,8 @@ import { ColorConstants } from '@constants';
 import MoviePoster from '@components/MoviePoster'
 
 
-const Actor = () => {
+const ActorScene = () => {
   const currentActor = useSelector(state => state.MoviesReducer.currentActor);
-
 
   const renderActorBio = () => {
     return (
@@ -91,20 +90,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     fontSize: 15,
   },
-  date: {
-    color: ColorConstants.ACCENT_COLOR,
-  },
-  overView: {
-    color: ColorConstants.TEXT,
-    paddingVertical: 10,
-    fontSize: 15,
-  },
-  credits: {
-    paddingHorizontal: 20,
-    paddingVertical: 30,
-  },
-
 });
 
-export default Actor;
+export default ActorScene;
 

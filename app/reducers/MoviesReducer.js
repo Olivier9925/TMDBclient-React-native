@@ -12,6 +12,7 @@ const initState = {
   currentMovie: [],
   currentMovieDetails: [],
   currentMovieCredits: [],
+  currentMovieImages: [],
   currentActorId: null,
   currentActor: {
     details: {},
@@ -121,6 +122,12 @@ export default createSlice({
         state.currentActor = action?.payload?.currentActor;
       },
       prepare: (currentActor) => { return { payload: { currentActor } }; }
+    },
+    getCurrentMovieImages: {
+      reducer: (state, action) => {
+        state.currentMovieImages = action?.payload?.currentMovieImages;
+      },
+      prepare: (currentMovieImages) => { return { payload: { currentMovieImages } }; }
     },
   },
 });

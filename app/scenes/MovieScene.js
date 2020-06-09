@@ -7,38 +7,36 @@ import NavigationConstants from '@constants/NavigationConstants';
 import { useNavigation } from '@react-navigation/native';
 import SelectorAction from '@components/SelectorAction';
 
-const Movie = () =>
-{
+const MovieScene = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation()
   const currentMovie = useSelector(state => state.MoviesReducer.currentMovie);
   const currentMovieCredits = useSelector(state => state.MoviesReducer.currentMovieCredits);
   const connexion = useSelector(state => state.UserReducer.connexion);
+  const currentMovieImages = useSelector(state => state.MoviesReducer.currentMovieImages)
+  const backdrops = currentMovieImages?.backdrops;
 
-  const displayCredits = currentMovieCredits =>
-  {
+  const displayCredits = currentMovieCredits => {
     if (currentMovieCredits == undefined || currentMovieCredits == null) return;
     else
-      return currentMovieCredits.map((m, i) =>
-      {
-        if (i > 15) return;
+      return currentMovieCredits.map((m, i) => {
+        if (i > 10) return;
         return (
           <View
             style={{
               flex: 1,
               flexDirection: 'row',
               justifyContent: 'space-between',
+              paddingBottom: 8,
             }}>
             <Text style={{ color: ColorConstants.ACCENT_COLOR }}>
               {m.character}
             </Text>
             <Text
               style={{ color: ColorConstants.TEXT }}
-              onPress={() =>
-              {
+              onPress={() => {
                 dispatch(MoviesReducer.actions.setCurrentActorId(m.id));
                 navigation.navigate(NavigationConstants.ACTOR);
-
               }}
             >
               {m.name}
@@ -82,11 +80,28 @@ const Movie = () =>
         <Text style={styles.overView}>{currentMovie.overview}</Text>
       </View>
       <View style={styles.credits}>{displayCredits(currentMovieCredits.cast)}</View>
+      <View style={{
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+      }}>
+        {backdrops && backdrops.map((currentMovieImage, i) => {
+          if (i >= 6) return;
+          return (
+            <Image
+              source={{
+                uri: `https://image.tmdb.org/t/p/original/${currentMovieImage?.file_path}`
+              }}
+              style={{ width: 200, height: 100, marginVertical: 5 }}
+              resizeMode='contain'
+            />
+          )
+        })}
+      </View>
       {connexion ? <SelectorAction /> : <View></View>}
     </ScrollView>
   );
 };
-export default Movie;
 
 const styles = StyleSheet.create({
   backGroundImage: {
@@ -128,3 +143,5 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
   },
 });
+
+export default MovieScene;
