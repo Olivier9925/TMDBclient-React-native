@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text, ImageBackground, StyleSheet, ScrollView } from 'react-native';
+import { View, Image, Text, ImageBackground, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { ColorConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
@@ -29,18 +29,34 @@ const MovieScene = () => {
               justifyContent: 'space-between',
               paddingBottom: 8,
             }}>
-            <Text style={{ color: ColorConstants.ACCENT_COLOR }}>
-              {m.character}
-            </Text>
-            <Text
-              style={{ color: ColorConstants.TEXT }}
+            <TouchableOpacity
               onPress={() => {
                 dispatch(MoviesReducer.actions.setCurrentActorId(m.id));
                 navigation.navigate(NavigationConstants.ACTOR);
               }}
             >
-              {m.name}
-            </Text>
+              {m.profile_path && <Image
+                source={{ uri: `https://image.tmdb.org/t/p/original/${m.profile_path}` }}
+                style={{ width: 70, height: 70, borderRadius: 50, borderWidth: 1, borderColor: ColorConstants.ACCENT_COLOR }}
+                resizeMode='center'
+              />}
+            </TouchableOpacity>
+            <View
+              style={{
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                alignItems: 'flex-end',
+                alignContent: 'flex-end',
+              }}>
+              <Text style={{ color: ColorConstants.ACCENT_COLOR }}>
+                {m.character}
+              </Text>
+              <Text
+                style={{ color: ColorConstants.TEXT }}
+              >
+                {m.name}
+              </Text>
+            </View>
           </View >
         );
       });

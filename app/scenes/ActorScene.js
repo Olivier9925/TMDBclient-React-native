@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text, ScrollView, StyleSheet, ImageBackground, FlatList } from 'react-native'
+import { View, Image, Text, StyleSheet, ImageBackground, FlatList } from 'react-native'
 import { useSelector } from 'react-redux';
 import { ColorConstants } from '@constants';
 import MoviePoster from '@components/MoviePoster'
