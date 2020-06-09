@@ -4,6 +4,7 @@
 
 # Xcode
 #
+ReactotronConfig.js
 build/
 *.pbxuser
 !default.pbxuser
