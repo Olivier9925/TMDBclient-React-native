@@ -4,9 +4,9 @@ import { Image, SafeAreaView, View, TouchableHighlight, Text, StyleSheet, FlatLi
 import { useNavigation } from '@react-navigation/native';
 import { ColorConstants, NavigationConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
+import MoviePoster from '@components/MoviePoster'
 
-const MovieList = () =>
-{
+const MovieList = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch()
 
@@ -40,31 +40,12 @@ const MovieList = () =>
       break;
   }
 
-  const renderList = movie =>
-  {
-    return (
-      <TouchableHighlight
-        onPress={() =>
-        {
-          dispatch(MoviesReducer.actions.setCurrentMovie(movie.id))
-          navigation.navigate(NavigationConstants.MOVIE);
-        }}
-      >
-        <Image
-          source={{ uri: 'https://image.tmdb.org/t/p/original/' + movie.poster_path, }}
-          style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }}
-          key={`${movie.original_title}`}
-        />
-      </TouchableHighlight>
-    )
-  };
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View>
         <FlatList
           data={list}
-          renderItem={({ item }) => renderList(item)}
+          renderItem={({ item }) => <MoviePoster movie={item} />}
           keyExtractor={item => item.id}
           ListHeaderComponent={() => <Text style={styles.title}>{filter}</Text>}
           numColumns={2}
