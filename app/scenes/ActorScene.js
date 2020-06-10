@@ -3,6 +3,7 @@ import { View, Image, Text, StyleSheet, ImageBackground, FlatList } from 'react-
 import { useSelector } from 'react-redux';
 import { ColorConstants } from '@constants';
 import MoviePoster from '@components/MoviePoster'
+import FastImage from 'react-native-fast-image';
 
 
 const ActorScene = () => {
@@ -19,14 +20,14 @@ const ActorScene = () => {
           }}
           style={styles.backGroundImage}>
           <View>
-            {currentActor?.Image[1]?.file_path && <Image
-              source={{
-                uri: `https://image.tmdb.org/t/p/original/${
-                  currentActor?.Image[1]?.file_path
-                  }`,
-              }}
-              key={currentActor?.details?.name + '_p'}
+            {currentActor?.Image[1]?.file_path && <FastImage
               style={styles.portrait}
+              source={{
+                uri: 'https://image.tmdb.org/t/p/original/' + currentActor?.Image[1]?.file_path,
+                priority: FastImage.priority.high,
+              }}
+              resizeMode={FastImage.resizeMode.contain}
+              key={currentActor?.details?.name + '_p'}
             />}
           </View>
         </ImageBackground>

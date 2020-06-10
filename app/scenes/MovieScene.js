@@ -6,6 +6,7 @@ import MoviesReducer from '@reducers/MoviesReducer';
 import NavigationConstants from '@constants/NavigationConstants';
 import { useNavigation } from '@react-navigation/native';
 import SelectorAction from '@components/SelectorAction';
+import FastImage from 'react-native-fast-image';
 
 const MovieScene = () => {
   const dispatch = useDispatch();
@@ -35,11 +36,15 @@ const MovieScene = () => {
                 navigation.navigate(NavigationConstants.ACTOR);
               }}
             >
-              {m.profile_path && <Image
-                source={{ uri: `https://image.tmdb.org/t/p/original/${m.profile_path}` }}
+              {m.profile_path && <FastImage
                 style={{ width: 70, height: 70, borderRadius: 50, borderWidth: 1, borderColor: ColorConstants.ACCENT_COLOR }}
-                resizeMode='center'
-              />}
+                source={{
+                  uri: 'https://image.tmdb.org/t/p/original/' + m.profile_path,
+                  priority: FastImage.priority.high,
+                }}
+                resizeMode={FastImage.resizeMode.cover}
+              />
+              }
             </TouchableOpacity>
             <View
               style={{
@@ -72,14 +77,14 @@ const MovieScene = () => {
         }}
         style={styles.backGroundImage}>
         <View>
-          <Image
-            source={{
-              uri: `https://image.tmdb.org/t/p/original/${
-                currentMovie.poster_path
-                }`,
-            }}
-            key={currentMovie.title + '_p'}
+          <FastImage
             style={styles.posterImage}
+            source={{
+              uri: 'https://image.tmdb.org/t/p/original/' + currentMovie.poster_path,
+              priority: FastImage.priority.high,
+            }}
+            resizeMode={FastImage.resizeMode.contain}
+            key={currentMovie.title + '_p'}
           />
         </View>
       </ImageBackground>
@@ -104,12 +109,13 @@ const MovieScene = () => {
         {backdrops && backdrops.map((currentMovieImage, i) => {
           if (i >= 6) return;
           return (
-            <Image
-              source={{
-                uri: `https://image.tmdb.org/t/p/original/${currentMovieImage?.file_path}`
-              }}
+            <FastImage
               style={{ width: 200, height: 100, marginVertical: 5 }}
-              resizeMode='contain'
+              source={{
+                uri: 'https://image.tmdb.org/t/p/original/' + currentMovieImage?.file_path,
+                priority: FastImage.priority.high,
+              }}
+              resizeMode={FastImage.resizeMode.contain}
             />
           )
         })}
