@@ -1,6 +1,18 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { createSagaRoot } from '@sagas';
-import { WSgetDiscoverMovies, WSgetTopMovies, WSsearchMovie, WSgetCurrentMovie, WSgetMovieDetails, WSgetMovieCredits, WSgetCurrentActorImage, WSgetCurrentActorDetails, WSgetCurrentActorFilmo, WSgetCurrentMovieImage } from '@services/MoviesServices';
+import {
+    WSgetDiscoverMovies,
+    WSgetTopMovies,
+    WSgetTrendMovies,
+    WSsearchMovie,
+    WSgetCurrentMovie,
+    WSgetMovieDetails,
+    WSgetMovieCredits,
+    WSgetCurrentActorImage,
+    WSgetCurrentActorDetails,
+    WSgetCurrentActorFilmo,
+    WSgetCurrentMovieImage
+} from '@services/MoviesServices';
 import MoviesReducer from '@reducers/MoviesReducer'
 // //////////////////
 // SAGA FUNCTIONS
@@ -9,14 +21,18 @@ export function* appStartSaga() {
     try {
         const responseDiscoverMovies = yield call(WSgetDiscoverMovies);
         const responseTopMovies = yield call(WSgetTopMovies);
+        const responseTrendMovies = yield call(WSgetTrendMovies);
+
         if (responseDiscoverMovies && responseTopMovies) {
             discoverMovies = responseDiscoverMovies.data.results;
             topMovies = responseTopMovies.data.results;
+            trendMovies = responseTrendMovies.data.results;
         } else {
             console.log('error retrieving movies...')
         }
         yield put(MoviesReducer.actions.getDiscoverMovies(discoverMovies));
         yield put(MoviesReducer.actions.getTopMovies(topMovies));
+        yield put(MoviesReducer.actions.getTrendMovies(trendMovies));
     } catch (error) {
         console.log('error getDiscoverAndTopMoviesSaga')
     }

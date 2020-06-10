@@ -5,6 +5,7 @@ const initState = {
   apiKey: 'e709f2ea9104a5d71ac4f13607ce4100',
   discoverMovies: [],
   topMovies: [],
+  trendMovies: [],
   filter: 'DISCOVER',
   searchedMovie: [],
   search: 'batman',
@@ -40,6 +41,12 @@ export default createSlice({
         state.topMovies = action?.payload?.topMovies;
       },
       prepare: (topMovies) => { return { payload: { topMovies } }; }
+    },
+    getTrendMovies: {
+      reducer: (state, action) => {
+        state.trendMovies = action?.payload?.trendMovies;
+      },
+      prepare: (trendMovies) => { return { payload: { trendMovies } }; }
     },
     selectChoiceFilter: {
       reducer: (state, action) => {

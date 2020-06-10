@@ -84,3 +84,9 @@ export const WSgetCurrentMovieImage = currentMovieId => {
     'https://api.themoviedb.org/3/movie/' + currentMovieId + '/images?api_key=' + apiKey
   )
 }
+
+export const WSgetTrendMovies = () => {
+  return axios.get(
+    'https://api.themoviedb.org/3/trending/movie/day?api_key=' + apiKey
+  )
+}

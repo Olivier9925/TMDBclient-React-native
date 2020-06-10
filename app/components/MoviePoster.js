@@ -12,6 +12,8 @@ const MoviePoster = (props) => {
 
     const { movie } = props;
 
+    const { size } = props;
+    const posterStyle = size === 'small' ? { width: 80, height: 80, marginBottom: 3, borderRadius: 50 } : { width: 180, height: 250, marginBottom: 20, borderRadius: 8 };
     return (
         <View>
             <TouchableHighlight
@@ -21,12 +23,12 @@ const MoviePoster = (props) => {
                 }}
             >
                 <FastImage
-                    style={{ width: 180, height: 250, marginBottom: 20, borderRadius: 8 }}
+                    style={posterStyle}
                     source={{
                         uri: 'https://image.tmdb.org/t/p/original/' + movie?.poster_path,
                         priority: FastImage.priority.high,
                     }}
-                    resizeMode={FastImage.resizeMode.contain}
+                    resizeMode={size === 'small' ? FastImage.resizeMode.cover : FastImage.resizeMode.contain}
                     key={`${movie?.original_title}`}
                 />
             </TouchableHighlight>

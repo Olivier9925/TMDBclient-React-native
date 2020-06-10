@@ -7,6 +7,7 @@ import ConnectedMenu from '@components/ConnectedMenu';
 import TopOrDiscoverChoice from '@components/TopOrDiscoverChoice';
 import MoviesReducer from '@reducers/MoviesReducer';
 import { useNavigation } from '@react-navigation/native';
+import TrendMovies from '@components/TrendMovies'
 
 const HomeScene = () => {
   const dispatch = useDispatch();
@@ -26,10 +27,12 @@ const HomeScene = () => {
 
   const connexion = useSelector(state => state.UserReducer.connexion);
 
+
   return (
     <View style={{ flex: 1, backgroundColor: ColorConstants.BACK_FIRST }}>
       <Text style={styles.title}>MOVIE TRACKER</Text>
       <SearchBar />
+      <TrendMovies />
       <TopOrDiscoverChoice />
       {connexion ? <ConnectedMenu /> : <></>}
     </View>
