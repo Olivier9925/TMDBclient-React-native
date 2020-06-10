@@ -13,7 +13,7 @@ const MoviePoster = (props) => {
     const { movie } = props;
 
     const { size } = props;
-    const posterStyle = size === 'small' ? { width: 80, height: 80, marginBottom: 3, borderRadius: 50 } : { width: 180, height: 250, marginBottom: 20, borderRadius: 8 };
+    const posterStyle = size === 'small' ? { width: 80, height: 80, marginBottom: 15, borderRadius: 50 } : { width: 180, height: 250, marginBottom: 20, borderRadius: 8 };
     return (
         <View>
             <TouchableHighlight
