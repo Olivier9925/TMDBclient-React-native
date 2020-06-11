@@ -6,6 +6,7 @@ import { ColorConstants, NavigationConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
 import MoviePoster from '@components/MoviePoster'
 
+
 const MovieListScene = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch()
@@ -16,6 +17,7 @@ const MovieListScene = () => {
   const watchedList = useSelector(state => state.UserReducer.watchedList);
   const searchedMovie = useSelector(state => state.MoviesReducer.searchedMovie);
   const filter = useSelector(state => state.MoviesReducer.filter);
+
 
   let list;
   switch (filter) {

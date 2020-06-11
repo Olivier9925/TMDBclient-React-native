@@ -4,8 +4,7 @@ import { ColorConstants } from '@constants';
 import HomeMenuButton from '@components/HomeMenuButton'
 
 
-const ConnectedMenu = () =>
-{
+const ConnectedMenu = () => {
   return (
     <View style={styles.connectedMenu}>
       <HomeMenuButton choice='LISTE' label='liste' />
@@ -16,7 +15,7 @@ const ConnectedMenu = () =>
 
 const styles = StyleSheet.create({
   connectedMenu: {
-    backgroundColor: ColorConstants.BACK_SECOND,
+    backgroundColor: ColorConstants.BACK_FIRST,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',

@@ -11,4 +11,17 @@ export default {
         width: 130,
         marginTop: 68,
     },
+    title: {
+        color: ColorConstants.TEXT_TITLE,
+        marginTop: 50,
+        marginLeft: 20,
+        fontSize: 30,
+        fontWeight: 'bold',
+    },
+    subtitle: {
+        color: ColorConstants.TEXT_SUBTITLE,
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+
 };

@@ -3,7 +3,6 @@ import { View, StyleSheet, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchBar from '@components/SearchBar';
 import { ColorConstants, NavigationConstants } from '@constants';
-import ConnectedMenu from '@components/ConnectedMenu';
 import TopOrDiscoverChoice from '@components/TopOrDiscoverChoice';
 import MoviesReducer from '@reducers/MoviesReducer';
 import { useNavigation } from '@react-navigation/native';
@@ -34,7 +33,6 @@ const HomeScene = () => {
       <SearchBar />
       <TrendMovies />
       <TopOrDiscoverChoice />
-      {connexion ? <ConnectedMenu /> : <></>}
     </View>
   );
 };

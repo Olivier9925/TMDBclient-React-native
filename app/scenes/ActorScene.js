@@ -26,7 +26,7 @@ const ActorScene = () => {
                 uri: 'https://image.tmdb.org/t/p/original/' + currentActor?.Image[1]?.file_path,
                 priority: FastImage.priority.high,
               }}
-              resizeMode={FastImage.resizeMode.contain}
+              resizeMode={FastImage.resizeMode.cover}
               key={currentActor?.details?.name + '_p'}
             />}
           </View>

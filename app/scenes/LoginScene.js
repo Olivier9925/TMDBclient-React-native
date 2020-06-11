@@ -4,13 +4,19 @@ import { TextInput } from 'react-native-gesture-handler';
 import { CustomButton } from '@components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { ColorConstants, NavigationConstants } from '@constants';
+import { ColorConstants, NavigationConstants, StylesConstants } from '@constants';
 import UserReducer from '@reducers/UserReducer';
+import ConnectedMenu from '@components/ConnectedMenu';
+import { getWatchListMoviesId } from '@reducers/UserReducer';
+
 
 const LoginScene = () => {
 	const navigation = useNavigation();
 	const dispatch = useDispatch();
+
 	const connexion = useSelector(state => state.UserReducer.connexion);
+	const user = useSelector(state => state.UserReducer.user)
+
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -29,10 +35,11 @@ const LoginScene = () => {
 
 	return (
 		<View>
-			<Text style={styles.title}>Connexion</Text>
+			<Text style={StylesConstants.title}>Connexion</Text>
+			<View style={{ display: display_inv }}><Text style={StylesConstants.subtitle}>{user.username}</Text></View>
 			<View style={[styles.homeView, { display: display }]}>
 				<TextInput
-					placeholder="eMail"
+					placeholder="Utilisateur"
 					placeholderTextColor={ColorConstants.TEXT}
 					style={styles.inputSearch}
 					onChangeText={text => setEmail(text)}
@@ -67,6 +74,9 @@ const LoginScene = () => {
 						dispatch(UserReducer.actions.logout());
 					}}
 				/>
+			</View>
+			<View style={[styles.homeView, { display: display_inv }]}>
+				{connexion ? <ConnectedMenu /> : <></>}
 			</View>
 		</View>
 	);

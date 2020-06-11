@@ -3,10 +3,12 @@ import { View, Image, Text, ImageBackground, StyleSheet, ScrollView, TouchableOp
 import { useSelector, useDispatch } from 'react-redux';
 import { ColorConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
+import { getWatchListMoviesId } from '@reducers/UserReducer';
 import NavigationConstants from '@constants/NavigationConstants';
 import { useNavigation } from '@react-navigation/native';
 import SelectorAction from '@components/SelectorAction';
 import FastImage from 'react-native-fast-image';
+import MoviesUtils from '@utils/MoviesUtils'
 
 const MovieScene = () => {
   const dispatch = useDispatch();
@@ -16,7 +18,9 @@ const MovieScene = () => {
   const connexion = useSelector(state => state.UserReducer.connexion);
   const currentMovieImages = useSelector(state => state.MoviesReducer.currentMovieImages)
   const backdrops = currentMovieImages?.backdrops;
+  const watchList = useSelector(state => state.UserReducer.watchList);
 
+  const isInWatchList = () => MoviesUtils.getListIds(watchList).includes(currentMovie.id)
   const displayCredits = currentMovieCredits => {
     if (currentMovieCredits == undefined || currentMovieCredits == null) return;
     else
@@ -83,7 +87,7 @@ const MovieScene = () => {
               uri: 'https://image.tmdb.org/t/p/original/' + currentMovie.poster_path,
               priority: FastImage.priority.high,
             }}
-            resizeMode={FastImage.resizeMode.contain}
+            resizeMode={FastImage.resizeMode.cover}
             key={currentMovie.title + '_p'}
           />
         </View>
@@ -120,7 +124,7 @@ const MovieScene = () => {
           )
         })}
       </View>
-      {connexion ? <SelectorAction /> : <View></View>}
+      {connexion ? <SelectorAction isInWatchList={isInWatchList()} /> : <View></View>}
     </ScrollView>
   );
 };
