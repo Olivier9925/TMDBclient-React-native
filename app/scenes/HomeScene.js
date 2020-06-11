@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import { View, StyleSheet, Text, Image } from 'react-native';
+import { useDispatch } from 'react-redux';
 import SearchBar from '@components/SearchBar';
 import { ColorConstants, NavigationConstants, TextsConstants, StylesConstants } from '@constants';
 import TopOrDiscoverChoice from '@components/TopOrDiscoverChoice';
@@ -25,10 +25,17 @@ const HomeScene = () => {
   }, [navigation])
 
   return (
-    <View style={{ flex: 1, backgroundColor: ColorConstants.BACK_FIRST, marginHorizontal: 0 }}>
-      <Text style={StylesConstants.title}>{TextsConstants.HOME_SCENE_TITLE}</Text>
+    <View style={{ flex: 1, flexWrap: 'wrap', backgroundColor: ColorConstants.BACK_FIRST }}>
+      <View style={[StylesConstants.screenWidth, {
+        flexDirection: 'row',
+        justifyContent: 'center',
+      }]}>
+        <Image source={require('@assets/long_icon.png')} style={[StylesConstants.screenWidth, { height: 70 }]} resizeMode="contain" />
+      </View>
       <SearchBar />
-      <TrendMovies />
+      <View style={{ flex: 1 }}>
+        <TrendMovies />
+      </View>
       <TopOrDiscoverChoice />
     </View>
   );

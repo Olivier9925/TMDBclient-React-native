@@ -5,6 +5,10 @@ const windowWidth = Dimensions.get('window').width;
 
 export default {
 
+    screenWidth: {
+        width: windowWidth,
+    },
+
     // composants
     menu: {
         backgroundColor: ColorConstants.BACK_SECOND,
