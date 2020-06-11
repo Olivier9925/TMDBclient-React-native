@@ -12,7 +12,7 @@ const SearchBar = () => {
 	const [search, setsearch] = useState(null);
 
 	return (
-		<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
+		<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', marginTop: 15 }}>
 			<TextInput
 				placeholder={TextsConstants.SEARCHBAR_PLACEHOLDER}
 				placeholderTextColor={ColorConstants.TEXT}

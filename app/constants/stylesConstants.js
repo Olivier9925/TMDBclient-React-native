@@ -13,10 +13,10 @@ export default {
     },
     title: {
         color: ColorConstants.TEXT_TITLE,
-        marginTop: 50,
-        marginLeft: 20,
         fontSize: 30,
         fontWeight: 'bold',
+        marginLeft: 15,
+        marginTop: 30,
     },
     subtitle: {
         color: ColorConstants.TEXT_SUBTITLE,

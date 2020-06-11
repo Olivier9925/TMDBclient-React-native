@@ -29,7 +29,7 @@ const SelectorAction = (props) => {
           dispatch(UserReducer.actions.saveToWatchedList(currentMovieId, user.id));
           navigation.navigate(NavigationConstants.MOVIE_LIST);
         }}
-        title="vu"
+        title={TextsConstants.SELECTOR_FAV_ADD}
       />
     </View>
   );

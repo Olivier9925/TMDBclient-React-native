@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchBar from '@components/SearchBar';
-import { ColorConstants, NavigationConstants } from '@constants';
+import { ColorConstants, NavigationConstants, TextsConstants, StylesConstants } from '@constants';
 import TopOrDiscoverChoice from '@components/TopOrDiscoverChoice';
 import MoviesReducer from '@reducers/MoviesReducer';
 import { useNavigation } from '@react-navigation/native';
@@ -24,12 +24,9 @@ const HomeScene = () => {
     return currentRoute;
   }, [navigation])
 
-  const connexion = useSelector(state => state.UserReducer.connexion);
-
-
   return (
-    <View style={{ flex: 1, backgroundColor: ColorConstants.BACK_FIRST }}>
-      <Text style={styles.title}>MOVIE TRACKER</Text>
+    <View style={{ flex: 1, backgroundColor: ColorConstants.BACK_FIRST, marginHorizontal: 0 }}>
+      <Text style={StylesConstants.title}>{TextsConstants.HOME_SCENE_TITLE}</Text>
       <SearchBar />
       <TrendMovies />
       <TopOrDiscoverChoice />
@@ -44,14 +41,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-around',
-  },
-  title: {
-    color: ColorConstants.TEXT,
-    marginTop: 50,
-    marginBottom: 50,
-    marginLeft: 20,
-    fontSize: 30,
-    fontWeight: 'bold',
   },
 });
 

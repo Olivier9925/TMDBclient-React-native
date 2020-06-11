@@ -33,7 +33,7 @@ const LoginScene = () => {
 	}
 
 	return (
-		<View>
+		<View style={{ flex: 1 }}>
 			<Text style={StylesConstants.title}>{TextsConstants.LOGIN_TITLE}</Text>
 			<View style={{ display: display_inv }}><Text style={StylesConstants.subtitle}>{user.username}</Text></View>
 			<View style={[styles.homeView, { display: display }]}>
@@ -68,13 +68,13 @@ const LoginScene = () => {
 			</View>
 			<View style={[styles.homeView, { display: display_inv }]}>
 				<CustomButton
-					title="Se déconnecter"
+					title={TextsConstants.LOGIN_LOGOUT_BUTTON}
 					onPress={() => {
 						dispatch(UserReducer.actions.logout());
 					}}
 				/>
 			</View>
-			<View style={[styles.homeView, { display: display_inv }]}>
+			<View style={{ display: display_inv }}>
 				{connexion ? <ConnectedMenu /> : <></>}
 			</View>
 		</View>

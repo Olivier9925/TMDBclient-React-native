@@ -1,15 +1,12 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Image, SafeAreaView, View, TouchableHighlight, Text, StyleSheet, FlatList } from 'react-native';
+import { useSelector } from 'react-redux';
+import { SafeAreaView, View, Text, StyleSheet, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { ColorConstants, NavigationConstants } from '@constants';
-import MoviesReducer from '@reducers/MoviesReducer';
+import { ColorConstants, ActionsConstants } from '@constants';
 import MoviePoster from '@components/MoviePoster'
 
 
 const MovieListScene = () => {
-  const navigation = useNavigation();
-  const dispatch = useDispatch()
 
   const discoverMovies = useSelector(state => state.MoviesReducer.discoverMovies);
   const topMovies = useSelector(state => state.MoviesReducer.topMovies);
@@ -21,19 +18,19 @@ const MovieListScene = () => {
 
   let list;
   switch (filter) {
-    case 'TOP':
+    case ActionsConstants.TOP:
       list = topMovies;
       break;
-    case 'DISCOVER':
+    case ActionsConstants.DISCOVER:
       list = discoverMovies;
       break;
-    case 'SEARCH':
+    case ActionsConstants.SEARCH:
       list = searchedMovie;
       break;
-    case 'LISTE':
+    case ActionsConstants.LISTE:
       list = watchList;
       break;
-    case 'VU':
+    case ActionsConstants.FAVORIS:
       list = watchedList;
       break;
 

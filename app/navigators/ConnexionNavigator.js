@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationConstants } from '@constants';
+import { NavigationConstants, ColorConstants } from '@constants';
 import MovieScene from '@scenes/MovieScene';
 import SignupScene from '@scenes/SignupScene';
 import LoginScene from '@scenes/LoginScene';
@@ -12,8 +12,11 @@ const MovieNavigator = () => {
 		<Stack.Navigator
 			initialRouteName={MovieScene}
 			screenOptions={{
-				headerShown: false,
-			}}>
+				headerShown: true,
+				headerStyle: { backgroundColor: ColorConstants.BACK_SECOND },
+				headerTitleStyle: { display: 'none' }
+			}}
+		>
 			<Stack.Screen name={NavigationConstants.LOGIN} component={LoginScene} />
 			<Stack.Screen name={NavigationConstants.SIGNUP} component={SignupScene} />
 		</Stack.Navigator>

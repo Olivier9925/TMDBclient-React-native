@@ -4,8 +4,7 @@ import MovieScene from '@scenes/MovieScene';
 import MovieListScene from '@scenes/MovieListScene';
 import HomeScene from '@scenes/HomeScene';
 import ActorScene from '@scenes/ActorScene';
-import { NavigationConstants } from '@constants';
-import { ColorConstants } from '@constants';
+import { NavigationConstants, ColorConstants } from '@constants';
 
 
 const Stack = createStackNavigator();
