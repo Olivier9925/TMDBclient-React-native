@@ -22,12 +22,8 @@ export const WSgetTopMovies = () => {
 
 export const WSsearchMovie = searchValue => {
   return axios
-    .get(
-      'https://api.themoviedb.org/3/search/movie?api_key=' +
-      apiKey +
-      '&language=fr-FR&page=1&include_adult=false&query=' +
-      searchValue
-    )
+    .get('https://api.themoviedb.org/3/search/movie?api_key=' + apiKey + '&language=fr-FR&page=1&include_adult=false&query=' + searchValue)
+  //.get('https://api.themoviedb.org/3/search/multi?api_key=' + apiKey + '&language=fr-FR&query=' + searchValue + '&page=1&include_adult=false&region=fr')
 };
 export const WSsearchActor = (searchValue) => {
   return axios.get(
