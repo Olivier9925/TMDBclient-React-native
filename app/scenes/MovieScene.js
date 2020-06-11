@@ -1,24 +1,27 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, FlatList } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { ColorConstants } from '@constants';
+import { ColorConstants, StylesConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
 import NavigationConstants from '@constants/NavigationConstants';
 import { useNavigation } from '@react-navigation/native';
 import SelectorAction from '@components/SelectorAction';
 import FastImage from 'react-native-fast-image';
-import MoviesUtils from '@utils/MoviesUtils'
+import MoviesUtils from '@utils/MoviesUtils';
+import MoviePoster from '@components/MoviePoster';
 
 const MovieScene = () => {
 
   const dispatch = useDispatch();
   const navigation = useNavigation()
 
-  const currentMovie = useSelector(state => state.MoviesReducer.currentMovie);
-  const currentMovieCredits = useSelector(state => state.MoviesReducer.currentMovieCredits);
-  const connexion = useSelector(state => state.UserReducer.connexion);
-  const currentMovieImages = useSelector(state => state.MoviesReducer.currentMovieImages)
   const watchList = useSelector(state => state.UserReducer.watchList);
+  const connexion = useSelector(state => state.UserReducer.connexion);
+  const currentMovieCredits = useSelector(state => state.MoviesReducer.currentMovieCredits);
+  const currentMovieImages = useSelector(state => state.MoviesReducer.currentMovieImages)
+  const currentMovie = useSelector(state => state.MoviesReducer.currentMovie);
+  const similars = useSelector(state => state.MoviesReducer.similars)
+
 
   const backdrops = currentMovieImages?.backdrops;
 
@@ -128,6 +131,23 @@ const MovieScene = () => {
         })}
       </View>
       {connexion ? <SelectorAction isInWatchList={isInWatchList()} /> : <View></View>}
+
+      <SafeAreaView style={{ flex: 1, marginTop: 100 }}>
+        <View>
+          <Text style={StylesConstants.title}>{'Films similaires'}</Text>
+          <FlatList
+            data={similars}
+            renderItem={({ item }) => <MoviePoster movie={item} />}
+            keyExtractor={item => item.id}
+            refreshing={true}
+            initialNumToRender={6}
+            removeClippedSubviews={true}
+            horizontal
+          />
+        </View>
+      </SafeAreaView>
+
+
     </ScrollView>
   );
 };

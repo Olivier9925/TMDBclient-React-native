@@ -11,7 +11,9 @@ import {
     WSgetCurrentActorImage,
     WSgetCurrentActorDetails,
     WSgetCurrentActorFilmo,
-    WSgetCurrentMovieImage
+    WSgetCurrentMovieImage,
+    WSgetSimilars,
+    WSsearchActor
 } from '@services/MoviesServices';
 import MoviesReducer from '@reducers/MoviesReducer'
 // //////////////////
@@ -41,12 +43,16 @@ export function* appStartSaga() {
 export function* getSearchedMoviesSaga(action) {
     try {
         const response = yield call(WSsearchMovie, action?.payload?.search);
+        const responseActorSearch = yield call(WSsearchActor, action?.payload?.search);
+
         if (response) {
             searchedMovies = response.data.results;
+            searchedActors = responseActorSearch.data.results[0];
         } else {
             console.log('error retrieving searched movies...')
         }
         yield put(MoviesReducer.actions.getSearchedMovies(searchedMovies));
+        yield put(MoviesReducer.actions.getSearchedActors(searchedActors));
     } catch (error) {
         console.log(`error getSearchedMoviesSaga`);
     }
@@ -58,12 +64,14 @@ export function* getCurrentMoviesSaga(action) {
         const responseCurrentMovieDetails = yield call(WSgetMovieDetails, action?.payload?.currentMovieId);
         const responseCurrentMovieCredits = yield call(WSgetMovieCredits, action?.payload?.currentMovieId);
         const responseCurrentMovieImages = yield call(WSgetCurrentMovieImage, action?.payload?.currentMovieId);
+        const responseSimilars = yield call(WSgetSimilars, action?.payload?.currentMovieId);
 
         if (responseCurrentMovie) {
             currentMovie = responseCurrentMovie.data;
             currentMovieDetails = responseCurrentMovieDetails.data;
             currentMovieCredits = responseCurrentMovieCredits.data;
             currentMovieImages = responseCurrentMovieImages.data;
+            Similars = responseSimilars.data.results;
         } else {
             console.log('error retrieving current movie...')
         }
@@ -71,6 +79,7 @@ export function* getCurrentMoviesSaga(action) {
         yield put(MoviesReducer.actions.getMovieDetails(currentMovieDetails));
         yield put(MoviesReducer.actions.getMovieCredits(currentMovieCredits));
         yield put(MoviesReducer.actions.getCurrentMovieImages(currentMovieImages))
+        yield put(MoviesReducer.actions.getSimilars(Similars))
 
     } catch (error) {
         console.log(`error getCurrentMoviesSaga`);

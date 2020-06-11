@@ -9,11 +9,13 @@ const initState = {
   filter: 'DISCOVER',
   searchedMovie: [],
   search: null,
+  searchActor: null,
   currentMovieId: 0,
   currentMovie: [],
   currentMovieDetails: [],
   currentMovieCredits: [],
   currentMovieImages: [],
+  similars: [],
   currentActorId: null,
   currentActor: {
     details: {},
@@ -135,6 +137,18 @@ export default createSlice({
         state.currentMovieImages = action?.payload?.currentMovieImages;
       },
       prepare: (currentMovieImages) => { return { payload: { currentMovieImages } }; }
+    },
+    getSimilars: {
+      reducer: (state, action) => {
+        state.similars = action?.payload?.similars;
+      },
+      prepare: (similars) => { return { payload: { similars } }; }
+    },
+    getSearchedActors: {
+      reducer: (state, action) => {
+        state.searchActor = action?.payload?.searchActor;
+      },
+      prepare: (searchActor) => { return { payload: { searchActor } }; }
     },
   },
 });

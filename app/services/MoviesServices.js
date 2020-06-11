@@ -29,6 +29,11 @@ export const WSsearchMovie = searchValue => {
       searchValue
     )
 };
+export const WSsearchActor = (searchValue) => {
+  return axios.get(
+    'https://api.themoviedb.org/3/search/person?api_key=' + apiKey + '&language=fe-FR&query=' + searchValue + '&page=1&include_adult=true&region=fr'
+  )
+}
 
 export const WSgetCurrentMovie = currentMovieId => {
   return axios
@@ -88,5 +93,11 @@ export const WSgetCurrentMovieImage = currentMovieId => {
 export const WSgetTrendMovies = () => {
   return axios.get(
     'https://api.themoviedb.org/3/trending/movie/day?api_key=' + apiKey
+  )
+}
+
+export const WSgetSimilars = (currentMovie) => {
+  return axios.get(
+    'https://api.themoviedb.org/3/movie/' + currentMovie + '/similar?api_key=' + apiKey + '&language=fr-FR&page=1'
   )
 }
