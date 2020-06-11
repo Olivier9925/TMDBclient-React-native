@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NavigationConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
 import FastImage from 'react-native-fast-image';
+import { ColorConstants, TextsConstants, ActionsConstants } from '@constants';
 
 const MoviePoster = (props) => {
     const navigation = useNavigation();
@@ -13,7 +14,9 @@ const MoviePoster = (props) => {
     const { movie } = props;
 
     const { size } = props;
-    const posterStyle = size === 'small' ? { width: 80, height: 80, marginBottom: 15, borderRadius: 50 } : { width: 180, height: 250, marginBottom: 20, borderRadius: 8 };
+    const posterStyle = size === 'small' ?
+        { width: 80, height: 80, marginBottom: 15, borderRadius: 50, borderWidth: 1, borderColor: ColorConstants.ACCENT_COLOR } :
+        { width: 180, height: 250, marginBottom: 20, borderRadius: 8 };
     return (
         <View>
             <TouchableHighlight

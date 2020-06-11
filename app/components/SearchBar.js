@@ -3,7 +3,7 @@ import { TextInput, View, StyleSheet } from 'react-native'
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { CustomButton } from './CustomButton'
-import { ColorConstants, NavigationConstants, TextsConstants } from '@constants';
+import { ColorConstants, NavigationConstants, TextsConstants, StylesConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
 
 const SearchBar = () => {
@@ -16,12 +16,10 @@ const SearchBar = () => {
 			<TextInput
 				placeholder={TextsConstants.SEARCHBAR_PLACEHOLDER}
 				placeholderTextColor={ColorConstants.TEXT}
-				style={styles.inputSearch}
+				style={StylesConstants.textInputFullWidth}
 				onChangeText={text => setsearch(text)}
-			/>
-			<CustomButton
-				title={TextsConstants.BUTTON_PLACEHOLDER}
-				onPress={() => {
+				inlineImageLeft='search_icon'
+				onEndEditing={() => {
 					dispatch(MoviesReducer.actions.selectSearchedMovies(search))
 					navigation.navigate(NavigationConstants.MOVIE_LIST)
 				}}
@@ -31,16 +29,3 @@ const SearchBar = () => {
 }
 export default SearchBar;
 
-const styles = StyleSheet.create({
-	inputSearch: {
-		color: ColorConstants.TEXT,
-		borderColor: ColorConstants.BORDER_COLOR,
-		backgroundColor: ColorConstants.BACK_SECOND,
-		width: 180,
-		height: 50,
-		padding: 10,
-		borderWidth: 1,
-		borderRadius: 5,
-		marginBottom: 10,
-	},
-});

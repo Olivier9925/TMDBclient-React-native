@@ -40,7 +40,7 @@ const LoginScene = () => {
 				<TextInput
 					placeholder={TextsConstants.LOGIN_EMAIL_PLACEHOLDER}
 					placeholderTextColor={ColorConstants.TEXT}
-					style={styles.inputSearch}
+					style={[StylesConstants.textInputNoWidth, { width: 180 }]}
 					onChangeText={text => setEmail(text)}
 				/>
 				<TextInput
@@ -48,7 +48,7 @@ const LoginScene = () => {
 					textContentType="password"
 					placeholder={TextsConstants.LOGIN_PASSWORD_PLACEHOLDER}
 					placeholderTextColor={ColorConstants.TEXT}
-					style={styles.inputSearch}
+					style={[StylesConstants.textInputNoWidth, { width: 180 }]}
 					onChangeText={text => setPassword(text)}
 				/>
 				<CustomButton

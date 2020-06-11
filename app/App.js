@@ -26,12 +26,11 @@ const MyTheme = {
     background: ColorConstants.BACK_FIRST,
     card: ColorConstants.TEXT,
     text: ColorConstants.ACCENT_COLOR,
-    border: ColorConstants.BORDER_COLOR,
+    //border: ColorConstants.BORDER_COLOR,
   },
 };
 
-const App = () =>
-{
+const App = () => {
   return (
     <Provider store={store}>
       <StatusBar barStyle="light-content" />

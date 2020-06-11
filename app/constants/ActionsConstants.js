@@ -1,6 +1,6 @@
 export default {
     LISTE: "LISTE",
-    VU: "VU",
+    FAVORIS: "FAVORIS",
     TOP: "TOP",
     DISCOVER: "DISCOVER",
     SEARCH: "SEARCH",

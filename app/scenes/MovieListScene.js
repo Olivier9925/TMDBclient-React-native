@@ -1,8 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { SafeAreaView, View, Text, StyleSheet, FlatList } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { ColorConstants, ActionsConstants } from '@constants';
+import { ColorConstants, ActionsConstants, StylesConstants } from '@constants';
 import MoviePoster from '@components/MoviePoster'
 
 
@@ -46,7 +45,7 @@ const MovieListScene = () => {
           data={list}
           renderItem={({ item }) => <MoviePoster movie={item} />}
           keyExtractor={item => item.id}
-          ListHeaderComponent={() => <Text style={styles.title}>{filter}</Text>}
+          ListHeaderComponent={() => <Text style={StylesConstants.title}>{filter}</Text>}
           numColumns={2}
           refreshing={true}
           columnWrapperStyle={{
@@ -59,16 +58,5 @@ const MovieListScene = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    color: ColorConstants.TEXT,
-    marginTop: 50,
-    marginBottom: 50,
-    marginLeft: 20,
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-});
 
 export default MovieListScene;

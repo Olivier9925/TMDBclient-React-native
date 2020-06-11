@@ -1,27 +1,61 @@
 import ColorConstants from '@constants/ColorConstants';
+import { Dimensions } from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
 
 export default {
-    style1: { // Height from visible part of the navigation bar (visible:66 + invisible:30 = 96 see TabBarComponent)
-        padding: 20,
-        flex: 1,
-        backgroundColor: ColorConstants.BACK_SECOND
+
+    // composants
+    menu: {
+        backgroundColor: ColorConstants.BACK_SECOND,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        paddingTop: 20,
+        paddingBottom: 20,
+        borderTopColor: ColorConstants.BACK_FIRST,
+        borderWidth: 1,
+        borderBottomColor: 'transparent',
+        borderLeftColor: 'transparent',
+        borderRightColor: 'transparent',
     },
-    style2: {
-        height: 42,
-        width: 130,
-        marginTop: 68,
-    },
+    // TEXTES - TITRES - SOUS TITRES -
     title: {
         color: ColorConstants.TEXT_TITLE,
         fontSize: 30,
         fontWeight: 'bold',
         marginLeft: 15,
         marginTop: 30,
+        marginBottom: 45,
     },
     subtitle: {
         color: ColorConstants.TEXT_SUBTITLE,
         fontSize: 20,
         fontWeight: 'bold',
     },
+
+    // TEXTINPUT - BOUTONS
+    textInputFullWidth: {
+        color: ColorConstants.TEXT,
+        borderColor: ColorConstants.TEXT,
+        backgroundColor: ColorConstants.BACK_SECOND,
+        width: windowWidth - 30,
+        height: 40,
+        padding: 10,
+        borderWidth: 0,
+        borderRadius: 5,
+        marginBottom: 10,
+    },
+    textInputNoWidth: {
+        color: ColorConstants.TEXT,
+        borderColor: ColorConstants.TEXT,
+        backgroundColor: ColorConstants.BACK_SECOND,
+        height: 40,
+        padding: 10,
+        borderWidth: 0,
+        borderRadius: 5,
+        marginBottom: 10,
+    }
+
 
 };

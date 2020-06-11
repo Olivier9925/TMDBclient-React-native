@@ -8,7 +8,7 @@ const initState = {
   trendMovies: [],
   filter: 'DISCOVER',
   searchedMovie: [],
-  search: 'batman',
+  search: null,
   currentMovieId: 0,
   currentMovie: [],
   currentMovieDetails: [],
@@ -62,7 +62,7 @@ export default createSlice({
     },
     selectMyWatchedMovies: {
       reducer: (state, action) => {
-        state.filter = 'VU';
+        state.filter = 'FAVORIS';
       },
       // prepare: (filter) => { return { filter: { filter } }; }
     },

@@ -2,8 +2,7 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { ColorConstants } from '@constants';
 
-export const CustomButton = (props) =>
-{
+export const CustomButton = (props) => {
 	const { title = 'Enter', style = {}, textStyle = {}, onPress } = props;
 
 	return (
@@ -19,7 +18,7 @@ const styles = StyleSheet.create({
 		shadowColor: ColorConstants.ACCENT_COLOR,
 		display: 'flex',
 		flexDirection: 'row',
-		height: 50,
+		height: 35,
 		borderRadius: 5,
 		justifyContent: 'center',
 		alignItems: 'center',
