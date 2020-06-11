@@ -4,10 +4,9 @@ import { TextInput } from 'react-native-gesture-handler';
 import { CustomButton } from '@components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { ColorConstants, NavigationConstants, StylesConstants } from '@constants';
+import { ColorConstants, NavigationConstants, StylesConstants, TextsConstants } from '@constants';
 import UserReducer from '@reducers/UserReducer';
 import ConnectedMenu from '@components/ConnectedMenu';
-import { getWatchListMoviesId } from '@reducers/UserReducer';
 
 
 const LoginScene = () => {
@@ -35,11 +34,11 @@ const LoginScene = () => {
 
 	return (
 		<View>
-			<Text style={StylesConstants.title}>Connexion</Text>
+			<Text style={StylesConstants.title}>{TextsConstants.LOGIN_TITLE}</Text>
 			<View style={{ display: display_inv }}><Text style={StylesConstants.subtitle}>{user.username}</Text></View>
 			<View style={[styles.homeView, { display: display }]}>
 				<TextInput
-					placeholder="Utilisateur"
+					placeholder={TextsConstants.LOGIN_EMAIL_PLACEHOLDER}
 					placeholderTextColor={ColorConstants.TEXT}
 					style={styles.inputSearch}
 					onChangeText={text => setEmail(text)}
@@ -47,21 +46,21 @@ const LoginScene = () => {
 				<TextInput
 					secureTextEntry={true}
 					textContentType="password"
-					placeholder="Password"
+					placeholder={TextsConstants.LOGIN_PASSWORD_PLACEHOLDER}
 					placeholderTextColor={ColorConstants.TEXT}
 					style={styles.inputSearch}
 					onChangeText={text => setPassword(text)}
 				/>
 				<CustomButton
 					style={styles.button}
-					title="Se connecter"
+					title={TextsConstants.LOGIN_LOG_BUTTON}
 					onPress={() => {
 						dispatch(UserReducer.actions.loginSaisie(email, password));
 						//navigation.navigate('Home');
 					}}
 				/>
 				<CustomButton
-					title="S'inscrire"
+					title={TextsConstants.LOGIN_SIGNUP_BUTTON}
 					onPress={() => {
 						navigation.navigate(NavigationConstants.SIGNUP);
 					}}

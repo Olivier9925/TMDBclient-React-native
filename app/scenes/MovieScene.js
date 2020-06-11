@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Image, Text, ImageBackground, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { ColorConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
-import { getWatchListMoviesId } from '@reducers/UserReducer';
 import NavigationConstants from '@constants/NavigationConstants';
 import { useNavigation } from '@react-navigation/native';
 import SelectorAction from '@components/SelectorAction';
@@ -11,16 +10,20 @@ import FastImage from 'react-native-fast-image';
 import MoviesUtils from '@utils/MoviesUtils'
 
 const MovieScene = () => {
+
   const dispatch = useDispatch();
   const navigation = useNavigation()
+
   const currentMovie = useSelector(state => state.MoviesReducer.currentMovie);
   const currentMovieCredits = useSelector(state => state.MoviesReducer.currentMovieCredits);
   const connexion = useSelector(state => state.UserReducer.connexion);
   const currentMovieImages = useSelector(state => state.MoviesReducer.currentMovieImages)
-  const backdrops = currentMovieImages?.backdrops;
   const watchList = useSelector(state => state.UserReducer.watchList);
 
+  const backdrops = currentMovieImages?.backdrops;
+
   const isInWatchList = () => MoviesUtils.getListIds(watchList).includes(currentMovie.id)
+
   const displayCredits = currentMovieCredits => {
     if (currentMovieCredits == undefined || currentMovieCredits == null) return;
     else

@@ -3,11 +3,10 @@ import { TextInput, View, StyleSheet } from 'react-native'
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { CustomButton } from './CustomButton'
-import { ColorConstants, NavigationConstants } from '@constants';
+import { ColorConstants, NavigationConstants, TextsConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
 
-const SearchBar = () =>
-{
+const SearchBar = () => {
 	const navigation = useNavigation();
 	const dispatch = useDispatch();
 	const [search, setsearch] = useState(null);
@@ -15,15 +14,14 @@ const SearchBar = () =>
 	return (
 		<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
 			<TextInput
-				placeholder="rechercher"
+				placeholder={TextsConstants.SEARCHBAR_PLACEHOLDER}
 				placeholderTextColor={ColorConstants.TEXT}
 				style={styles.inputSearch}
 				onChangeText={text => setsearch(text)}
 			/>
 			<CustomButton
-				title='OK'
-				onPress={() =>
-				{
+				title={TextsConstants.BUTTON_PLACEHOLDER}
+				onPress={() => {
 					dispatch(MoviesReducer.actions.selectSearchedMovies(search))
 					navigation.navigate(NavigationConstants.MOVIE_LIST)
 				}}
