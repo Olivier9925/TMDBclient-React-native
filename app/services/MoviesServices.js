@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-const apiKey = 'e709f2ea9104a5d71ac4f13607ce4100';
 
 export const WSgetDiscoverMovies = () => {
   return axios

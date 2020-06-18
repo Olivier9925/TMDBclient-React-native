@@ -1,6 +1,5 @@
 import axios from "axios";
 
-const apiKey = "e709f2ea9104a5d71ac4f13607ce4100"; // a suppr
 const backEndUrl = "https://movietrackerback.herokuapp.com/movieTrack";
 const backEndUrlTest = "http://localhost:5000/movieTrack"
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
