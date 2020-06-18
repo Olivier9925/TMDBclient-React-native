@@ -21,8 +21,8 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-services/MoviesServices.js
-services/UserServices.js
+app/services/MoviesServices.js
+app/services/UserServices.js
 
 # Android/IntelliJ
 #
