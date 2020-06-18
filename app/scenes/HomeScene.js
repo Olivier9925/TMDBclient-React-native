@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import SearchBar from '@components/SearchBar';
-import { ColorConstants, NavigationConstants, TextsConstants, StylesConstants } from '@constants';
-import TopOrDiscoverChoice from '@components/TopOrDiscoverChoice';
+import { ColorConstants, NavigationConstants, StylesConstants } from '@constants';
+import MenuClassic from '@components/MenuClassic';
 import MoviesReducer from '@reducers/MoviesReducer';
 import { useNavigation } from '@react-navigation/native';
 import TrendMovies from '@components/TrendMovies'
@@ -36,7 +36,7 @@ const HomeScene = () => {
       <View style={{ flex: 1 }}>
         <TrendMovies />
       </View>
-      <TopOrDiscoverChoice />
+      <MenuClassic />
     </View>
   );
 };

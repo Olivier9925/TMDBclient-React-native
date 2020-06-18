@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { TextInput, View, StyleSheet } from 'react-native'
+import { TextInput, View } from 'react-native'
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import { CustomButton } from './CustomButton'
 import { ColorConstants, NavigationConstants, TextsConstants, StylesConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
 

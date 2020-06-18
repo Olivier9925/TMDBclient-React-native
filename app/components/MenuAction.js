@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { ColorConstants, NavigationConstants, TextsConstants } from '@constants';
 import UserReducer from '@reducers/UserReducer';
 
-const SelectorAction = (props) => {
+const MenuAction = (props) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ const SelectorAction = (props) => {
 
   const { isInWatchList } = props;
   return (
-    <View style={styles.selectorAction}>
+    <View style={styles.MenuAction}>
       <CustomButton
         onPress={() => {
           dispatch(UserReducer.actions.saveToWatchList(currentMovieId, account_id, session_id, isInWatchList));
@@ -34,10 +34,10 @@ const SelectorAction = (props) => {
     </View>
   );
 };
-export default SelectorAction;
+export default MenuAction;
 
 const styles = StyleSheet.create({
-  selectorAction: {
+  MenuAction: {
     borderTopColor: ColorConstants.ACCENT_COLOR,
     borderBottomColor: 'transparent',
     borderRightColor: 'transparent',

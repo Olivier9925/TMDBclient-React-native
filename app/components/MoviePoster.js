@@ -1,19 +1,18 @@
 import React from 'react'
-import { TouchableHighlight, Image, View } from 'react-native'
+import { TouchableHighlight, View } from 'react-native'
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
 import FastImage from 'react-native-fast-image';
-import { ColorConstants, TextsConstants, ActionsConstants } from '@constants';
+import { ColorConstants } from '@constants';
 
 const MoviePoster = (props) => {
     const navigation = useNavigation();
     const dispatch = useDispatch()
 
-    const { movie } = props;
+    const { movie, size } = props;
 
-    const { size } = props;
     const posterStyle = size === 'small' ?
         { width: 80, height: 80, marginBottom: 15, borderRadius: 50, borderWidth: 1, borderColor: ColorConstants.ACCENT_COLOR } :
         { width: 180, height: 250, marginBottom: 20, borderRadius: 8 };

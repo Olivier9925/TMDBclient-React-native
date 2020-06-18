@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { ColorConstants, NavigationConstants, StylesConstants, TextsConstants } from '@constants';
 import UserReducer from '@reducers/UserReducer';
-import ConnectedMenu from '@components/ConnectedMenu';
+import MenuConnected from '@components/MenuConnected';
 
 
 const LoginScene = () => {
@@ -75,7 +75,7 @@ const LoginScene = () => {
 				/>
 			</View>
 			<View style={{ display: display_inv }}>
-				{connexion ? <ConnectedMenu /> : <></>}
+				{connexion ? <MenuConnected /> : <></>}
 			</View>
 		</View>
 	);

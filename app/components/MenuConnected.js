@@ -4,7 +4,7 @@ import { StylesConstants, TextsConstants, ActionsConstants } from '@constants';
 import HomeMenuButton from '@components/HomeMenuButton'
 
 
-const ConnectedMenu = () => {
+const MenuConnected = () => {
   return (
     <View style={StylesConstants.menu}>
       <HomeMenuButton choice={ActionsConstants.LISTE} label={TextsConstants.BUTTON_LIST} />
@@ -13,4 +13,4 @@ const ConnectedMenu = () => {
   );
 };
 
-export default ConnectedMenu;
+export default MenuConnected;

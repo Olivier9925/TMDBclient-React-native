@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { ColorConstants, StylesConstants } from '@constants';
+import { View } from 'react-native';
+import { StylesConstants } from '@constants';
 import HomeMenuButton from '@components/HomeMenuButton'
 
-const TopOrDiscoverChoice = () => {
+const MenuClassic = () => {
   return (
     <View style={StylesConstants.menu}>
       <HomeMenuButton choice='TOP' label='les tops' />
@@ -12,4 +12,4 @@ const TopOrDiscoverChoice = () => {
   );
 };
 
-export default TopOrDiscoverChoice;
+export default MenuClassic;

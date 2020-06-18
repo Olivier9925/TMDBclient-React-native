@@ -20,7 +20,7 @@ export default {
     LOGIN_EMAIL_PLACEHOLDER: "Utilisateur",
     LOGIN_PASSWORD_PLACEHOLDER: "Password",
 
-    // ConnectedMenu
+    // MenuConnected
     BUTTON_LIST: "Liste",
     BUTTON_DOWNLOAD: "FAVORIS"
 }

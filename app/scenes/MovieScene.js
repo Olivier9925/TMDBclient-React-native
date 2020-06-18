@@ -5,7 +5,7 @@ import { ColorConstants, StylesConstants } from '@constants';
 import MoviesReducer from '@reducers/MoviesReducer';
 import NavigationConstants from '@constants/NavigationConstants';
 import { useNavigation } from '@react-navigation/native';
-import SelectorAction from '@components/SelectorAction';
+import MenuAction from '@components/MenuAction';
 import FastImage from 'react-native-fast-image';
 import MoviesUtils from '@utils/MoviesUtils';
 import MoviePoster from '@components/MoviePoster';
@@ -130,7 +130,7 @@ const MovieScene = () => {
           )
         })}
       </View>
-      {connexion ? <SelectorAction isInWatchList={isInWatchList()} /> : <View></View>}
+      {connexion ? <MenuAction isInWatchList={isInWatchList()} /> : <View></View>}
 
       <SafeAreaView style={{ flex: 1, marginTop: 100 }}>
         <View>

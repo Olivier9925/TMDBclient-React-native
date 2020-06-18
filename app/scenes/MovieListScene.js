@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { SafeAreaView, View, Text, StyleSheet, FlatList } from 'react-native';
-import { ColorConstants, ActionsConstants, StylesConstants } from '@constants';
+import { SafeAreaView, View, Text, FlatList } from 'react-native';
+import { ActionsConstants, StylesConstants } from '@constants';
 import MoviePoster from '@components/MoviePoster'
 
 
