@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initState = {
   appStart: false,
-  apiKey: 'e709f2ea9104a5d71ac4f13607ce4100',
   discoverMovies: [],
   topMovies: [],
   trendMovies: [],
