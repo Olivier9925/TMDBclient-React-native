@@ -1,12 +1,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { createSagaRoot } from '@sagas';
 import {
-	WSlogin,
 	WSlogout,
 	WSgetWatchList,
-	WSgetWatchListIds,
-	WSgetWatchedListIds,
-	WSgetWatchedList,
 	WSsaveToWatchList,
 	WSsaveToWatchedList,
 	WSgetToken,

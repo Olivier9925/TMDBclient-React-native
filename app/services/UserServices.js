@@ -1,15 +1,7 @@
 import axios from "axios";
 
-const backEndUrl = "https://movietrackerback.herokuapp.com/movieTrack";
-const backEndUrlTest = "http://localhost:5000/movieTrack"
-// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const apiKey = "e709f2ea9104a5d71ac4f13607ce4100"; // a supp
 
-export const WSlogin = (email, password) => {
-	return axios.post(backEndUrl + "/login", {
-		email: email,
-		passwordSaisie: password
-	})
-}
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const WSlogout = () => (session_id) => {
 	"https://api.themoviedb.org/3/authentication/session?api_key=" + apiKey,
@@ -18,15 +10,6 @@ export const WSlogout = () => (session_id) => {
 	}
 }
 
-// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const WSgetWatchListIds = (user) => {
-	return axios.get(backEndUrl + "/user/" + user + "/watchlist/")
-}
-
-// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const WSgetWatchedListIds = (user) => {
-	return axios.get(backEndUrl + "/user/" + user + "/watched/")
-}
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const WSgetWatchList = (session_id, account_id) => {
@@ -66,16 +49,6 @@ export const WSgetAccountDetails = (session_id) => {
 	return axios.get("https://api.themoviedb.org/3/account?api_key=" + apiKey + "&session_id=" + session_id)
 }
 
-// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const signup = (email, password) => {
-	return (dispatch) => {
-		axios.post(backEndUrl + "/signup", {
-			email: email,
-			passwordSaisie: password
-		})
-			.catch(error => console.log(error));
-	}
-}
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const WSsaveToWatchList = (movieId, account_id, session_id, watchlist) => {
@@ -87,10 +60,3 @@ export const WSsaveToWatchList = (movieId, account_id, session_id, watchlist) =>
 		}
 	)
 }
-
-// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const WSsaveToWatchedList = (movieId, user) => {
-	return axios.post(backEndUrl + "/movie/" + movieId + "/user/" + user + "/watched")
-}
-
-
