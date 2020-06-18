@@ -21,8 +21,6 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-/app/services/MoviesServices.js
-/app/services/UserServices.js
 
 # Android/IntelliJ
 #
@@ -60,3 +58,8 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+
+
+MoviesServices.js
+UserServices.js
