@@ -16,14 +16,6 @@ const HomeScene = () => {
     dispatch(MoviesReducer.actions.startingApp())
   }, [])
 
-  useEffect(() => {
-    const currentRoute = navigation.addListener('tabPress', e => {
-      dispatch(MoviesReducer.actions.resetCurrentMovie())
-      navigation.navigate(NavigationConstants.MOVIE_LIST)
-    });
-    return currentRoute;
-  }, [navigation])
-
   return (
     <View style={{ flex: 1, flexWrap: 'wrap', backgroundColor: ColorConstants.BACK_FIRST }}>
       <View style={[StylesConstants.screenWidth, {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, FlatList } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { ColorConstants, StylesConstants } from '@constants';
@@ -22,6 +22,9 @@ const MovieScene = () => {
   const currentMovie = useSelector(state => state.MoviesReducer.currentMovie);
   const similars = useSelector(state => state.MoviesReducer.similars)
 
+  useEffect(() => {
+    dispatch(MoviesReducer.actions.resetCurrentMovie())
+  }, [])
 
   const backdrops = currentMovieImages?.backdrops;
 
