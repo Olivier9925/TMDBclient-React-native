@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "303075102288",
+    "firebase_url": "https://movietracker-4cb10.firebaseio.com",
+    "project_id": "movietracker-4cb10",
+    "storage_bucket": "movietracker-4cb10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303075102288:android:fc84fe74baf089ecb00b55",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303075102288-2m9dnju4rmlj2os6hugf9d9kolfs7rgc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB85UE2BlVdrCzMkHsMxhK7tx9mVlfFAi8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303075102288-2m9dnju4rmlj2os6hugf9d9kolfs7rgc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "303075102288-tbmlc9ag5elhbonunte4kh1qrmtdr93a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.oaj.movieTracker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

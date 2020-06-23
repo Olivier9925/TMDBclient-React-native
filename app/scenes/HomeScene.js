@@ -33,7 +33,7 @@ const HomeScene = () => {
         <Image source={require('@assets/long_icon.png')} style={[StylesConstants.screenWidth, { height: 70 }]} resizeMode="contain" />
       </View>
       <SearchBar />
-      <View style={{ flex: 1 }}>
+      <View>
         <TrendMovies />
       </View>
       <MenuClassic />
