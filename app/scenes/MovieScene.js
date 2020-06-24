@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { View, Text, ImageBackground, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, FlatList } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { ColorConstants, StylesConstants } from '@constants';
@@ -22,9 +22,18 @@ const MovieScene = () => {
   const currentMovie = useSelector(state => state.MoviesReducer.currentMovie);
   const similars = useSelector(state => state.MoviesReducer.similars)
 
+  const scrollRef = useRef();
+
   useEffect(() => {
     dispatch(MoviesReducer.actions.resetCurrentMovie())
   }, [])
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({
+      y: 0,
+      animated: true,
+    });
+  }, [currentMovie])
 
   const backdrops = currentMovieImages?.backdrops;
 
@@ -81,7 +90,7 @@ const MovieScene = () => {
   };
 
   return (
-    <ScrollView style={{ backgroundColor: ColorConstants.BACK_SECOND }}>
+    <ScrollView style={{ backgroundColor: ColorConstants.BACK_SECOND }} ref={scrollRef}>
       <ImageBackground
         source={{
           uri: `https://image.tmdb.org/t/p/original/${
@@ -169,7 +178,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: 300,
     marginLeft: 20,
-    borderWidth: 4,
+    borderWidth: 1,
   },
   title: {
     color: ColorConstants.TEXT,

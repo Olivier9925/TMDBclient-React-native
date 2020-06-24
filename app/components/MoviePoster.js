@@ -14,7 +14,7 @@ const MoviePoster = (props) => {
     const { movie, size } = props;
 
     const posterStyle = size === 'small' ?
-        { width: 80, height: 130, marginBottom: 15, borderRadius: 10, borderWidth: 1, borderColor: ColorConstants.ACCENT_COLOR } :
+        { width: 80, height: 120, marginBottom: 15, borderRadius: 10, borderWidth: 1, borderColor: ColorConstants.ACCENT_COLOR } :
         { width: 180, height: 250, marginBottom: 20, borderRadius: 10, borderWidth: 1, borderColor: ColorConstants.ACCENT_COLOR };
     return (
         <View>

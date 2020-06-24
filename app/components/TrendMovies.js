@@ -2,7 +2,7 @@ import React from 'react'
 import { View, FlatList } from 'react-native'
 import { useSelector } from 'react-redux';
 import MoviePoster from '@components/MoviePoster';
-import StylesConstants from '../constants/StylesConstants';
+import StylesConstants from '@constants/StylesConstants';
 
 const TrendMovies = () => {
     let trendMovies = useSelector(state => state.MoviesReducer.trendMovies)
@@ -17,7 +17,6 @@ const TrendMovies = () => {
                 columnWrapperStyle={{
                     justifyContent: 'space-around',
                 }}
-                initialNumToRender={6}
                 style={StylesConstants.screenWidth}
             />
 

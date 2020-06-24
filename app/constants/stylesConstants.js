@@ -11,6 +11,7 @@ export default {
 
     // composants
     menu: {
+        width: windowWidth,
         backgroundColor: ColorConstants.BACK_SECOND,
         display: 'flex',
         flexDirection: 'row',
