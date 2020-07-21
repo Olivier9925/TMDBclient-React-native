@@ -4,6 +4,7 @@ import MovieScene from '@scenes/MovieScene';
 import MovieListScene from '@scenes/MovieListScene';
 import HomeScene from '@scenes/HomeScene';
 import ActorScene from '@scenes/ActorScene';
+import ImageViewScene from '@scenes/ImageViewScene';
 import { NavigationConstants, ColorConstants } from '@constants';
 
 
@@ -23,6 +24,7 @@ const MovieNavigator = () => {
       <Stack.Screen name={NavigationConstants.MOVIE_LIST} component={MovieListScene} />
       <Stack.Screen name={NavigationConstants.MOVIE} component={MovieScene} />
       <Stack.Screen name={NavigationConstants.ACTOR} component={ActorScene} />
+      <Stack.Screen name={NavigationConstants.IMAGE_VIEW} component={ImageViewScene} />
     </Stack.Navigator>
   );
 };

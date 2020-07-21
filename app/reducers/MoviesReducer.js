@@ -14,6 +14,7 @@ const initState = {
   currentMovieDetails: [],
   currentMovieCredits: [],
   currentMovieImages: [],
+  currentImageUrl: null,
   similars: [],
   currentActorId: null,
   currentActor: {
@@ -147,6 +148,12 @@ export default createSlice({
         state.searchActor = action?.payload?.searchActor;
       },
       prepare: (searchActor) => { return { payload: { searchActor } }; }
+    },
+    setCurrentImageUrl: {
+      reducer: (state, action) => {
+        state.currentImageUrl = action?.payload?.currentImageUrl
+      },
+      prepare: (currentImageUrl) => { return { payload: { currentImageUrl } }; }
     },
   },
 });

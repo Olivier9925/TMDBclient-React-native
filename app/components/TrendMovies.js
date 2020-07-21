@@ -14,6 +14,7 @@ const TrendMovies = () => {
                 renderItem={({ item }) => <MoviePoster movie={item} size='small' />}
                 keyExtractor={item => item.id}
                 numColumns={4}
+                scrollEnabled={false}
                 columnWrapperStyle={{
                     justifyContent: 'space-around',
                 }}

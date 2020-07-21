@@ -5,4 +5,5 @@ export default {
 	LOGIN: 'login',
 	SIGNUP: 'signup',
 	ACTOR: 'actor',
+	IMAGE_VIEW: 'image',
 };

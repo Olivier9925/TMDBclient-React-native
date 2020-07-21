@@ -131,14 +131,23 @@ const MovieScene = () => {
         {backdrops && backdrops.map((currentMovieImage, i) => {
           if (i >= 6) return;
           return (
-            <FastImage
-              style={{ width: 200, height: 100, marginVertical: 5 }}
-              source={{
-                uri: 'https://image.tmdb.org/t/p/original/' + currentMovieImage?.file_path,
-                priority: FastImage.priority.high,
-              }}
-              resizeMode={FastImage.resizeMode.contain}
-            />
+            <TouchableOpacity
+              onPress={
+                () => {
+                  dispatch(MoviesReducer.actions.setCurrentImageUrl('https://image.tmdb.org/t/p/original/' + currentMovieImage?.file_path));
+                  navigation.navigate(NavigationConstants.IMAGE_VIEW);
+                }
+              }
+            >
+              <FastImage
+                style={{ width: 200, height: 100, marginVertical: 5 }}
+                source={{
+                  uri: 'https://image.tmdb.org/t/p/original/' + currentMovieImage?.file_path,
+                  priority: FastImage.priority.high,
+                }}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+            </TouchableOpacity>
           )
         })}
       </View>
@@ -149,12 +158,13 @@ const MovieScene = () => {
           <Text style={StylesConstants.title}>{'Films similaires'}</Text>
           <FlatList
             data={similars}
-            renderItem={({ item }) => <MoviePoster movie={item} />}
+            renderItem={({ item }) => <View style={{ marginHorizontal: 5 }}><MoviePoster movie={item} /></View>}
             keyExtractor={item => item.id}
             refreshing={true}
             initialNumToRender={6}
             removeClippedSubviews={true}
             horizontal
+
           />
         </View>
       </SafeAreaView>
