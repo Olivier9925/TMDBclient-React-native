@@ -9,6 +9,16 @@ import FastImage from 'react-native-fast-image';
 const ActorScene = () => {
   const currentActor = useSelector(state => state.MoviesReducer.currentActor);
 
+  let filmo = currentActor.filmo;
+  console.log('filmo :', filmo)
+  filmo = filmo.slice().sort(function compare(a, b) {
+    if (a.popularity < b.popularity)
+      return 1;
+    if (a.popularity > b.popularity)
+      return -1;
+    return 0;
+  });
+
   const renderActorBio = () => {
     return (
       <>
@@ -48,7 +58,7 @@ const ActorScene = () => {
   return (
     <>
       <FlatList
-        data={currentActor.filmo}
+        data={filmo}
         renderItem={({ item }) => <MoviePoster movie={item} />}
         keyExtractor={item => item.id}
         numColumns={2}
