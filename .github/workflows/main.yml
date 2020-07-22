@@ -35,3 +35,30 @@ jobs:
     # React Native Android Build APK
     - name: React Native Android Build APK
       uses: realabbas/Github-Actions-React-Native@v1.1.2
+
+    - name: iOS Build Action
+      uses: yukiarrr/ios-build-action@v0.5.1
+      with:
+        # Project path
+        project-path: 
+        # Base64 encoded p12 file
+        p12-base64: 
+        # Base64 encoded mobileprovision file
+        mobileprovision-base64: 
+        # For example, iOS Distribution
+        code-signing-identity: 
+        # Team id
+        team-id: 
+        # Workspace path
+        workspace-path: # optional, default is 
+        # Choose app-store, ad-hoc, package, enterprise, development, or developer-id
+        export-method: # optional, default is app-store
+        # For example, Debug, Release
+        configuration: # optional, default is Release
+        # Certificate password
+        certificate-password: # optional, default is 
+        # Output path of ipa
+        output-path: # optional, default is output.ipa
+        # Scheme
+        scheme: # optional, default is 
+
