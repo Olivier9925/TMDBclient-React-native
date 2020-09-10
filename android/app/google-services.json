@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:303075102288:android:fc84fe74baf089ecb00b55",
         "android_client_info": {
-          "package_name": "com.android.application"
+          "package_name": "com.oaj.movietracker"
         }
       },
       "oauth_client": [

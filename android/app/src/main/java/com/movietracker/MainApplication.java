@@ -1,4 +1,4 @@
-package com.movietracker;
+package com.oaj.movietracker;
 
 import android.app.Application;
 import android.content.Context;
